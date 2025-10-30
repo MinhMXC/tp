@@ -1230,20 +1230,15 @@ testers are expected to do more *exploratory* testing.
    `edittag 1 d/my extended family c/099fca`
    **Expected:** Tag with identifier 1 is updated. Status message shows new description and color.
 
-3. **Test case (rename and reset description and color to defaults):**
-   `edittag 2 n/Prof d/ c/`
-   **Expected:** Tag with identifier 2 is renamed to “Prof”; description and color are reset to their default values.
-   Status message confirms.
-
-4. **Test case (changes name but new name already exist):**
+3. **Test case (changes name but new name already exist):**
    `edittag 2 n/friends`
    **Expected:** No change. Error message indicates that the edit will result in duplicate tag.
 
-5. **Test case (missing identifier):**
+4. **Test case (missing identifier):**
    `edittag n/NewName`
    **Expected:** No change. Error message indicates that an identifier is required and shows the correct command format.
 
-6. **Other test cases to try:** invalid identifier (`edittag 999 ...`), no updatable fields provided (`edittag 1`),
+5. **Other test cases to try:** invalid identifier (`edittag 999 ...`), no updatable fields provided (`edittag 1`),
    invalid color format.
    **Expected:** Proper error messages; no changes applied.
 
