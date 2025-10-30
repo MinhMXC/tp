@@ -2,14 +2,14 @@
 layout: page
 title: User Guide
 ---
+## NetWise User Guide
 
 NetWise is a **desktop app for managing connections for Computer Science students, optimized for use via a
 Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, NetWise can get your connection management tasks done faster than traditional GUI apps.
+If you can type fast, NetWise can get your connection management tasks done faster than traditional GUI apps. NetWise is best used with minimal screen space, so you can use it easily while doing other work, and it features a comfortable interface and color palette designed to reduce eye strain.
 
 * Table of Contents
-{:toc}
-
+  {:toc}
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick start
@@ -54,10 +54,10 @@ If you can type fast, NetWise can get your connection management tasks done fast
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g `n/NAME [t/TAG_ID]` can be used as `n/John Doe t/1` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+  e.g. `[t/TAG_ID]…​` can be used as ` ` (i.e. 0 times), `t/1`, `t/1 t/3` etc.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -108,7 +108,7 @@ supposed tag with ID 1 is `criminal`
 
 ### Listing all connections : `list`
 
-Shows a list of all connections in NetWise.
+Shows a list of all connections in NetWise with easy view of relationships for each connection.
 
 Format: `list`
 
@@ -186,11 +186,11 @@ does not have any input restrictions for flexibility.
 Examples:
 * `find n/Ali` → Finds all persons with names containing “Ali”.
 * `find e/gmail a/Clementi` → Finds persons whose email contains “gmail” and address contains “Clementi”.
-* `find n/Ali e/gmail a/Clementi a/Bishan t/2 t/5 t/7` → Finds persons who:
-    * name contains “Ali”:
-    * email contains “gmail”,
-    *	address contains “Clementi” or “Bishan”, and
-    *	has tag IDs 2, 5, or 7.
+* `find n/Ali e/gmail a/Clementi a/Bishan t/2 t/5 t/7` → Finds persons who: 
+  * name contains “Ali”:
+  * email contains “gmail”,
+  *	address contains “Clementi” or “Bishan”, and
+  *	has tag IDs 2, 5, or 7.
 
 
 ### Adding a tag : `addtag`
@@ -208,7 +208,7 @@ Format: `addtag n/NAME [d/DESCRIPTION] [c/RGB_COLOR]`
   * The string should be written ***without*** the hash ('#'), such as `123456`, `0F2AAB`, `abf1cd`, …​
 * The default `DESCRIPTION` field is "No description" (if prefix is not included)
 * The default `RGB_COLOR` is gray (#808080) (if prefix is not included)
-* The created tag will be assigned a **FIXED unique tag ID**, can be seen with the [`listtag`](#listing-all-tags--listtag) command.
+* The created tag will be assigned a **fixed unique tag ID**, can be seen with the [`listtag`](#listing-all-tags--listtag) command.
 
 Examples:
 * `addtag n/JC d/JC friends c/23f1cd`
@@ -284,41 +284,45 @@ that they are childhood friends.
 
 ### Listing all relationships : `listrel`
 
-Shows a list of relationships for each person in the list in NetWise.
+Shows a list of relationships and people who are connected to p1. If p2 is stated as well, listrel will
+give a string of connections of how p1 and p2 are related to each other if a connection exists.
 
-Format (one person): `listrel p1/CONNECTION_1`: show a list of all person related to `CONNECTION` along with the relationship info
-Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show all relationships between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship infos.
+Format: `listrel p1/CONNECTION_1 [p2/CONNECTION_2]`
 
 * `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
     * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
 * If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list, expect a message informing that no tag found.
 
+Examples:
+*  `listrel p1/1`. Shows a list of connections who has a relationship to ID 1 and the description of their relationship.
+*  `listrel p1/1 p2/2`. Shows a list of relationships in order to see how connection 1 may be connected to connection 2
+via a chain of relationships.
 
 ### Editing a relationship : `editrel`
 
-Edits a relationship in NetWise.
+Edits the description of a relationship in NetWise.
 
-Format: `editrel INDEX [p1/CONNECTION_1] [p2/CONNECTION_2] [d/DESCRIPTION]`
+Format: `editrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION`
 
-* Edits the relationship at the specified index `INDEX` in the relationship list from `listrel`.
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
+* Edits the relationship between p1 and p2. `editrel` will edit the description of the relationship between p1 and p2.
+* All fields must be provided.
 
 Examples:
 
-* `editrel 3 d/highschool friends`. Edits description of the third relationship in the relationship list.
+* `editrel p1/1 p2/2 d/highschool friends`. Edits the description of the relationship between connection ID 1 and 
+connection ID 2.
 
 ### Deleting a relationship : `deleterel`
 
 Deletes a relationship from NetWise.
 
-Format: `deleterel INDEX`
+Format: `deleterel p1/CONNECTION_1 p2/CONNECTION_2`
 
-* Deletes the relationships at the specified index `INDEX` in the relationship list from `listrel`.
+* Deletes the relationship between p1 and p2.
 
 Examples:
 
-* `deleterel 1`. Deletes the first relationship in the relationship list.
+* `deleterel p1/1 p2/2`. Deletes the relationship between connection ID 1 and connection ID 2.
 
 
 ### Exiting the program : `exit`
@@ -381,21 +385,21 @@ end. This will be fixed in the upcoming updates.
 
 ## Command summary
 
-| Action                    | Format, Examples                                                                                                                                                                     |
-|---------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add connection**        | `add n/NAME p/PHONE_NUMBER e/EMAIL [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/1 2 r/owes me lunch` |
-| **List connection**       | `list`                                                                                                                                                                               |
-| **Edit connection**       | `edit ID [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                 |
-| **Delete connection**     | `delete ID`<br> e.g., `delete 3`                                                                                                                                                     |
-| **Clear connection list** | `clear`                                                                                                                                                                              |
-| **Find connection**       | `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS]…​ [a/ADDRESS_KEYWORDS]…​ [t/TAG_ID]…​` <br> e.g., `find e/gmail a/Clementi`                                        |
-| **Add tag**               | `addtag n/NAME [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `addtag n/JC d/JC friends c/23f1cd`                                                                                          |
-| **List tag**              | `listtag`                                                                                                                                                                            |
-| **Edit tag**              | `edittag TAG_ID [n/NAME] [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `edittag 1 d/my extended family c/099fca`                                                                          |
-| **Delete tag**            | `deletetag TAG_ID` <br> e.g. `deletetag 2`                                                                                                                                           |
-| **Add relationship**      | `addrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION` <br> e.g. `addrel p1/1 p2/2 d/friends`                                                                                        |
-| **List relationships**    | `listrel p1/CONNECTION_1 [p2/CONNECTION_2]`                                                                                                                                          |
-| **Edit relationship**     | `editrel INDEX [p1/CONNECTION_1] [p2/CONNECTION_2] [d/DESCRIPTION]` <br> e.g. `editrel 1 d/friends`                                                                                  |
-| **Delete relationship**   | `deleterel INDEX` <br> e.g. `deleterel 1`                                                                                                                                            |
-| **Help**                  | `help`                                                                                                                                                                               |
-| **Exit program**          | `exit`                                                                                                                                                                               |
+| Action                    | Format, Examples                                                                                                                                                                       |
+|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add connection**        | `add n/NAME p/PHONE_NUMBER e/EMAIL [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/1 t/2 r/owes me lunch` |
+| **Clear connection list** | `clear`                                                                                                                                                                                |
+| **Delete connection**     | `delete ID`<br> e.g., `delete 3`                                                                                                                                                       |
+| **Edit connection**       | `edit ID [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                   |
+| **Find connection**       | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                             |
+| **List connection**       | `list`                                                                                                                                                                                 |
+| **Add tag**               | `addtag n/NAME [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `addtag n/JC d/JC friends c/23f1cd`                                                                                            |
+| **Delete tag**            | `deletetag ID` <br> e.g. `deletetag 2`                                                                                                                                                 |
+| **Edit tag**              | `edittag ID [n/NAME] [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `edittag 1 d/my extended family c/099fca`                                                                                |
+| **List tag**              | `listtag`                                                                                                                                                                              |
+| **Add relationship**      | `addrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION` <br> e.g. `addrel p1/1 p2/2 d/friends`                                                                                          |
+| **List relationships**    | `listrel p1/CONNECTION_1 [p2/CONNECTION_2]`  <br> e.g. `listrel p1/1 p2/4`                                                                                                             |
+| **Edit relationship**     | `editrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION` <br> e.g. `editrel p1/1 p2/2 d/enemies`                                                                                        |
+| **Delete relationship**   | `deleterel p1/CONNECTION_1 p2/CONNECTION_2` <br> e.g. `deleterel p1/1 p2/2`                                                                                                            |
+| **Exit program**          | `exit`                                                                                                                                                                                 |
+| **Help**                  | `help`                                                                                                                                                                                 |
