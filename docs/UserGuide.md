@@ -398,7 +398,7 @@ end. This will be fixed in the upcoming updates.
 | **Edit tag**              | `edittag ID [n/NAME] [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `edittag 1 d/my extended family c/099fca`                                                                                |
 | **List tag**              | `listtag`                                                                                                                                                                              |
 | **Add relationship**      | `addrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION` <br> e.g. `addrel p1/1 p2/2 d/friends`                                                                                          |
-| **List relationships**    | `listrel p1/CONNECTION_1 [p2/CONNECTION_2]`  <br> e.g. `listrel p1/1 p2/4`                                                                                                             |
+| **List relationships**    | `listrel p1/CONNECTION_1 [p2/CONNECTION_2]` <br> e.g. `listrel p1/1 p2/4`                                                                                                              |
 | **Edit relationship**     | `editrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION` <br> e.g. `editrel p1/1 p2/2 d/enemies`                                                                                        |
 | **Delete relationship**   | `deleterel p1/CONNECTION_1 p2/CONNECTION_2` <br> e.g. `deleterel p1/1 p2/2`                                                                                                            |
 | **Exit program**          | `exit`                                                                                                                                                                                 |
