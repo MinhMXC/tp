@@ -96,7 +96,7 @@ A connection can have any number of tags (including 0)
   * `local-part` should only contain alphanumeric characters and these special characters: `+`, `-`, `.`, `_`. The local-part may not start or end with any special characters.
   * This is followed by a '@' and then a `domain`. The `domain` is made up of domain labels separated by periods. There should be at least
   two domain labels, with the final domain label (i.e. `.com`, `.sg`, `.net`, etc.) should have at least 2 characters.
-* `TAG_ID` refers to the **unique ID** of each tag (**not** their names), can be seen by using the [`listtag`](#listing-all-tags-listtag) command. 
+* `TAG_ID` refers to the **unique ID** of each tag (**not** their names), can be seen by using the [`listtag`](#listing-all-tags--listtag) command. 
   * The tag ID **must be a positive integer** 1, 2, 3, …​
   * One user can be assigned multiple tag IDs, and these do not have to be in any order (i.e. `t/1 t/3` and `t/3 t/1` will both assign tags with IDs 1 and 3 to the connection)
 * `NOTE` can accept any character input of any length.
@@ -104,7 +104,7 @@ A connection can have any number of tags (including 0)
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/2 e/betsycrowe@example.com a/Newgate Prison p/1234567 t/1 r/She owed me lunch`,
-supposed tag with ID 1 is `criminal`
+supposed tag with ID 1 has tag name `criminal`
 
 
 ### Listing all connections : `list`
@@ -122,7 +122,7 @@ Format: `edit ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG_ID]…​ [r/NO
 
 * Edits the connection with the specified `ID`.
 * The `ID` refers to the **unique ID** each connection is given when created,
-can be seen with [`list`](#listing-all-tags--listtag).
+can be seen with [`list`](#listing-all-tags--list).
   * The `ID` **must be a positive integer** 1, 2, 3, …​
 * If the connection with the input `ID` does not exist in the list, expect a message informing that no person found.
 * Further conditions for `NAME`, `PHONE`, `EMAIL`, `ADDRESS`, `TAG_ID`, and `NOTE` follows the same as in [`add`](#adding-a-connection--add).
@@ -273,9 +273,9 @@ Format: `addrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION`
 
 * `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
   * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
-* If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list, expect a message informing that no tag found.
+* If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list, expect a message informing that no person is found.
 * `DESCRIPTION` is a field to describe the relationship, e.g.: colleagues from ABC company
-* `DESCRIPTION` can accept any character input of any length.
+* `DESCRIPTION` can accept any character input of any length that contains at least 1 non-whitespace character.
 
 Examples:
 
@@ -287,8 +287,8 @@ that they are childhood friends.
 
 Shows a list of relationships for each person in the list in NetWise.
 
-Format (one person): `listrel p1/CONNECTION_1`: show a list of all person related to `CONNECTION` along with the relationship info
-Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show all relationships between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship infos.
+Format (one person): `listrel p1/CONNECTION_1`: show a list of all person related to `CONNECTION_1` along with the relationship info<br>
+Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show the chain of relationships between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship infos.
 
 * `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
     * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
@@ -296,7 +296,7 @@ Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show all relati
 
 Examples:
 *  `listrel p1/1`. Shows a list of connections who has a relationship to ID 1 and the description of their relationship.
-*  `listrel p1/1 p2/2`. Shows a list of relationships in order to see how connection 1 may be connected to connection 2
+*  `listrel p1/1 p2/2`. Shows a list of relationships in order to see how connection with ID 1 may be connected to connection with ID 2
 via a chain of relationships.
 
 ### Editing a relationship : `editrel`
@@ -389,7 +389,7 @@ The remedy is to manually restore the minimized Help Window.
 | **Clear connection list** | `clear`                                                                                                                                                                                |
 | **Delete connection**     | `delete ID`<br> e.g., `delete 3`                                                                                                                                                       |
 | **Edit connection**       | `edit ID [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                   |
-| **Find connection**       | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                             |
+| **Find connection**       | `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS]…​ [a/ADDRESS_KEYWORDS]…​ [t/TAG_ID]…`<br> e.g., `find n/James n/Jake`                                                |
 | **List connection**       | `list`                                                                                                                                                                                 |
 | **Add tag**               | `addtag n/NAME [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `addtag n/JC d/JC friends c/23f1cd`                                                                                            |
 | **Delete tag**            | `deletetag ID` <br> e.g. `deletetag 2`                                                                                                                                                 |
