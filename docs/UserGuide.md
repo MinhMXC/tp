@@ -60,6 +60,10 @@ If you can type fast, NetWise can get your connection management tasks done fast
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG_ID]…​` can be used as ` ` (i.e. 0 times), `t/1`, `t/1 t/3` etc.
 
+* For all parameters, the slash character `/` is not allowed. \
+  e.g. `edit 1 n/Batman S/O Superman` is not allowed, as there is a slash character in the name. For Indian names,
+  an alternative solution is to type `S/O` as `S.O.`.
+
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
