@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.logic.Messages;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.id.Id;
@@ -50,7 +51,7 @@ public class EditTagCommandTest {
         EditTagCommand editCommand = new EditTagCommand(new Id(1), newName, newDesc, newColor);
         Tag expectedEdited = new Tag(new Id(1), newName, newDesc, newColor);
 
-        String expectedMessage = String.format("Edited Tag: %s", expectedEdited);
+        String expectedMessage = String.format("Edited Tag: %s", Messages.format(expectedEdited));
 
         ModelStubWithTags expectedModel = new ModelStubWithTags(List.of(expectedEdited, tag2, tag3));
         assertCommandSuccess(editCommand, modelStub, expectedMessage, expectedModel);
@@ -63,7 +64,7 @@ public class EditTagCommandTest {
         EditTagCommand editCommand = new EditTagCommand(new Id(1), null, newDesc, null);
         Tag expectedEdited = new Tag(new Id(1), tag1.getName(), newDesc, tag1.getColor());
 
-        String expectedMessage = String.format(EditTagCommand.MESSAGE_EDIT_SUCCESS, expectedEdited);
+        String expectedMessage = String.format(EditTagCommand.MESSAGE_EDIT_SUCCESS, Messages.format(expectedEdited));
 
         ModelStubWithTags expectedModel = new ModelStubWithTags(List.of(expectedEdited, tag2, tag3));
         assertCommandSuccess(editCommand, modelStub, expectedMessage, expectedModel);

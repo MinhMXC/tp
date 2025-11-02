@@ -1,6 +1,6 @@
 ---
 layout: page
-title: AddressBook Level-3
+title: NetWise
 ---
 
 [![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
@@ -10,7 +10,7 @@ title: AddressBook Level-3
 
 NetWise is a **desktop app for managing connections for Computer Science students, optimized for use via a
 Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, NetWise can get your connection management tasks done faster than traditional GUI apps. 
+If you can type fast, NetWise can get your connection management tasks done faster than traditional GUI apps.
 
 NetWise is best used with minimal screen space, so you can use it easily while doing other work, and it features a comfortable interface and color palette designed to reduce eye strain.
 

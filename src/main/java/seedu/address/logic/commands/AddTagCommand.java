@@ -18,6 +18,8 @@ public class AddTagCommand extends Command {
             + "Example: " + COMMAND_WORD + " n/Friends d/Schoolmates c/DF3C5F";
 
     public static final String MESSAGE_SUCCESS = "New tag added: %1$s";
+    public static final String MESSAGE_NO_MORE_ID = "Congratulations! You have over 2 billion tags "
+            + "and no more unique ID can be created for adding a new tag.";
 
     // Tag object to perform checks on
     private final Tag toAddDummy;
@@ -36,6 +38,10 @@ public class AddTagCommand extends Command {
 
         if (model.hasTag(toAddDummy)) {
             throw new CommandException("This tag already exists in the address book");
+        }
+
+        if (!Tag.hasNextId()) {
+            throw new CommandException(MESSAGE_NO_MORE_ID);
         }
 
         // All checks pass, create the actual Tag object with a fresh ID
