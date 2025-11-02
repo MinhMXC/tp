@@ -1010,9 +1010,9 @@ testers are expected to do more *exploratory* testing.
 5. **Launch with a missing data file**
 
     1. Ensure there is **no** data file in the expected location (delete or rename it temporarily).
-    2. Launch the application.
-       **Expected:** The application starts with an empty contact list (or sample data, depending on your product
-       decision). A new data file is created at the expected location upon exit.
+    2. Launch the application. \
+       **Expected:** The application starts with sample data.
+       A new data file is created at the expected location upon exit.
 
 6. **Launch with a corrupted data file**
 
@@ -1050,14 +1050,17 @@ testers are expected to do more *exploratory* testing.
 
 ### Viewing help : `help`
 
-1. **Test case:** `help`
+1. **Test case (normal usage):** \
+   `help` \
    **Expected:** A help window or panel appears describing how to access the full help page. Status message indicates
    help is shown.
 
-2. **Test case:** `help 123`
+2. **Test case (extra parameters):** \
+   `help 123` \
    **Expected:** Same as above. Extraneous parameters are ignored.
 
-3. **Other test cases to try:** `help     ` (extra spaces), `   help` (leading spaces)
+3. **Other test cases to try:** \
+   `help     ` (trailing spaces)  \
    **Expected:** Same as above.
 
 ---
@@ -1137,6 +1140,31 @@ testers are expected to do more *exploratory* testing.
 
 ---
 
+### Deleting a person : `delete`
+
+1. **Prerequisite:** Ensure the target person exists and note their identifier using `list`.
+
+2. **Test case (normal usage):** \
+   `delete 2` \
+   **Expected:** Person with identifier 2 is removed from the persons list. Status message confirms deletion.
+
+3. **Test case (invalid identifier):** \
+   `delete 999` \
+   **Expected:** No person is deleted. Error message indicates the identifier is invalid.
+
+4. **Test case (person with relationships)** \
+   Ensure that the person that is being deleted has some relationships with other people. \
+   `delete 1` \
+   **Expected:** Person with identifier 2 is removed. All relationships containing that person as
+   one of the participants are also deleted.
+
+5. **Other test cases to try:** \
+   `delete` (missing identifier), deleting a person that is currently shown in the user
+   interface, ... \
+   **Expected:** Appropriate error handling or success confirmation.
+
+---
+
 ### Locating persons by name : `find`
 
 1. **Prerequisite:** Ensure the list has:
@@ -1166,18 +1194,21 @@ testers are expected to do more *exploratory* testing.
 
 ---
 
-### Clearing all person entries : `clear`
+### Clearing all entries : `clear`
 
-1. **Test case:** `clear`
-   **Expected:** All persons are removed. Status message confirms that the address book is cleared. The data file on
-   disk reflects an empty person list after the automatic save.
+1. **Test case (normal usage):** \
+   `clear` \
+   **Expected:** All people, tags and relationships are removed.
+   Status message confirms that the address book is cleared.
+   The data file on disk reflects an empty person list after the automatic save.
 
-2. **Test case with extraneous parameters:** `clear now`
+2. **Test case (extraneous parameters):** \
+   `clear now` \
    **Expected:** Same as `clear`. Extraneous parameters are ignored.
 
-3. **Other test cases to try:** run `clear` when the list is already empty.
-   **Expected:** No error; confirmation message indicates there are no persons (or that clearing was successful with no
-   entries).
+3. **Other test cases to try:** \
+   `clear` when all data is already empty. \
+   **Expected:** No error. Confirmation message indicates that all data is cleared.
 
 ---
 
@@ -1251,17 +1282,18 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure the target tag exists and note its identifier using `listtag`.
 
-2. **Test case:**
-   `deletetag 2`
+2. **Test case (normal usage):** \
+   `deletetag 2` \
    **Expected:** Tag with identifier 2 is removed from the tag list. Persons that previously referenced this tag now no
    longer show that tag. Status message confirms deletion.
 
-3. **Test case (invalid identifier):**
-   `deletetag 999`
+3. **Test case (invalid identifier):** \
+   `deletetag 999` \
    **Expected:** No tag is deleted. Error message indicates the identifier is invalid.
 
-4. **Other test cases to try:** `deletetag` (missing identifier), deleting a tag that is currently shown in the user
-   interface, deleting tags used by many persons to confirm performance and correctness.
+4. **Other test cases to try:** \
+   `deletetag` (missing identifier), deleting a tag that is currently shown in the user
+   interface, deleting tags used by many people, ... \
    **Expected:** Appropriate error handling or success confirmation.
 
 ---
@@ -1334,16 +1366,17 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure the target relationship exists between p1 and p2.
 
-2. **Test case:**
-   `deleterel p1/1 p2/2`
-   **Expected:** Relationship between p1 and p2 is removed from the relationship list. Status message confirms deletion.
+2. **Test case (normal usage):** \
+   `deleterel p1/1 p2/2` \
+   **Expected:** Relationship between person with ID 1 and person with ID 2 is removed from the relationship list.
+   Status message confirms deletion.
 
-3. **Test case (invalid index):**
-   `deleterel p1/999 p2/1`
+3. **Test case (invalid index):** \
+   `deleterel p1/999 p2/1` \
    **Expected:** No relationship is deleted. Error message indicates the index is invalid.
 
-4. **Other test cases to try:** `deleterel` (missing identifier), deleting a relationship that is currently shown in the
-   user interface to confirm performance and correctness.
+4. **Other test cases to try:** \
+   `deleterel` (without identifier), deleting a relationship that is currently shown on the user interface, ... \
    **Expected:** Appropriate error handling or success confirmation.
 
 ---
@@ -1367,19 +1400,19 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure the application is launched with a writable data directory.
 
-2. **Test case (automatic save on mutation):**
-   Run an adding command, for example:
-   `add n/Save Test p/80000000 e/savetest@example.com a/Somewhere`
-   Then close and re-open the application.
+2. **Test case (automatic save on mutation):** \
+   Run an adding command, for example: \
+   `add n/Save Test p/80000000 e/savetest@example.com a/Somewhere` \
+   Then close and re-open the application. \
    **Expected:** The newly added person persists across launches; the data file on disk has been updated.
 
-3. **Test case (non-mutating commands do not trigger changes):**
-   Run `list`, `help`, and `find Zzz` and then exit.
+3. **Test case (non-mutating commands do not trigger changes):** \
+   Run `list` or `help` and then exit. \
    **Expected:** No unintended changes in the data file contents.
 
-4. **Other test cases to try:** perform multiple edits in succession, then force-quit versus graceful exit to compare
-   persistence behavior as per your product’s save policy.
-   **Expected:** Data persists according to the documented policy.
+4. **Other test cases to try:** \
+   Perform multiple edits or deletes commands in succession, then force-quit instead of executing `exit`. \
+   **Expected:** Changes persist.
 
 ---
 

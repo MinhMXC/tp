@@ -280,17 +280,23 @@ that they are childhood friends.
 
 Shows a list of relationships for each person in the list in NetWise.
 
-Format (one person): `listrel p1/CONNECTION_1`: show a list of all person related to `CONNECTION_1` along with the relationship info<br>
-Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show the chain of relationships between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship infos.
+Format (one person): `listrel p1/CONNECTION_1`: show a list of all person related to `CONNECTION_1`
+along with the relationship info \
+Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show the chain of relationships
+between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship infos.
 
 * `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
     * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
-* If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list, expect a message informing that no tag found.
+* If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list,
+expect a message informing that no relationship is found.
+* **Note**: Finding the chain of relationships between the same person will only show that person,
+even though a relationship cannot exist between the same person.
 
 Examples:
-*  `listrel p1/1`. Shows a list of connections who has a relationship to ID 1 and the description of their relationship.
-*  `listrel p1/1 p2/2`. Shows a list of relationships in order to see how connection with ID 1 may be connected to connection with ID 2
-via a chain of relationships.
+*  `listrel p1/1`. Shows a list of connections who has a relationship to ID 1 and the description of their relationships.
+*  `listrel p1/1 p2/2`. Shows a list of relationships in order to see how connection with ID 1
+may be connected to connection with ID 2 via a chain of relationships. If there are multiple of such chains,
+only the shortest one will be shown.
 
 ### Editing a relationship : `editrel`
 
