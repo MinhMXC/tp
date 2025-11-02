@@ -1098,18 +1098,20 @@ testers are expected to do more *exploratory* testing.
 
 ### Listing all persons : `list`
 
-1. **Test case:** `list`
+1. **Test case (normal usage):** \
+   `list` \
    **Expected:** Full person list is shown. Indices refresh to match the currently displayed list.
    Simple relationship list which shows personID and name of related persons of each person in the list is also shown.
 
-2. **Test case after a `find` result:**
-   Run `find n/John` then `list`.
+2. **Test case (after a `find` result):** \
+   Run `find n/John` then `list`. \
    **Expected:** List switches from the filtered results back to all persons.
 
-3. **Test case when there is no relationship for a particular person:**
+3. **Test case (there is no relationship for a particular person):** \
    **Expected:** Shows an empty relationship message for that person in the list.
 
-4. **Other test cases to try:** `list 123` (extraneous parameters).
+4. **Other test cases to try:** \
+   `list 123` (extraneous parameters). \
    **Expected:** Same as `list`. Extraneous parameters are ignored.
 
 ---
@@ -1118,24 +1120,24 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure there are at least two persons in the current displayed list. Use `add` if necessary.
 
-2. **Test case (edit multiple fields):**
-   `edit 1 p/91234567 e/johndoe@example.com`
+2. **Test case (edit multiple fields):** \
+   `edit 1 p/91234567 e/johndoe@example.com` \
    **Expected:** The person with ID 1 will have phone and email fields updated. Status message shows the updated fields.
 
-3. **Test case (clear all tags):**
-   `edit 2 t/`
+3. **Test case (clear all tags):** \
+   `edit 2 t/` \
    **Expected:** The person with ID 2 will have tags removed. Status message confirms tags are cleared.
 
-4. **Test case (changes name but new name already exist):**
-   `edit 2 n/Minh`
+4. **Test case (changes name but new name already exist):** \
+   `edit 2 n/Minh` \
    **Expected:** No change. Error message indicates that the edit will result in duplicate contact.
 
-5. **Test case (no updatable fields provided):**
-   `edit 1`
+5. **Test case (no updatable fields provided):** \
+   `edit 1` \
    **Expected:** No change. Error message states that at least one editable field must be provided.
 
-6. **Other test cases to try:** ID out of range (`edit 999 ...`), invalid email or phone formats, empty names,
-   editing a person while viewing a filtered list (indices refer to the filtered list).
+6. **Other test cases to try:** \
+   ID out of range (`edit 999 ...`), invalid email or phone formats, empty names, ... \
    **Expected:** Proper error handling and correct index interpretation against the currently displayed list.
 
 ---
@@ -1171,44 +1173,26 @@ testers are expected to do more *exploratory* testing.
 * multiple persons with varied names, phone numbers, emails, addresses, and tags.
 * multiple tags with varied names
 
-2. **Test case (single keyword):**
-   e.g. `find n/John`
+2. **Test case (single keyword):** \
+   `find n/John` \
    **Expected:** Shows persons whose names contain the substring “John” (case-insensitive). Indices refer to this filtered
    list.
 
-3. **Test case (multiple name keywords):**
-   e.g. `find n/alex n/dav`
+3. **Test case (multiple name keywords):** \
+   `find n/alex n/dav` \
    **Expected:** Shows persons whose names contain “alex” OR “dav” (case-insensitive, substring match). Potential names matched: "Alex Ho", "Alexander", "David", "Daven Li", etc.
 
-4. **Test case (address no match):**
-   e.g. `find a/Zyrtxwv`
+4. **Test case (address no match):** \
+   `find a/Zyrtxwv` \
    **Expected:** Empty list with a message indicating zero persons found.
 
-5. **Test case (multiple fields):**
-    e.g. `find n/jo e/@gmail a/clementi`
-    **Expected:** List of people whose name contains the substring "jo" (e.g. John, Joelle,...), email containing "@gmail", and addressing containg "clementi"
+5. **Test case (multiple fields):** \
+   `find n/jo e/@gmail a/clementi` \
+   **Expected:** List of people whose name contains the substring "jo" (e.g. John, Joelle,...), email containing "@gmail", and addressing containg "clementi"
 
-6. **Test case (repeating fields):**
-    e.g. `find p/1234 a/clem a/bishan t/5 t/2`
-    **Expected:** List of people whose phone number contains "1234" in it, address contains EITHER "clem" OR "bishan" or both, and with EITHER tags 5, 2, or both.
-
----
-
-### Clearing all entries : `clear`
-
-1. **Test case (normal usage):** \
-   `clear` \
-   **Expected:** All people, tags and relationships are removed.
-   Status message confirms that the address book is cleared.
-   The data file on disk reflects an empty person list after the automatic save.
-
-2. **Test case (extraneous parameters):** \
-   `clear now` \
-   **Expected:** Same as `clear`. Extraneous parameters are ignored.
-
-3. **Other test cases to try:** \
-   `clear` when all data is already empty. \
-   **Expected:** No error. Confirmation message indicates that all data is cleared.
+6. **Test case (repeating fields):** \
+   `find p/1234 a/clem a/bishan t/5 t/2` \
+   **Expected:** List of people whose phone number contains "1234" in it, address contains EITHER "clem" OR "bishan" or both, and with EITHER tags 5, 2, or both.
 
 ---
 
@@ -1216,41 +1200,43 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure the application is launched. You may use `listtag` first to see existing tags.
 
-2. **Test case (name only):**
-   `addtag n/JC`
+2. **Test case (name only):** \
+   `addtag n/JC` \
    **Expected:** New tag is created with default description “No Description” and default gray color. Status message
    shows the new tag’s unique identifier and details.
 
-3. **Test case (name with description and color):**
-   `addtag n/coworkers d/Office teammates c/23f1cd`
+3. **Test case (name with description and color):** \
+   `addtag n/coworkers d/Office teammates c/23f1cd` \
    **Expected:** New tag is created with the given description and the color with hexadecimal digits `23f1cd`. Status
    message confirms.
 
-4. **Test case (name already exist):**
-   `addtag n/friends`
+4. **Test case (name already exist):** \
+   `addtag n/friends` \
    **Expected:** No change. Error message indicates that the addition will result in duplicate tag.
 
-5. **Test case (invalid color format):**
-   `addtag n/friends c/#123456` or `addtag n/friends c/12345G`
+5. **Test case (invalid color format):** \
+   `addtag n/friends c/#123456` or `addtag n/friends c/12345G` \
    **Expected:** No tag is created. Error message states that the color must be six hexadecimal digits without the hash
    symbol.
 
-6. **Other test cases to try:** duplicate tag name (if disallowed, expect a duplicate-name error), very long names or
-   descriptions.
-   **Expected:** Appropriate validation or acceptance per product decision.
+6. **Other test cases to try:** \
+   Duplicate tag name (expect a duplicate-name error), very long names or descriptions. \
+   **Expected:** Appropriate validation or error handling.
 
 ---
 
 ### Listing all tags : `listtag`
 
-1. **Test case:** `listtag`
+1. **Test case (normal usage):** \
+   `listtag` \
    **Expected:** Displays all tags with each tag’s unique identifier and name. Order is not guaranteed.
 
-2. **Test case when there are no tags:**
-   If tags have been cleared or none exist, run `listtag`.
+2. **Test case (when there are no tags):** \
+   `listtag`. \
    **Expected:** Shows an empty-state message.
 
-3. **Other test cases to try:** `listtag extra` (extraneous parameters).
+3. **Other test cases to try:** \
+   `listtag extra` (extraneous parameters), ... \
    **Expected:** Same as `listtag`. Extraneous parameters are ignored.
 
 ---
@@ -1260,21 +1246,22 @@ testers are expected to do more *exploratory* testing.
 1. **Prerequisite:** Ensure at least one tag exists (create with `addtag` and confirm with `listtag` to obtain the tag
    identifier).
 
-2. **Test case (change description and color):**
-   `edittag 1 d/my extended family c/099fca`
+2. **Test case (change description and color):** \
+   `edittag 1 d/my extended family c/099fca` \
    **Expected:** Tag with identifier 1 is updated. Status message shows new description and color.
 
-3. **Test case (changes name but new name already exist):**
-   `edittag 2 n/friends`
+3. **Test case (changes name but new name already exist):** \
+   `edittag 2 n/friends` \
    **Expected:** No change. Error message indicates that the edit will result in duplicate tag.
 
-4. **Test case (missing identifier):**
-   `edittag n/NewName`
+4. **Test case (missing identifier):** \
+   `edittag n/NewName` \
    **Expected:** No change. Error message indicates that an identifier is required and shows the correct command format.
 
-5. **Other test cases to try:** invalid identifier (`edittag 999 ...`), no updatable fields provided (`edittag 1`),
-   invalid color format.
-   **Expected:** Proper error messages; no changes applied.
+5. **Other test cases to try:** \
+   `edittag 999 ...` (invalid identifier), `edittag 1` (no updatable fields provided),
+   invalid color format, ...
+   **Expected:** Appropriate error handing.
 
 ---
 
@@ -1302,39 +1289,42 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure the application is launched. You may use `list` first to see existing contacts.
 
-2. **Test case (both participants and description):**
-   `addrel p1/1 p2/2 d/best friends`
+2. **Test case (both participants and description):** \
+   `addrel p1/1 p2/2 d/best friends` \
    **Expected:** New relationship is created with the given details. Status message confirms.
 
-3. **Test case (set of participants already exist):**
-   `addrel p1/1 p2/2 d/not best friends`
+3. **Test case (set of participants already exist):** \
+   `addrel p1/1 p2/2 d/not best friends` \
    **Expected:** No change. Error message indicates that the addition will result in duplicate relationship.
 
-4. **Test case (invalid participants IDs: non-existant or not a postive integer):**
-   `addrel p1/3955 p2/485349 d/bruh` or `addrel p1/-23 p2/49.3 d/bruh`
+4. **Test case (invalid participants IDs: non-existant or not a postive integer):** \
+   `addrel p1/3955 p2/485349 d/bruh` or `addrel p1/-23 p2/49.3 d/bruh` \
    **Expected:** No relationship is created. Error message states that the identifier is invalid.
 
-5. **Other test cases to try:** duplicate relationship (if disallowed, expect a duplicate-relationship error), very long
-   descriptions.
-   **Expected:** Appropriate validation or acceptance per product decision.
+5. **Other test cases to try:** \
+   Duplicate relationship (expect a duplicate-relationship error), very long descriptions, ... \
+   **Expected:** Appropriate error handling or success confirmation.
 
 ---
 
 ### Listing relationships : `listrel`
 
-1. **Test case:** `listrel p1/1`
+1. **Test case:** \
+   `listrel p1/1` \
    **Expected:** Displays relationships of the people in the list who are directly related to p1 with
    descriptions of relationships. Relationships ordered by the person ID for each person in the current displayed list.
 
-2. **Test case:** `listrel p1/1 p2/3`
+2. **Test case:** \
+   `listrel p1/1 p2/3` \
    **Expected:** Displays a list of relationships in an order from p1 linking to p2. If no link can be made, an empty
    list will be shown.
 
-3. **Test case when there are no relationship for the listed person:**
-   If relationships of the person have been cleared or none exist, run `listrel p1/1`.
+3. **Test case when there are no relationship for the listed person:** \
+   `listrel p1/1`. \
    **Expected:** Shows an empty-state message for the person.
 
-4. **Other test cases to try:** `listrel p1/9999`(Invalid Id), `listrel 1`(Invalid identifier)
+4. **Other test cases to try:** \
+   `listrel p1/9999`(invalid Id), `listrel -2` (invalid identifier), ... \
    **Expected:** Appropriate error handling.
 
 ---
@@ -1344,21 +1334,22 @@ testers are expected to do more *exploratory* testing.
 1. **Prerequisite:** Ensure at least one relationship exists (create with `addrel` and confirm with `listrel`). p1 and
    p2 are valid IDs for the relationship being edited.
 
-2. **Test case (change description):**
-   `editrel p1/1 p2/3 d/my extended family`
+2. **Test case (change description):** \
+   `editrel p1/1 p2/3 d/my extended family`  \
    **Expected:** Relationship with ID 1 and ID 3 is updated. Status message shows new description.
 
-3. **Test case (empty description):**
-   `editrel p1/1 p2/3 d/`
+3. **Test case (empty description):** \
+   `editrel p1/1 p2/3 d/` \
    **Expected:** No change. Error message indicates that the description should not be empty.
 
-4. **Test case (missing fields):**
-   `editrel p1/1 d/NewName`
+4. **Test case (missing fields):** \
+   `editrel p1/1 d/NewName` \
    **Expected:** No change. Error message indicates that the command format is invalid and shows the correct command format.
 
-5. **Other test cases to try:** invalid relationship (`editred p1/999 ...`), no updatable fields provided (`edittag p1/1 p2/3`), invalid
-   participant ID format.
-   **Expected:** Proper error messages; no changes applied.
+5. **Other test cases to try:** \
+   `editred p1/999 ...` (invalid relationship), `edittag p1/1 p2/3` (no updatable fields provided), invalid
+   participant ID format, ... \
+   **Expected:** Appropriate error handling.
 
 ---
 
@@ -1383,16 +1374,36 @@ testers are expected to do more *exploratory* testing.
 
 ### Exiting the program : `exit`
 
-1. **Test case:** `exit`
+1. **Test case (normal usage):** \
+   `exit` \
    **Expected:** Application closes gracefully. The most recent window size and position are saved. Any pending saves
    are flushed to disk.
 
-2. **Test case with extraneous parameters:** `exit now`
+2. **Test case with extraneous parameters:** \
+   `exit now` \
    **Expected:** Same as `exit`. Extraneous parameters are ignored.
 
-3. **Other test cases to try:** exit immediately after adding or editing to confirm that automatic saving occurs before
-   shutdown.
+3. **Other test cases to try:** \
+   Exit immediately after adding or editing to confirm that automatic saving occurs before shutdown. \
    **Expected:** On next launch, the latest changes are present.
+
+---
+
+### Clearing everything : `clear`
+
+1. **Test case (normal usage):** \
+   `clear` \
+   **Expected:** All people, tags and relationships are removed.
+   Status message confirms that the address book is cleared.
+   The data file on disk reflects an empty person list after the automatic save.
+
+2. **Test case (extraneous parameters):** \
+   `clear now` \
+   **Expected:** Same as `clear`. Extraneous parameters are ignored.
+
+3. **Other test cases to try:** \
+   `clear` when all data is already empty. \
+   **Expected:** No error. Confirmation message indicates that all data is cleared.
 
 ---
 
