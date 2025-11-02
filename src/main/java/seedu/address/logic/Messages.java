@@ -6,6 +6,8 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.parser.Prefix;
 import seedu.address.model.person.Person;
+import seedu.address.model.relationship.Relationship;
+import seedu.address.model.tag.Tag;
 
 /**
  * Container for user visible messages.
@@ -57,4 +59,32 @@ public class Messages {
         return builder.toString();
     }
 
+    /**
+     * Formats the {@code tag} for display to the user.
+     */
+    public static String format(Tag tag) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(tag.getName())
+                .append("; ID: ")
+                .append(tag.getId())
+                .append("; Description: ")
+                .append(tag.getDesc())
+                .append("; Color: ")
+                .append(tag.getColor());
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code relationship} for display to the user.
+     */
+    public static String format(Relationship rel) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("First Participant: ")
+                .append(rel.getPart1())
+                .append("; Second Participant: ")
+                .append(rel.getPart2())
+                .append("; Description: ")
+                .append(rel.getDescription());
+        return builder.toString();
+    }
 }

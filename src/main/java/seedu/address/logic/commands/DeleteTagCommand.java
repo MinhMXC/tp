@@ -3,6 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import javafx.collections.ObservableList;
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.id.Id;
@@ -36,7 +37,7 @@ public class DeleteTagCommand extends Command {
                 .orElseThrow(() -> new CommandException(MESSAGE_TAG_NOT_FOUND));
 
         model.deleteTag(target);
-        return new CommandResult(String.format(MESSAGE_DELETE_SUCCESS, target));
+        return new CommandResult(String.format(MESSAGE_DELETE_SUCCESS, Messages.format(target)));
     }
 
     @Override

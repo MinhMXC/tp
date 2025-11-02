@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
 import javafx.collections.ObservableList;
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.id.Id;
@@ -72,7 +73,7 @@ public class EditTagCommand extends Command {
 
         model.setTag(target, edited);
 
-        return new CommandResult(String.format(MESSAGE_EDIT_SUCCESS, edited));
+        return new CommandResult(String.format(MESSAGE_EDIT_SUCCESS, Messages.format(edited)));
     }
 
     @Override

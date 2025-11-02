@@ -581,11 +581,11 @@ Use case ends.
 * **1a. User omits optional attributes.**
     * **1a1.** **System** applies defaults.
       Use case resumes at step 2.
-  
+
 * **2a. Command format invalid or required Name is missing.**
     * **2a1.** **System** informs the user of the correct command format.
       Use case ends.
-  
+
 * **\[TO BE IMPLEMENTED\] 3a. A tag with the same name already exists.**
     * **3a1.** **System** informs the user about the already existed tag.
       Use case ends.
@@ -612,7 +612,7 @@ Use case ends.
     * **2a1.** **System** shows an empty-state message.
       Use case ends.
 
-#### UC23 - Update Tag 
+#### UC23 - Update Tag
 
 **Goal:** update an existing tag’s attributes
 
@@ -646,7 +646,7 @@ Use case ends.
 
       Use case ends.
 
-#### UC24 - Delete Tag 
+#### UC24 - Delete Tag
 
 **Goal:** delete an existing tag group
 
@@ -981,7 +981,7 @@ testers are expected to do more *exploratory* testing.
 1. **Initial launch**
 
     1. Download the Java Archive file and copy it into an empty folder.
-    2. Double-click the Java Archive file.
+    2. Double-click the Java Archive file. \
        **Expected:** The application shows the Graphical User Interface with a set of sample contacts. The window size
        may not be optimal.
 
@@ -1066,27 +1066,30 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure the application is launched. You may start from a clean state using `clear`.
 
-2. **Test case:**
-   `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
+2. **Test case (normal usage):** \
+   `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` \
    **Expected:** New person card appears at the end of the list. Status message shows that the person was added with the
    supplied details. Data is saved to disk automatically.
 
-3. **Test case (with multiple tags and note):**
-   `add n/Betsy Crowe p/12345678 e/betsycrowe@example.com a/Newgate Prison t/1 t/2 r/She owed me lunch`
+3. **Test case (with multiple tags and note):** \
+   Ensure that tags with identifiers 1 and 2 already exist before doing this test. \
+   `add n/Betsy Crowe p/12345678 e/betsycrowe@example.com a/Newgate Prison t/1 t/2 r/She owed me lunch` \
    **Expected:** Person is added with tag identifiers 1 and 2, and the given note. Status message confirms addition.
 
-4. **Test case (name already exist):**
-   `add n/Minh p/12345678 e/minh@gmail.com a/Minh street`
-   **Expected:** No change. Error message indicates that the addition will result in duplicate contact. Case-sensitive, so
-   John and john are different names.
+4. **Test case (name already exist):** \
+   Ensure that a person named Minh already exists before doing this test. \
+   `add n/Minh p/12345678 e/minh@gmail.com a/Minh street` \
+   **Expected:** No change. Error message indicates that the addition will result in duplicate person. Case-sensitive,
+   so John and john are different names.
 
-5. **Test case (missing required field):**
-   `add p/98765432 e/jane@example.com a/Somewhere`
-   **Expected:** No person is added. Error message indicates that `n/NAME` is required and shows correct usage.
+5. **Test case (missing required field):** \
+   `add p/98765432 e/jane@example.com a/Somewhere` \
+   **Expected:** No person is added. Error message indicates that command format is invalid and shows correct usage.
 
-6. **Other test cases to try:** invalid email (`e/notanemail`), invalid phone (non-digits), non-existent tags 
-   (Invalid Tag ID), extremely long address, duplicate person details (if duplicate detection is implemented later).
-   **Expected:** Appropriate validation errors or acceptance per your product decision.
+6. **Other test cases to try:** \
+   Invalid email (`e/notanemail`), invalid phone (non-digits), non-existent tags
+   (Invalid Tag ID), extremely long address, ... \
+   **Expected:** Error message indicates that validation for that specific field failed and shows correct usage.
 
 ---
 
@@ -1094,7 +1097,7 @@ testers are expected to do more *exploratory* testing.
 
 1. **Test case:** `list`
    **Expected:** Full person list is shown. Indices refresh to match the currently displayed list.
-   Simple relationship list which shows personID and name of related persons of each person in the list is also shown. 
+   Simple relationship list which shows personID and name of related persons of each person in the list is also shown.
 
 2. **Test case after a `find` result:**
    Run `find n/John` then `list`.
@@ -1159,7 +1162,7 @@ testers are expected to do more *exploratory* testing.
 
 6. **Test case (repeating fields):**
     e.g. `find p/1234 a/clem a/bishan t/5 t/2`
-    **Expected:** List of people whose phone number contains "1234" in it, address contains EITHER "clem" OR "bishan" or both, and with EITHER tags 5, 2, or both. 
+    **Expected:** List of people whose phone number contains "1234" in it, address contains EITHER "clem" OR "bishan" or both, and with EITHER tags 5, 2, or both.
 
 ---
 
@@ -1282,13 +1285,13 @@ testers are expected to do more *exploratory* testing.
 5. **Other test cases to try:** duplicate relationship (if disallowed, expect a duplicate-relationship error), very long
    descriptions.
    **Expected:** Appropriate validation or acceptance per product decision.
- 
+
 ---
 
 ### Listing relationships : `listrel`
 
 1. **Test case:** `listrel p1/1`
-   **Expected:** Displays relationships of the people in the list who are directly related to p1 with 
+   **Expected:** Displays relationships of the people in the list who are directly related to p1 with
    descriptions of relationships. Relationships ordered by the person ID for each person in the current displayed list.
 
 2. **Test case:** `listrel p1/1 p2/3`
@@ -1384,20 +1387,20 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Locate the data file at `[JAR file location]/data/addressbook.json`. Make a backup copy.
 
-2. **Test case (manual, valid edit):**
+2. **Test case (manual, valid edit):** \
    Open the file in a text editor and change a non-critical field (for example, update a person’s address to a new
-   string without breaking the JavaScript Object Notation structure). Save and relaunch the application.
+   string without breaking the JavaScript Object Notation structure). Save and relaunch the application. \
    **Expected:** The changed value appears in the application. No errors shown.
 
-3. **Test case (manual, invalid edit):**
+3. **Test case (manual, invalid edit):** \
    Corrupt the JavaScript Object Notation (for example, remove a comma or a closing brace). Save and relaunch the
-   application.
-   **Expected:** The application does not crash. It shows an error indicating the data file is invalid and falls back to
-   a safe state (empty data or sample data per your product decision). Subsequent valid operations will recreate a valid
-   file.
+   application. \
+   **Expected:** The application does not crash. It shows an error in the terminal, indicating the data file
+   is invalid and falls back to an empty data state. Subsequent valid operations will recreate a valid file.
 
-4. **Other test cases to try:** set the data file to read-only and attempt a mutating command; edit tag objects directly
-   and confirm that identifiers and references remain consistent.
+4. **Other test cases to try:** \
+   Set the data file to read-only and attempt a mutating command;
+   edit tag objects directly and confirm that identifiers and references remain consistent. \
    **Expected:** Appropriate warnings or non-persistence when writes are blocked; consistent behavior for tag
    references.
 

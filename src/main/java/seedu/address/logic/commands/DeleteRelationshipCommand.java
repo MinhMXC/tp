@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.description.Description;
@@ -73,7 +74,8 @@ public class DeleteRelationshipCommand extends Command {
         // Delete from model
         model.deleteRelationship(relationshipToDelete);
 
-        return new CommandResult(String.format(MESSAGE_DELETE_RELATIONSHIP_SUCCESS, relationshipToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_RELATIONSHIP_SUCCESS,
+                Messages.format(relationshipToDelete)));
     }
 
     @Override
