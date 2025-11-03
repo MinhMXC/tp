@@ -1314,8 +1314,7 @@ Given below are instructions to test the app manually.
 1. **Test case:** \
    `listrel p1/1` \
    **Expected:** Displays relationships of the people in the list who are directly related to contact with ID 1
-   along descriptions of relationships. Relationships ordered by the person ID
-   for each person in the current displayed list.
+   along descriptions of relationships.
 
 2. **Test case:** \
    `listrel p1/1 p2/3` \
