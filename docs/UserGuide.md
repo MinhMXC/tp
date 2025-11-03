@@ -151,7 +151,9 @@ A connection can have any number of tags (including 0)
 * `NAME` should only contain alphanumeric characters, commas, full-stops, apostrophes and spaces, and it must not be
   empty.
     * Name should be unique. The same name must not be repeated, case-sensitive (i.e. 'BEN' is different from 'ben').
-* `PHONE` should only contain numbers, spaces, dashes `-`, and an *optional* plus `+` **at the start** for country code.
+* `PHONE` should only contain numbers, an optional plus `+` only at the beginning for country code, with numbers
+  separated by single spaces or hyphens `-`.
+    * e.g. `p/+1 1234 5678` and `p/7813247` are valid. `p/123--123` is not valid.
 * `EMAIL` should be of format `local-part@domain` and adhere to the following constraints:
     * `local-part` should only contain alphanumeric characters and these special characters: `+`, `-`, `.`, `_`. The
       local-part may not start or end with any special characters and special characters should not be consecutive.
@@ -175,7 +177,7 @@ Examples:
 
 Examples of **invalid commands**:
 
-* `add` — Reason: Reason: compulsory fields missing (`NAME`, `EMAIL` and `PHONE`).
+* `add` — Reason: compulsory fields missing (`NAME`, `EMAIL` and `PHONE`).
 * `add n/Peter e/pete@something.sg` - Reason: compulsory field missing (`PHONE`).
 * `add n/David p/1234 5678 e/ a/Wall Street r/rich` — Reason: compulsory field empty (`EMAIL`).
 * `add n/Natalie p/98765 e/nat@example.net t/friend` — Reason: invalid field input (`TAG_ID` should only be positive 
@@ -260,7 +262,7 @@ Format: `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS
 * Each field can take one or more keywords separated by spaces.
 * Matching is partial for name, phone, email, and address (e.g., `n/Ali` matches “Alice”).
 * Matching is exact (ID-based) for tags (e.g., `t/5` only matches tag with ID 5, **not** that contains the character 
-"5").
+  "5").
 * Unlike [`add`](#adding-a-connection--add) and [`edit`](#editing-a-connection--edit) commands, the keyword parameters
   does not have any input restrictions for flexibility.
 * Empty input fields (i.e. `n/` or `p/    ` (whitespaces)) will **not** be taken into account when filtering for
