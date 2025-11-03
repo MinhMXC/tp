@@ -1481,3 +1481,8 @@ the organization and usability of the system by maintaining a continuous sequenc
 **6. Add support for more descriptive error messages:** Currently, the error messages for invalid commands while they
 can help users decipher the error, may not be helpful enough to guide them to correct the errors, or pinpoint the exact
 error. This change aims to provide more helpful error messages instead of generic ones such as "Invalid command format".
+
+**7. Prevent semantically duplicate inputs:** Currently, NetWise treats names as unique in a case-sensitive manner (e.g.,
+connections with names Ben and ben, or tags with names Friend and friend are allowed), which can lead to contextually
+duplicate entries representing the same person or tag due to user mistakes. We plan to enhance the system to prevent users
+from adding potential duplicate entries by performing reasonable checks before accepting the input.
