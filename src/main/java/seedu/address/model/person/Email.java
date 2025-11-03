@@ -11,8 +11,8 @@ public class Email {
 
     public static final String MESSAGE_CONSTRAINTS = "Emails should be of the format local-part@domain: \n"
             + "The local-part uses only letters, numbers, and the special characters "
-            + "+, _, ., or -. It cannot start or end with a special character"
-            + " and special characters should not be consecutive.\n"
+            + "+, _, ., or -. It cannot start or end with a special character "
+            + "and special characters should not be consecutive.\n"
             + "The domain name includes a top-level domain (like .com or .net) that is at least two characters long.\n"
             + "The domain labels (the parts separated by a period) start and end with a letter or number, "
             + "and only use hyphens as separators.";
