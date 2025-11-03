@@ -11,9 +11,9 @@ public class Phone {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers should contain numbers, (+) at the beginning for country code, some spaces, "
-            + "and it should be at least 5 digits long";
-    public static final String VALIDATION_REGEX = "^\\+?\\d{1,3}(?:[ -]?\\d{2,4}){2,4}$";
+            "Phone numbers should start with an optional (+) to denote a country code.\n"
+            + "The rest of the number should only contain digits, spaces and hyphens (-).\n";
+    public static final String VALIDATION_REGEX = "^(\\+?\\d+)[\\d\\- ]+$";
     public final String value;
 
     /**

@@ -3,12 +3,15 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.id.Id;
 import seedu.address.model.person.CompositePersonPredicate;
 import seedu.address.model.person.FieldContainsKeywordsPredicate;
 
@@ -68,5 +71,12 @@ public class FindCommandParserTest {
 
         assertParseSuccess(parser, input, expectedCommand);
         assertParseSuccess(parser, inputDifferentOrder, expectedCommand);
+    }
+
+    @Test
+    public void parse_invalidId_throwsParseException() {
+        // non-integer input for tag ID
+        String input = " t/test";
+        assertThrows(ParseException.class, Id.MESSAGE_CONSTRAINTS, () -> parser.parse(input));
     }
 }

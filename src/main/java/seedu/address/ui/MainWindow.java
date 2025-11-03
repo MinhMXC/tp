@@ -224,7 +224,7 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
-            if (commandResult.isShowPersonList()) {
+            if (commandResult.isShowPersonList() || commandResult.isShowFilteredPersonList()) {
                 // Switch to list person
                 showPersonList();
             }
