@@ -100,7 +100,8 @@ The `UI` component,
 * executes user commands using the `Logic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person`, `Tag`, `Relationship`  object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Person`, `Tag`, `Relationship`  object residing in
+  the `Model`.
 
 ### Logic component
 
@@ -180,6 +181,7 @@ The `Person` component,
 </div>
 
 The `Tag` component,
+
 * Stores the related data for each Tag, such as TagColor
 * Each `Person` points to it via its ID.
 
@@ -190,6 +192,7 @@ The `Tag` component,
 </div>
 
 The `Relationship` component,
+
 * Stores two Ids for each person in the Relationship
 * Stores the Description for the Relationship
 
@@ -342,7 +345,8 @@ _{more aspects and alternatives to be added}_
 
 **Target user profile**:
 
-* CS student who has a very big network of friends, co-workers and acquaintances for professional and work-related reasons.
+* CS student who has a very big network of friends, co-workers and acquaintances for professional and work-related
+  reasons.
 * want to keep track of the intricate relationships between him and his networks and amongst his networks.
 * prefer desktop apps over other types.
 * can type fast.
@@ -351,40 +355,38 @@ _{more aspects and alternatives to be added}_
 
 **Value proposition**: manages these connections' information faster than Linkedin.
 
-
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a…                                                     | I want to…                                                                                 | So that I can…                                                                        |
-|:--------:|:----------------------------------------------------------|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------|
-| `* * *`  | user                                                      | to add a person with their name, phone number, address etc                                 | track my networks                                                                     |
-| `* * *`  | user                                                      | edit and update an existing person                                                         | update incorrect information I have about my connection                               |
-| `* * *`  | user                                                      | to list out all my persons                                                                 | view all of my network                                                                |
-| `* * *`  | user                                                      | to search for a specific contact using a specific field such as their name or phone number | filter my connections                                                                 |
-| `* * *`  | user                                                      | to delete a person off my contact list                                                     | remove connections I do not wish to maintain                                          |
-|   `*`    | user                                                      | to add multiple addresses and phone numbers for a single person                            | have multiple ways to contact a connection                                            |
-| `* * *`  | user                                                      | to add notes for a person                                                                  | keep a personal note that I have for a connection (their favourite gift, movies, ...) |
-| `* * *`  | regular user                                              | list all available tag groups                                                              | be reminded of what categories exist                                                  |
-| `* * *`  | user                                                      | create a tag                                                                               | group people according to tags                                                        |
-| `* * *`  | beginner user                                             | edit a tag name                                                                            | make old tag names clearer or less verbose                                            |
-| `* * *`  | experienced user                                          | delete tags (not the users)                                                                | keep the tag system tidy                                                              |
-| `* * *`  | experienced user                                          | view all tags associated with a person                                                     | understand their profile at a glance                                                  |
-| `* * *`  | regular user who has not used tags                        | edit tags of existing contacts                                                             | trial-and-error this feature to get started                                           |
-| `* * *`  | regular user                                              | assign multiple tags to a contact at once                                                  | capture all relevant categories                                                       |
-|   `*`    | experienced user                                          | bulk-filter by multiple tags                                                               | narrow down groups (e.g., Company A + Exco)                                           |
-| `* * *`  | beginner user                                             | filter contacts by a single tag                                                            | see everyone in that category                                                         |
-|   `*`    | beginner user                                             | insert multiple data in one network                                                        | avoid inserting every relationship individually from a single person                  |
-|   `*`    | user who has many friends and acquaintances               | click through the GUI graphs                                                               | explore the relationships of myself and others                                        |
-|   `*`    | forgetful user                                            | read a simple tag on the relationship entry                                                | readily search through the network and understand the relationships clearly           |
-| `* * *`  | user who is looking to meet people                        | search through the relationships of my friends                                             | find new people                                                                       |
-| `* * *`  | inquisitive user                                          | trace through the relationships between my friends                                         | find relationships among them                                                         |
-| `* * *`  | user                                                      | create relationship between people                                                         | add new relationships once I know about them                                          |
-| `* * *`  | user                                                      | delete relationship between people                                                         | remove incorrect relationship                                                         |
-|   `*`    | user                                                      | export my contacts to an external drive                                                    | transfer them to another device                                                       |
-|   `*`    | person with connections                                   | import my contacts                                                                         | avoid re-entering the contact information again                                       |
-|   `*`    | user                                                      | choose the contacts I want to export                                                       | avoid exporting irrelevant/outdated contacts                                          |
-
+| Priority | As a…                                       | I want to…                                                                                 | So that I can…                                                                        |
+|:--------:|:--------------------------------------------|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------|
+| `* * *`  | user                                        | to add a person with their name, phone number, address etc                                 | track my networks                                                                     |
+| `* * *`  | user                                        | edit and update an existing person                                                         | update incorrect information I have about my connection                               |
+| `* * *`  | user                                        | to list out all my persons                                                                 | view all of my network                                                                |
+| `* * *`  | user                                        | to search for a specific contact using a specific field such as their name or phone number | filter my connections                                                                 |
+| `* * *`  | user                                        | to delete a person off my contact list                                                     | remove connections I do not wish to maintain                                          |
+|   `*`    | user                                        | to add multiple addresses and phone numbers for a single person                            | have multiple ways to contact a connection                                            |
+| `* * *`  | user                                        | to add notes for a person                                                                  | keep a personal note that I have for a connection (their favourite gift, movies, ...) |
+| `* * *`  | regular user                                | list all available tag groups                                                              | be reminded of what categories exist                                                  |
+| `* * *`  | user                                        | create a tag                                                                               | group people according to tags                                                        |
+| `* * *`  | beginner user                               | edit a tag name                                                                            | make old tag names clearer or less verbose                                            |
+| `* * *`  | experienced user                            | delete tags (not the users)                                                                | keep the tag system tidy                                                              |
+| `* * *`  | experienced user                            | view all tags associated with a person                                                     | understand their profile at a glance                                                  |
+| `* * *`  | regular user who has not used tags          | edit tags of existing contacts                                                             | trial-and-error this feature to get started                                           |
+| `* * *`  | regular user                                | assign multiple tags to a contact at once                                                  | capture all relevant categories                                                       |
+|   `*`    | experienced user                            | bulk-filter by multiple tags                                                               | narrow down groups (e.g., Company A + Exco)                                           |
+| `* * *`  | beginner user                               | filter contacts by a single tag                                                            | see everyone in that category                                                         |
+|   `*`    | beginner user                               | insert multiple data in one network                                                        | avoid inserting every relationship individually from a single person                  |
+|   `*`    | user who has many friends and acquaintances | click through the GUI graphs                                                               | explore the relationships of myself and others                                        |
+|   `*`    | forgetful user                              | read a simple tag on the relationship entry                                                | readily search through the network and understand the relationships clearly           |
+| `* * *`  | user who is looking to meet people          | search through the relationships of my friends                                             | find new people                                                                       |
+| `* * *`  | inquisitive user                            | trace through the relationships between my friends                                         | find relationships among them                                                         |
+| `* * *`  | user                                        | create relationship between people                                                         | add new relationships once I know about them                                          |
+| `* * *`  | user                                        | delete relationship between people                                                         | remove incorrect relationship                                                         |
+|   `*`    | user                                        | export my contacts to an external drive                                                    | transfer them to another device                                                       |
+|   `*`    | person with connections                     | import my contacts                                                                         | avoid re-entering the contact information again                                       |
+|   `*`    | user                                        | choose the contacts I want to export                                                       | avoid exporting irrelevant/outdated contacts                                          |
 
 ### Use cases
 
@@ -418,7 +420,6 @@ Use case ends.
 * **\[TO BE IMPLEMENTED\] 3a. A connection with the same name already exists.**
     * **3a1.** **System** informs the user about the already existed connection.
 
-
 #### UC11 - List Connections
 
 **Goal:** View all connections in the list.
@@ -444,7 +445,6 @@ Use case ends.
       Steps **4a1–4a3** repeat until retrieval succeeds or user cancels.
       If retrieval succeeds, use case resumes at step 4.
       If user cancels, use case ends.
-
 
 #### UC12 - Edit Connection
 
@@ -477,7 +477,6 @@ Use case ends.
     - **2c1.** **System** informs the user about the error.
       Use case ends.
 
-
 #### UC13 - Delete connection
 
 **Goal:** Delete a connection from the list.
@@ -506,7 +505,6 @@ Use case ends.
     - **3a1.** **System** informs the user about the error.
       Use case ends.
 
-
 #### UC14 - Clear Connection List
 
 **Goal:** Clear the person list.
@@ -522,14 +520,15 @@ Use case ends.
     - **2a1.** **System** informs the user the command is invalid and shows the correct command format.
       Use case ends.
 
-
 #### UC15 - Find Person
 
-**Goal:** To allow users to search for persons in the address book by any combination of fields (name, phone, email, address, and tags).
+**Goal:** To allow users to search for persons in the address book by any combination of fields (name, phone, email,
+address, and tags).
 
 **Preconditions:** The address book contains one or more persons.
 
-**Postconditions:** If success, the filtered person list in the model contains only persons matching all specified field predicates.
+**Postconditions:** If success, the filtered person list in the model contains only persons matching all specified field
+predicates.
 
 MSS
 
@@ -543,20 +542,19 @@ Use case ends.
 **Extensions**
 
 * **2a. Invalid command format (e.g., unrecognized prefix or extra arguments).**
-  * **2a1.** **System** informs the user the command is invalid and shows the correct command format.
-    Use case ends.
+    * **2a1.** **System** informs the user the command is invalid and shows the correct command format.
+      Use case ends.
 
 * **2b. No field prefixes provided (e.g., find without arguments).**
-  * **2b1.** **System** informs the **User** that at least one field must be provided
-  Use case ends.
+    * **2b1.** **System** informs the **User** that at least one field must be provided
+      Use case ends.
 
 * **3a. Field provided but with empty values (e.g., `n/` or `n/     ` (whitespaces) ).**
-  * **3a1.** Empty or whitespace-only keywords are ignored by **System** and not taken into consideration when finding.
-  Use case ends.
-
+    * **3a1.** Empty or whitespace-only keywords are ignored by **System** and not taken into consideration when
+      finding.
+      Use case ends.
 
 [comment]: TAGS
-
 
 #### UC22 - Create Tag
 
@@ -961,7 +959,8 @@ Use case ends.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Connection**: Refers to someone who you want to keep in contact, such as friends, colleagues or people you met from a networking event.
+* **Connection**: Refers to someone who you want to keep in contact, such as friends, colleagues or people you met from
+  a networking event.
 * **Relationship**: Refers to a connection between two persons in the contacts list. From one person you can see all the
   other people in the contact that they are connected to.
 
@@ -1170,17 +1169,20 @@ testers are expected to do more *exploratory* testing.
 ### Locating persons by name : `find`
 
 1. **Prerequisite:** Ensure the list has:
+
 * multiple persons with varied names, phone numbers, emails, addresses, and tags.
 * multiple tags with varied names
 
 2. **Test case (single keyword):** \
    `find n/John` \
-   **Expected:** Shows persons whose names contain the substring “John” (case-insensitive). Indices refer to this filtered
+   **Expected:** Shows persons whose names contain the substring “John” (case-insensitive). Indices refer to this
+   filtered
    list.
 
 3. **Test case (multiple name keywords):** \
    `find n/alex n/dav` \
-   **Expected:** Shows persons whose names contain “alex” OR “dav” (case-insensitive, substring match). Potential names matched: "Alex Ho", "Alexander", "David", "Daven Li", etc.
+   **Expected:** Shows persons whose names contain “alex” OR “dav” (case-insensitive, substring match). Potential names
+   matched: "Alex Ho", "Alexander", "David", "Daven Li", etc.
 
 4. **Test case (address no match):** \
    `find a/Zyrtxwv` \
@@ -1188,11 +1190,13 @@ testers are expected to do more *exploratory* testing.
 
 5. **Test case (multiple fields):** \
    `find n/jo e/@gmail a/clementi` \
-   **Expected:** List of people whose name contains the substring "jo" (e.g. John, Joelle,...), email containing "@gmail", and addressing containg "clementi"
+   **Expected:** List of people whose name contains the substring "jo" (e.g. John, Joelle,...), email containing "
+   @gmail", and addressing containg "clementi"
 
 6. **Test case (repeating fields):** \
    `find p/1234 a/clem a/bishan t/5 t/2` \
-   **Expected:** List of people whose phone number contains "1234" in it, address contains EITHER "clem" OR "bishan" or both, and with EITHER tags 5, 2, or both.
+   **Expected:** List of people whose phone number contains "1234" in it, address contains EITHER "clem" OR "bishan" or
+   both, and with EITHER tags 5, 2, or both.
 
 ---
 
@@ -1344,7 +1348,8 @@ testers are expected to do more *exploratory* testing.
 
 4. **Test case (missing fields):** \
    `editrel p1/1 d/NewName` \
-   **Expected:** No change. Error message indicates that the command format is invalid and shows the correct command format.
+   **Expected:** No change. Error message indicates that the command format is invalid and shows the correct command
+   format.
 
 5. **Other test cases to try:** \
    `editred p1/999 ...` (invalid relationship), `edittag p1/1 p2/3` (no updatable fields provided), invalid
@@ -1452,10 +1457,31 @@ testers are expected to do more *exploratory* testing.
 
 **Team size: 5**
 
-**1. Prevent UI from breaking:** While the current UI supports wrapping for all fields and attributes — including person, relationship, and tag names — it can still break in an extreme case where a single tag name is so long that it exceeds the total width limit. We plan to enhance the UI to handle even such extreme tag names by allowing them to wrap properly, preventing any UI breakage.
+**1. Prevent UI from breaking:** While the current UI supports wrapping for all fields and attributes — including
+person, relationship, and tags — it can still break in an extreme case. We plan to enhance the UI to handle even such
+extreme case by allowing UI to handle and adjust, preventing any UI breakage.
 
-**2. Change arguments that requires ID into name** Since NetWise requires users to input the unique IDs of tags and relationships, which can be inconvenient, we plan to enhance the system by allowing users to use names instead of IDs for commands that require id identification. This change aims to improve user experience by making it easier to reference entries without needing to recall specific IDs.
+*Example extreme cases*: 1. extremely long person name causing relationship entry in person list view to break. 2. a
+single tag name is so long that it exceeds the total width limit and breaks the layout. 3. a person having an extremely
+long list of relationships may cause the UI layout to degrade.
 
-**3. Support name input for colors also:** Currently, NetWise requires users to input colors in hexadecimal format when creating or editing tags, which may not be user-friendly for everyone. We plan to enhance the system by allowing users to input common color names (like "red", "blue", "green") in addition to hexadecimal codes. This change aims to make it easier for users to select colors without needing to know or look up hexadecimal values.
+**2. Change arguments that requires ID into name** Since NetWise requires users to input the unique IDs of tags and
+relationships, which can be inconvenient, we plan to enhance the system by allowing users to use names instead of IDs
+for commands that require id identification. This change aims to improve user experience by making it easier to
+reference entries without needing to recall specific IDs.
 
-**4. Support when editing a tag, if empty description is input, the UI change to 'No description':** When users edit a tag and provide an empty description, the system currently leaves the description blank. We plan to enhance this behavior so that if an empty description is input during tag editing, the UI will automatically update the description to display 'No Description'. This change aims to provide clearer feedback to users about the state of the tag's description.
+**3. Support name input for colors also:** Currently, NetWise requires users to input colors in hexadecimal format when
+creating or editing tags, which may not be user-friendly for everyone. We plan to enhance the system by allowing users
+to input common color names (like "red", "blue", "green") in addition to hexadecimal codes. This change aims to make it
+easier for users to select colors without needing to know or look up hexadecimal values.
+
+**4. Support when editing a tag, if empty description is input, the UI change to 'No description':** When users edit a
+tag and provide an empty description, the system currently leaves the description blank. We plan to enhance this
+behavior so that if an empty description is input during tag editing, the UI will automatically update the description
+to display 'No Description'. This change aims to provide clearer feedback to users about the state of the tag's
+description.
+
+**5. Support IDs to be reordered after deletions:** Currently, when a person or tag is deleted, the unique IDs of
+remaining entries remain unchanged, which can lead to gaps in the ID sequence. We plan to enhance the system to
+automatically reorder IDs after deletions, ensuring that IDs remain sequential without gaps. This change aims to improve
+the organization and usability of the system by maintaining a continuous sequence of IDs.

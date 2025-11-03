@@ -41,4 +41,11 @@ public class IdManager {
     public boolean hasNextId() {
         return !(largest == Integer.MAX_VALUE);
     }
+
+    /**
+     * Resets the largest tracked Id value so that the next generated Id starts from 1 again.
+     */
+    public void reset() {
+        largest = 0;
+    }
 }
