@@ -19,6 +19,9 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** Regex for successful find command message. */
+    private static final String MESSAGE_FIND_COMMAND_SUCCESS = "^[0-9]+ persons listed!$";
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
@@ -54,6 +57,14 @@ public class CommandResult {
     public boolean isShowPersonList() {
         return feedbackToUser.equals("Listed all persons");
     }
+
+    /**
+     * Returns true if the command result is to show filtered person list after find command.
+     */
+    public boolean isShowFilteredPersonList() {
+        return feedbackToUser.matches(MESSAGE_FIND_COMMAND_SUCCESS);
+    }
+
     /**
      * Returns true if the command result is to show the tag list.
      */
