@@ -3,8 +3,6 @@ layout: page
 title: User Guide
 ---
 
-## User Guide
-
 ![Ui](images/NetWiseBanner.png)
 
 **NetWise** is your all-in-one networking companion, built **by and for Computer Science students**.
