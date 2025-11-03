@@ -11,6 +11,9 @@ import seedu.address.commons.util.ToStringBuilder;
  */
 public class CommandResult {
 
+    /** Regex for successful find command message. */
+    private static final String MESSAGE_FIND_COMMAND_SUCCESS = "^[0-9]+ persons listed!$";
+
     private final String feedbackToUser;
 
     /** Help information should be shown to the user. */
@@ -18,9 +21,6 @@ public class CommandResult {
 
     /** The application should exit. */
     private final boolean exit;
-
-    /** Regex for successful find command message. */
-    private static final String MESSAGE_FIND_COMMAND_SUCCESS = "^[0-9]+ persons listed!$";
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
