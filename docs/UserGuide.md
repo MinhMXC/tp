@@ -10,10 +10,12 @@ If you have a growing network of **friends, family, classmates, professors, and 
 NetWise helps you stay connected, organised, and intentional about your relationships.
 
 With NetWise, you can:
+* **Manage your connections seamlessly**: add, edit, or remove people as your network grows,
+  and keep their details up to date so you always have an accurate picture of your social and professional circles.
 * **Organise your connections effortlessly** using ***tags***, so you can group people by shared contexts
-   like “Project Teammates,” “Mentors,” or “Friends from CS2103.”
+  like “Project Teammates,” “Mentors,” or “Friends from CS2103.”
 * **Map out *relationships*** between people to understand how your network connects —
-   whether it’s a classmate who knows your internship supervisor or a friend who introduced you to a recruiter.
+  whether it’s a classmate who knows your internship supervisor or a friend who introduced you to a recruiter.
 
 Designed with **tech-savvy students** in mind, NetWise combines the **power of the Command Line Interface (CLI)**
 with the **ease of a clean, compact Graphical User Interface (GUI)**. If you’re comfortable typing fast or
@@ -131,7 +133,7 @@ multitask while using NetWise
 
 A pop-up help window will appear with the list of commands and their usage.
 
-![Ui](images/HelpMessage.png)
+![Ui](images/helpMessage.png)
 
 Format: `help`
 
@@ -148,8 +150,8 @@ Format: `add n/NAME p/PHONE e/EMAIL [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]`
 A connection can have any number of tags (including 0)
 </div>
 
-* `NAME` should only contain alphanumeric characters, commas, full-stops, apostrophes and spaces, and it must not be
-  empty.
+* `NAME` should only contain alphanumeric characters, commas, full-stops, apostrophes, hyphens and spaces,
+  and it must not be empty.
     * Name should be unique. The same name must not be repeated, case-sensitive (i.e. 'BEN' is different from 'ben').
 * `PHONE` should only contain numbers, an optional plus `+` only at the beginning for country code, with numbers
   separated by single spaces or hyphens `-`.
@@ -180,10 +182,10 @@ Examples of **invalid commands**:
 * `add` — Reason: compulsory fields missing (`NAME`, `EMAIL` and `PHONE`).
 * `add n/Peter e/pete@something.sg` - Reason: compulsory field missing (`PHONE`).
 * `add n/David p/1234 5678 e/ a/Wall Street r/rich` — Reason: compulsory field empty (`EMAIL`).
-* `add n/Natalie p/98765 e/nat@example.net t/friend` — Reason: invalid field input (`TAG_ID` should only be positive 
+* `add n/Natalie p/98765 e/nat@example.net t/friend` — Reason: invalid field input (`TAG_ID` should only be positive
   integers).
 * `add n/Mel p/+(12) 3456789 e/mel@example.sg` — Reason: invalid field input (`PHONE` should not contain brackets).
-* `add n/Emma p/+13245678 e/emmaaa@example` — Reason: invalid field input (`EMAIL` must contain at least two domain 
+* `add n/Emma p/+13245678 e/emmaaa@example` — Reason: invalid field input (`EMAIL` must contain at least two domain
   labels separated by periods `.`).
 
 ### Listing all connections : `list`
@@ -205,7 +207,7 @@ Format: `edit ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG_ID]…​ [r/NO
   can be seen with [`list`](#listing-all-connections--list).
     * The `ID` **must be a positive integer** 1, 2, 3, …​
 * If the connection with the input `ID` does not exist in the list, expect a message informing that no person is found.
-* **At least ONE** field to edit (`n/`, `p/`, `e/`, `a/`, `t/`) must be provided and not empty.
+* **At least ONE** field to edit (`n/`, `p/`, `e/`, `a/`, `t/`, `r`) must be provided and not empty.
 * Further conditions for `NAME`, `PHONE`, `EMAIL`, `ADDRESS`, `TAG_ID`, and `NOTE` follows the same as in
   [`add`](#adding-a-connection--add).
 * Existing values will be updated to the input values.
@@ -224,7 +226,7 @@ Examples:
 
 Examples of **invalid commands**:
 
-* `edit 1` — Reason: no field to be edit is provided. 
+* `edit 1` — Reason: no field to be edit is provided.
 * `edit 2 n/` - Reason: invalid field input (`NAME` must not be empty).
 * `edit 3 t/friend` — Reason: invalid field input (`TAG_ID` should only be positive integers).
 * `edit n/John p/91325678` — Reason: no ID is provided.
@@ -242,26 +244,31 @@ Format: `delete ID`
 * The `ID` **must be a positive integer** 1, 2, 3, …​
 * If the connection with the input `ID` does not exist in the list, expect a message informing that no person found.
 
+<div markdown="span" class="alert alert-warning">
+    :exclamation: **Caution:**
+    Deleting a connection will also delete all relationships involving that person.
+</div>
+
 Example:
 
-* `delete 2` deletes the connection with ID 2 in NetWise.
+* `deletetag 2` deletes the connection with ID 2 in NetWise.
 
 Example of **invalid command**:
 
-* `delete 0` — Reason: invalid ID provided (`ID` must be a positive integer).
+* `deletetag 0` — Reason: invalid ID provided (`ID` must be a positive integer).
 
 ### Locating connections by fields : `find`
 
 Finds all connections (persons) whose specified fields contain any of the given keywords.
 Matching is **case-insensitive** and supports **substring** (for most fields) and **word-based** (for tags) matching.
 
-Format: `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS]…​ [a/ADDRESS_KEYWORDS]…​ 
+Format: `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS]…​ [a/ADDRESS_KEYWORDS]…​
 [t/TAG_ID]…​`
 
 * **At least ONE** field to find (`n/`, `p/`, `e/`, `a/`, `t/`) must be provided.
 * Each field can take one or more keywords separated by spaces.
 * Matching is partial for name, phone, email, and address (e.g., `n/Ali` matches “Alice”).
-* Matching is exact (ID-based) for tags (e.g., `t/5` only matches tag with ID 5, **not** that contains the character 
+* Matching is exact (ID-based) for tags (e.g., `t/5` only matches tag with ID 5, **not** that contains the character
   "5").
 * Unlike [`add`](#adding-a-connection--add) and [`edit`](#editing-a-connection--edit) commands, the keyword parameters
   does not have any input restrictions for flexibility.
@@ -275,9 +282,9 @@ Format: `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS
 
 Examples:
 
-* `find n/Ali` → Finds all persons with names containing “Ali”.
-* `find e/gmail a/Clementi` → Finds persons whose email contains “gmail” and address contains “Clementi”.
-* `find n/Ali e/gmail a/Clementi a/Bishan t/2 t/5 t/7` → Finds persons who:
+* `find n/Ali` — Finds all persons with names containing “Ali”.
+* `find e/gmail a/Clementi` — Finds persons whose email contains “gmail” and address contains “Clementi”.
+* `find n/Ali e/gmail a/Clementi a/Bishan t/2 t/5 t/7` — Finds persons who:
     * name contains “Ali”:
     * email contains “gmail”,
     * address contains “Clementi” or “Bishan”, and
@@ -358,7 +365,7 @@ Examples:
 Examples of **invalid commands**:
 
 * `edittag 1` — Reason: no field to be edit is provided.
-* `edittag 2 n/` - Reason: invalid field input (`NAME` must not be empty).
+* `edittag 2 n/` — Reason: invalid field input (`NAME` must not be empty).
 * `edittag 3 c/red` — Reason: invalid field input
   (`RGB_COLOR` should be a 6-digit HEX code, **not** a color description).
 * `edittag 0 n/coworkers p/91325678` — Reason: invalid ID provided (`ID` must be a positive integer).
@@ -374,6 +381,11 @@ Format: `deletetag TAG_ID`
   [`listtag`](#listing-all-tags--listtag).
     * `TAG_ID` **must be a positive integer** 1, 2, 3, …​
 * If the tag with the input `TAG_ID` does not exist in the list, expect a message informing that no tag is found.
+
+<div markdown="span" class="alert alert-warning">
+    :exclamation: **Caution:**
+    Deleting a tag will also remove it from all people who have the tag.
+</div>
 
 Example:
 
@@ -413,14 +425,14 @@ Examples of **invalid commands**:
   (`CONNECTION_1` must be a positive integer).
 * `addrel p1/4 p2/5` — Reason: compulsory field missing (`DESCRIPTION`).
 * `addrel p2/3 d/mentor` — Reason: compulsory field missing (`CONNECTION_1`).
-* * `addrel p1/4 p2/5 d/` — Reason: invalid field input (`DESCRIPTION` should not be empty).
+* `addrel p1/4 p2/5 d/` — Reason: invalid field input (`DESCRIPTION` should not be empty).
 
 ### Listing all relationships : `listrel`
 
 Shows a list of relationships for each person in the list in NetWise.
 
 Format (one person): `listrel p1/CONNECTION_1`: show a list of all person related to `CONNECTION_1`
-along with the relationship description \
+along with the relationship description
 
 Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show the chain of relationships
 between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship infos.
@@ -441,7 +453,7 @@ Examples:
 
 * `listrel p1/1`. Shows a list of connections who has a relationship to a connection with ID 1 and the description of their relationships.
 * `listrel p1/1 p2/2`. Shows a list of relationships in order to see how connection with ID 1
-  may be connected to connection with ID 2 via a chain of relationships. 
+  may be connected to connection with ID 2 via a chain of relationships.
 
 Examples of **invalid commands**:
 
@@ -454,7 +466,7 @@ Edits the description of a relationship in NetWise.
 
 Format: `editrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION`
 
-* Edits the relationship description between `CONNECTION_1` and `CONNECTION_2`. 
+* Edits the relationship description between `CONNECTION_1` and `CONNECTION_2`.
 * All fields must be provided.
 * `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
     * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
