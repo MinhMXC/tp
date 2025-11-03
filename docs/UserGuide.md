@@ -42,16 +42,16 @@ This user guide aims to familiarise you with the commands of NetWise and to use 
 
 ## How to use this guide
 
- * There is a [Table of Contents](#Table-of-Contents) with clickable links above for easy nagivation.
- * For new user, please refer to [Quick Start](#Quick-Start) for instructions to install and run the app.
- * For details of all commands, please refer to [Features](#Features).
- * For experienced users, please refer to [Command Summary](#Command-Summary) for an overview of all commands.
+ * There is a [Table of Contents](#table-of-contents) with clickable links above for easy navigation.
+ * For new users, please refer to [Quick Start](#quick-start) for instructions to install and run the app.
+ * For details of all commands, please refer to [Features](#features).
+ * For experienced users, please refer to [Command Summary](#command-summary) for an overview of all commands.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Quick Start
 
-1. Ensure you have Java `17` or above installed in your computer. \
+1. Ensure you have Java `17` or above installed on your computer. \
    **Mac users:** Ensure you have the precise JDK version prescribed
    [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
@@ -76,14 +76,14 @@ This user guide aims to familiarise you with the commands of NetWise and to use 
      * `add n/Minh p/12345678 e/minh@minh.com`: Adds a connection named Minh to NetWise.
      * `delete 3`: Deletes the connection with ID 3.
      * `exit`: Exits the app.
-   * Refer to the [Features](#Features) below for details of each command.
+   * Refer to the [Features](#features) below for details of each command.
 3. **Command result** \
    Shows the response message from the app whenever a command is executed.
-4. **List of connections / tags / relationshipss** \
+4. **List of connections / tags / relationships** \
    Shows a list of connections or tags or relationships, depending on what commands were executed.
 
 **Tips**: UI is designed to work best at a minimum window size, allowing computer science students to
-multitask while using NetWise
+multitask while using NetWise.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -105,8 +105,8 @@ multitask while using NetWise
 * Items with `…`​ after them can be used **any number of times** including zero times.<br>
   e.g. `[t/TAG_ID]…​` can be used as ` ` (i.e. 0 times), `t/1`, `t/1 t/3` etc.
 
-* Otherwise, items without any brackets or elipses are **compulsory** and **single-valued** field.<br>
-  e.g. `n/NAME p/PHONE` means the use must put in a single value for each field, like `n/John Doe p/98765432`
+* Otherwise, items without any brackets or ellipses are **compulsory** and **single-valued** field.<br>
+  e.g. `n/NAME p/PHONE` means the user must provide a single value for each field, like `n/John Doe p/98765432`
 
 * For all parameters, the slash character `/` should not be used. \
   e.g. `edit 1 n/Batman S/O Superman` should not be inputted, as there is a slash character in the name.
@@ -251,11 +251,11 @@ Format: `delete ID`
 
 Example:
 
-* `deletetag 2` deletes the connection with ID 2 in NetWise.
+* `delete 2` deletes the connection with ID 2 in NetWise.
 
 Example of **invalid command**:
 
-* `deletetag 0` — Reason: invalid ID provided (`ID` must be a positive integer).
+* `delete 0` — Reason: invalid ID provided (`ID` must be a positive integer).
 
 ### Locating connections by fields : `find`
 
@@ -305,7 +305,7 @@ Format: `addtag n/NAME [d/DESCRIPTION] [c/RGB_COLOR]`
     * Name should be unique. The same name must not be repeated, case-sensitive (i.e. 'FRIEND' is different from
       'friend').
 * `DESCRIPTION` can accept any character input of any length.
-* The `RGB_COLOR` describe the colour you want to set for the tag.
+* The `RGB_COLOR` describes the colour you want to set for the tag.
 * `RGB_COLOR` field *must* be a HEX colour string of length 6, case-insensitive.
     * The string should be written ***without*** the hash ('#'), such as `123456`, `0F2AAB`, `abf1cd`, …​
 * The default `DESCRIPTION` field is "No description" (if prefix is not included). Empty `DESCRIPTION` field
@@ -389,11 +389,11 @@ Format: `deletetag TAG_ID`
 
 Example:
 
-* `delete 2` deletes the tag with ID 2
+* `deletetag 2` deletes the tag with ID 2
 
 Example of **invalid command**:
 
-* `delete 0` — Reason: invalid ID provided (`ID` must be a positive integer).
+* `deletetag 0` — Reason: invalid ID provided (`ID` must be a positive integer).
 
 ### Adding a relationship : `addrel`
 
@@ -435,7 +435,7 @@ Format (one person): `listrel p1/CONNECTION_1`: show a list of all person relate
 along with the relationship description
 
 Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show the chain of relationships
-between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship infos.
+between `CONNECTION_1` and `CONNECTION_2` (if exists), along with the relationship infos.
 
 * `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
     * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
