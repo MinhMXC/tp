@@ -341,7 +341,8 @@ Examples:
 
 ### Clearing everything : `clear`
 
-Clears all connections, tags and relationships from NetWise.
+Clears all connections, tags and relationships from NetWise. **Resets the indexes of connections and tags to the initial state.**
+
 Format: `clear`
 
 
@@ -400,6 +401,7 @@ by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the
 keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear.
 The remedy is to manually restore the minimized Help Window.
+3. Currently, when a person or tag is deleted, **the unique IDs of remaining entries remain unchanged** to maintain consistency of data, which can lead to gaps in the shown index. However, index of person and tags can be reset after using the `clear` command. 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
