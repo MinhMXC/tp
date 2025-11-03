@@ -27,6 +27,7 @@ public class DeleteRelationshipCommandParser implements Parser<DeleteRelationshi
                     DeleteRelationshipCommand.MESSAGE_USAGE));
         }
 
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PART_1, PREFIX_PART_2);
         Id part1 = ParserUtil.parseId(argMultimap.getValue(PREFIX_PART_1).get());
         Id part2 = ParserUtil.parseId(argMultimap.getValue(PREFIX_PART_2).get());
 

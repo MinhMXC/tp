@@ -120,6 +120,8 @@ multitask while using NetWise
 
 A pop-up help window will appear with the list of commands and their usage.
 
+![Ui](images/HelpMessage.png)
+
 Format: `help`
 
 * You can also access the help window by: pressing F1 key, or via the `Help` menu at the top of the application window.
@@ -337,6 +339,8 @@ Format: `addrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION`
   informing that no person is found.
 * `DESCRIPTION` is a field to describe the relationship, e.g.: colleagues from ABC company
 * `DESCRIPTION` can accept any character input of any length that contains at least 1 non-whitespace character.
+* `DESCRIPTION` of relationships can only be seen with `listrel`.
+* Relationships are two-way, meaning that `p1/1 p2/3` is the same as `p1/3 p2/1`.
 
 Examples:
 
