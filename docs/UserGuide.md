@@ -97,10 +97,10 @@ multitask while using NetWise
 * Items in square brackets are **optional**.<br>
   e.g `n/NAME [t/TAG_ID]` can be used as `n/John Doe t/1` or as `n/John Doe`.
 
-* Items with `…`​ after them can be used **multiple times** including zero times.<br>
+* Items with `…`​ after them can be used **any number of times** including zero times.<br>
   e.g. `[t/TAG_ID]…​` can be used as ` ` (i.e. 0 times), `t/1`, `t/1 t/3` etc.
 
-* Otherwose, items without any brackets or elipses are **compulsory** and **single-valued** field.<br>
+* Otherwise, items without any brackets or elipses are **compulsory** and **single-valued** field.<br>
   e.g. `n/NAME p/PHONE` means the use must put in a single value for each field, like `n/John Doe p/98765432`
 
 * For all parameters, the slash character `/` should not be used. \
@@ -117,9 +117,10 @@ multitask while using NetWise
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines
   as space characters surrounding line-breaks may be omitted when copied over to the application.
 
-* **Disclaimer**: There are some examples of invalid commands along with explanations. However, the actual error message 
-  displayed by NetWise may not mention the exact error. Please refer back to this User Guide for the detailed
-  parameters' constraints.
+* **Disclaimer**: Some examples in this guide include invalid commands for illustration purposes.
+  The actual error messages shown in NetWise may differ or be less specific.
+  For detailed information about command formats and parameter constraints,
+  please refer to the relevant sections of this User Guide.
 
 </div>
 
@@ -147,14 +148,13 @@ A connection can have any number of tags (including 0)
 * `NAME` should only contain alphanumeric characters, commas, full-stops, apostrophes and spaces, and it must not be
   empty.
     * Name should be unique. The same name must not be repeated, case-sensitive (i.e. 'BEN' is different from 'ben').
-* `PHONE` should only contain numbers, an *optional* plus `+` **at the start** for country code, spaces, and dashes 
-  `-` in the field.
+* `PHONE` should only contain numbers, spaces, dashes `-`, and an *optional* plus `+` **at the start** for country code.
 * `EMAIL` should be of format `local-part@domain` and adhere to the following constraints:
     * `local-part` should only contain alphanumeric characters and these special characters: `+`, `-`, `.`, `_`. The
       local-part may not start or end with any special characters.
     * This is followed by a `@` and then a `domain`. The `domain` is made up of domain labels separated by periods `.`.
-      There should be at least two domain labels, with the final domain label (i.e. `.com`, `.sg`, `.net`, etc.)
-      should have at least 2 characters.
+      There should be at least two domain labels, with the final domain label being top-level domains
+      (i.e. `.com`, `.sg`, `.net`, etc.) should have at least 2 characters.
 * `TAG_ID` refers to the **unique ID** of each tag (**not** their names), can be seen by using the
   [`listtag`](#listing-all-tags--listtag) command.
     * The tag ID **must be a positive integer** 1, 2, 3, …​
