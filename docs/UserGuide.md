@@ -80,6 +80,9 @@ This user guide aims to familiarise you with the commands of NetWise and to use 
 4. **List of connections / tags / relationshipss** \
    Shows a list of connections or tags or relationships, depending on what commands were executed.
 
+**Tips**: UI is designed to work best at a minimum window size, allowing computer science students to
+multitask while using NetWise
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Features
