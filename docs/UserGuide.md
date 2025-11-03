@@ -180,7 +180,7 @@ Format: `edit ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG_ID]…​ [r/NO
 * The `ID` refers to the **unique ID** each connection is given when created,
   can be seen with [`list`](#listing-all-connections--list).
     * The `ID` **must be a positive integer** 1, 2, 3, …​
-* If the connection with the input `ID` does not exist in the displayed list, expect a message informing that no person
+* If the connection with the input `ID` does not exist in the list, expect a message informing that no person
   is found.
 * Further conditions for `NAME`, `PHONE`, `EMAIL`, `ADDRESS`, `TAG_ID`, and `NOTE` follows the same as in [
   `add`](#adding-a-connection--add).
@@ -207,7 +207,7 @@ Format: `delete ID`
 * Deletes the connection with the specified `ID`.
 * The `ID` refers to the **unique ID** each connection is given when created, can be seen with [
   `list`](#listing-all-connections--list).
-* If the connection with the input `ID` does not exist in the displayed list, expect a message informing that no person 
+* If the connection with the input `ID` does not exist in the list, expect a message informing that no person 
   is found.
 * The `ID` **must be a positive integer** 1, 2, 3, …​
 * If the connection with the input `ID` does not exist in the list, expect a message informing that no person found.
