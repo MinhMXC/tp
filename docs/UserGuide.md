@@ -207,7 +207,7 @@ Format: `edit ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG_ID]…​ [r/NO
   can be seen with [`list`](#listing-all-connections--list).
     * The `ID` **must be a positive integer** 1, 2, 3, …​
 * If the connection with the input `ID` does not exist in the list, expect a message informing that no person is found.
-* **At least ONE** field to edit (`n/`, `p/`, `e/`, `a/`, `t/`, `r`) must be provided and not empty.
+* **At least ONE** field to edit (`n/`, `p/`, `e/`, `a/`, `t/`, `r/`) must be provided and not empty.
 * Further conditions for `NAME`, `PHONE`, `EMAIL`, `ADDRESS`, `TAG_ID`, and `NOTE` follows the same as in
   [`add`](#adding-a-connection--add).
 * Existing values will be updated to the input values.
