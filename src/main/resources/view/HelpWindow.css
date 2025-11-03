@@ -43,3 +43,11 @@
 .scroll-bar:horizontal .increment-arrow, .scroll-bar:horizontal .decrement-arrow {
     -fx-padding: 8 1 8 1;
 }
+
+.scroll-pane {
+    -fx-background-color: #383838;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: #383838;
+}

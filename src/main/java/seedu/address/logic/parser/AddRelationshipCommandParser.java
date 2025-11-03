@@ -27,6 +27,7 @@ public class AddRelationshipCommandParser implements Parser<AddRelationshipComma
                     AddRelationshipCommand.MESSAGE_USAGE));
         }
 
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PART_1, PREFIX_PART_2, PREFIX_DESC);
         Id part1 = ParserUtil.parseId(argMultimap.getValue(PREFIX_PART_1).get());
         Id part2 = ParserUtil.parseId(argMultimap.getValue(PREFIX_PART_2).get());
         Description desc = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESC).get());
