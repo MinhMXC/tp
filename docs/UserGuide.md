@@ -117,6 +117,8 @@ supposed tag with ID 1 has tag name `criminal`
 
 Shows a list of all connections in NetWise with easy view of relationships for each connection.
 
+**Note:** List shows the **unique ID** given when the connection is created not the relative index in the list.
+
 Format: `list`
 
 
@@ -226,6 +228,8 @@ Format: `listtag`
 * The tag list does not show tags in any particular order.
 It shows the tag name along with the associated **unique tag ID** given when the tag is created.
 
+**Note:** List shows the **unique ID** given when the tag is created not the relative index in the list.
+
 
 ### Editing a tag : `edittag`
 
@@ -299,6 +303,7 @@ expect a message informing that no relationship is found.
   1. Finding the chain of relationships between the same person will only show that person,
 even though a relationship cannot exist between the same person.
   2. If added a new person or relationship, you should use `listrel` again to reevaluate the relationship list shown. **However,** changes in fields (e.g. name, relationship description) do not require reevaluation of the relationship list.
+  3.  Shows the **unique ID** given when the connection is created not the relative index in the list.
 
 
 Examples:
