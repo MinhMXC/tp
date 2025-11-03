@@ -1452,7 +1452,9 @@ testers are expected to do more *exploratory* testing.
 
 **Team size: 5**
 
-**1. Prevent UI from breaking:** While the current UI supports wrapping for all fields and attributes — including person, relationship, and tag names — it can still break in an extreme case where a single tag name is so long that it exceeds the total width limit. We plan to enhance the UI to handle even such extreme tag names by allowing them to wrap properly, preventing any UI breakage.
+**1. Prevent UI from breaking:** While the current UI supports wrapping for all fields and attributes — including person, relationship, and tags — it can still break in an extreme case. We plan to enhance the UI to handle even such extreme case by allowing UI to handle and adjust, preventing any UI breakage. 
+
+*Example extreme cases*: 1. extremely long person name causing relationship entry in person list view to break. 2. a single tag name is so long that it exceeds the total width limit 
 
 **2. Change arguments that requires ID into name** Since NetWise requires users to input the unique IDs of tags and relationships, which can be inconvenient, we plan to enhance the system by allowing users to use names instead of IDs for commands that require id identification. This change aims to improve user experience by making it easier to reference entries without needing to recall specific IDs.
 
