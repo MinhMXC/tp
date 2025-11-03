@@ -75,7 +75,7 @@ If you can type fast, NetWise can get your connection management tasks done fast
 
 ### Viewing help : `help`
 
-Shows a message explaining how to access the help page.
+A pop-up help window will appear with the list of commands and their usage.
 
 Format: `help`
 
