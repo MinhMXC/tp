@@ -370,8 +370,7 @@ Examples:
 
 * `listrel p1/1`. Shows a list of connections who has a relationship to a connection with ID 1 and the description of their relationships.
 * `listrel p1/1 p2/2`. Shows a list of relationships in order to see how connection with ID 1
-  may be connected to connection with ID 2 via a chain of relationships. If there are multiple of such chains,
-  only the shortest one will be shown.
+  may be connected to connection with ID 2 via a chain of relationships. 
 
 ### Editing a relationship : `editrel`
 
