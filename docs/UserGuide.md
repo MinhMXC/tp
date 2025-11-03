@@ -120,6 +120,8 @@ multitask while using NetWise
 
 A pop-up help window will appear with the list of commands and their usage.
 
+![Ui](images/HelpMessage.png)
+
 Format: `help`
 
 * You can also access the help window by: pressing F1 key, or via the `Help` menu at the top of the application window.
