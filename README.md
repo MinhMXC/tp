@@ -10,10 +10,12 @@ If you have a growing network of **friends, family, classmates, professors, and 
 NetWise helps you stay connected, organised, and intentional about your relationships.
 
 With NetWise, you can:
+* **Manage your connections seamlessly**: add, edit, or remove people as your network grows,
+  and keep their details up to date so you always have an accurate picture of your social and professional circles.
 * **Organise your connections effortlessly** using **tags**, so you can group people by shared contexts
-   like “Project Teammates,” “Mentors,” or “Friends from CS2103.”
+  like “Project Teammates,” “Mentors,” or “Friends from CS2103.”
 * **Map out relationships** between people to understand how your network connects —
-   whether it’s a classmate who knows your internship supervisor or a friend who introduced you to a recruiter.
+  whether it’s a classmate who knows your internship supervisor or a friend who introduced you to a recruiter.
 
 Designed with **tech-savvy students** in mind, NetWise combines the **power of the Command Line Interface (CLI)**
 with the **ease of a clean, compact Graphical User Interface (GUI)**. If you’re comfortable typing fast or
