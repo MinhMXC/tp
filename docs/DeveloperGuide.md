@@ -505,22 +505,7 @@ Use case ends.
     - **3b1.** **System** informs the user about the error.
       Use case ends.
 
-#### UC14 - Clear Connection List
-
-**Goal:** Clear the person list.
-
-**Preconditions:** None. (You can clear an empty list)
-
-**Postconditions:** If success, there should be no person left in the list.
-
-1. **User** selects the text input.
-2. **System** deletes all the people in the list and returns a success message
-
-- **2a. User enters an incorrect or unsupported command format.**
-    - **2a1.** **System** informs the user the command is invalid and shows the correct command format.
-      Use case ends.
-
-#### UC15 - Find Person
+#### UC14 - Find Connection
 
 **Goal:** To allow users to search for persons in the address book by any combination of fields (name, phone, email,
 address, and tags).
@@ -556,7 +541,7 @@ Use case ends.
 
 [comment]: TAGS
 
-#### UC21 - Create Tag
+#### UC20 - Create Tag
 
 **Goal:** create a new tag group
 
@@ -588,7 +573,7 @@ Use case ends.
     * **3a1.** **System** informs the user about the already existing tag.
       Use case ends.
 
-#### UC22 - List Tags
+#### UC21 - List Tags
 
 **Goal:** view all tag groups
 
@@ -610,7 +595,7 @@ Use case ends.
     * **2a1.** **System** shows an empty-state message.
       Use case ends.
 
-#### UC23 - Update Tag
+#### UC22 - Update Tag
 
 **Goal:** update an existing tag’s attributes
 
@@ -644,7 +629,7 @@ Use case ends.
 
       Use case ends.
 
-#### UC24 - Delete Tag
+#### UC23 - Delete Tag
 
 **Goal:** delete an existing tag group
 
@@ -796,6 +781,21 @@ Use case ends.
 * **1c. System detects that the command format is wrong.**
     * **1c1.** **System** informs the user about the correct format for the use case.
 
+      Use case ends.
+
+#### UC99 - Clear Everything
+
+**Goal:** Clear the connections, tags and relationship list.
+
+**Preconditions:** None. (You can clear an empty list)
+
+**Postconditions:** If success, there should be no connections, tags or relationships left in the list.
+
+1. **User** selects the text input.
+2. **System** deletes all everything and returns a success message
+
+- **2a. User enters an incorrect or unsupported command format.**
+    - **2a1.** **System** informs the user the command is invalid and shows the correct command format.
       Use case ends.
 
 [comment]: REMINDER
