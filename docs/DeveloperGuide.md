@@ -584,8 +584,8 @@ Use case ends.
     * **2a1.** **System** informs the user of the correct command format.
       Use case ends.
 
-* **\[TO BE IMPLEMENTED\] 3a. A tag with the same name already exists.**
-    * **3a1.** **System** informs the user about the already existed tag.
+* **3a. A tag with the same name already exists.**
+    * **3a1.** **System** informs the user about the already existing tag.
       Use case ends.
 
 #### UC22 - List Tags
