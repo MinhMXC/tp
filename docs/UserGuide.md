@@ -91,7 +91,7 @@ multitask while using NetWise
 
 **:information_source: Notes about the command format:**<br>
 
-* Command prefixes are case-insensitive.<br>
+* Command and parameter prefixes are case-insensitive (user-input is case-sensitive).<br>
   e.g. `AdD N/NAME` is the same as `add n/NAME`.
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
@@ -263,8 +263,7 @@ Format: `addtag n/NAME [d/DESCRIPTION] [c/RGB_COLOR]`
       friend')
 * `DESCRIPTION` can accept any character input of any length.
 * The `RGB_COLOR` describe the colour you want to set for the tag.
-* `RGB_COLOR` field *must* be a HEX colour string of length 6, case-insensitive, and must not be empty if the
-  prefix is included.
+* `RGB_COLOR` field *must* be a HEX colour string of length 6.
     * The string should be written ***without*** the hash ('#'), such as `123456`, `0F2AAB`, `abf1cd`, …​
 * The default `DESCRIPTION` field is "No description" (if prefix is not included)
 * Empty `DESCRIPTION` field (i.e. `d/`) will set the description to be empty.
@@ -352,7 +351,7 @@ Shows a list of relationships for each person in the list in NetWise.
 
 Format (one person): `listrel p1/CONNECTION_1`: show a list of all person related to `CONNECTION_1`
 along with the relationship description \
-Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show the chain of relationships
+Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show the shortest possible chain of relationships
 between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship description.
 
 * `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
@@ -362,7 +361,7 @@ between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationshi
 * **Note**:
     1. Finding the chain of relationships between the same person will only show that person,
        even though a relationship cannot exist between the same person.
-    2. If **added/deleted** a new person or a relationship, you should use `listrel` again to reevaluate the relationship list shown.
+    2. If you **added/deleted** a person or a relationship, you should use `listrel` again to reevaluate the relationship list shown.
        **However,** changes in fields (e.g. name, relationship description) do not require reevaluation of the
        relationship list.
     3. Shows the **unique ID** given when the connection is created not the relative index in the list.
