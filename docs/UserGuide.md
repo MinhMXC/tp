@@ -10,9 +10,9 @@ If you have a growing network of **friends, family, classmates, professors, and 
 NetWise helps you stay connected, organised, and intentional about your relationships.
 
 With NetWise, you can:
-* **Organise your connections effortlessly** using **tags**, so you can group people by shared contexts
+* **Organise your connections effortlessly** using ***tags***, so you can group people by shared contexts
    like “Project Teammates,” “Mentors,” or “Friends from CS2103.”
-* **Map out relationships** between people to understand how your network connects —
+* **Map out *relationships*** between people to understand how your network connects —
    whether it’s a classmate who knows your internship supervisor or a friend who introduced you to a recruiter.
 
 Designed with **tech-savvy students** in mind, NetWise combines the **power of the Command Line Interface (CLI)**
@@ -91,14 +91,20 @@ multitask while using NetWise
 
 **:information_source: Notes about the command format:**<br>
 
+* Command and parameter prefixes are case-insensitive (user-input is case-sensitive).<br>
+  e.g. `AdD N/NAME` is the same as `add n/NAME`.
+
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
-* Items in square brackets are optional.<br>
+* Items in square brackets are **optional**.<br>
   e.g `n/NAME [t/TAG_ID]` can be used as `n/John Doe t/1` or as `n/John Doe`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
+* Items with `…`​ after them can be used **any number of times** including zero times.<br>
   e.g. `[t/TAG_ID]…​` can be used as ` ` (i.e. 0 times), `t/1`, `t/1 t/3` etc.
+
+* Otherwise, items without any brackets or elipses are **compulsory** and **single-valued** field.<br>
+  e.g. `n/NAME p/PHONE` means the use must put in a single value for each field, like `n/John Doe p/98765432`
 
 * For all parameters, the slash character `/` should not be used. \
   e.g. `edit 1 n/Batman S/O Superman` should not be inputted, as there is a slash character in the name.
@@ -114,6 +120,11 @@ multitask while using NetWise
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines
   as space characters surrounding line-breaks may be omitted when copied over to the application.
 
+* **Disclaimer**: Some examples in this guide include invalid commands for illustration purposes.
+  The actual error messages shown in NetWise may differ or be less specific.
+  For detailed information about command formats and parameter constraints,
+  please refer to the relevant sections of this User Guide.
+
 </div>
 
 ### Viewing help : `help`
@@ -128,7 +139,7 @@ Format: `help`
 
 ### Adding a connection : `add`
 
-Adds a connection to NetWise. A *connection* is someone who you want to keep in contact, such as
+Adds a connection to NetWise. A *connection* is someone who you want to keep in contact with, such as
 friends, colleagues or people you met from a networking event.
 
 Format: `add n/NAME p/PHONE e/EMAIL [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]`
@@ -139,16 +150,14 @@ A connection can have any number of tags (including 0)
 
 * `NAME` should only contain alphanumeric characters, commas, full-stops, apostrophes and spaces, and it must not be
   empty.
-    * Name should be unique. The same name must not be repeated, case-sensitive (i.e. 'Ben' is different from 'ben')
-* `PHONE` should only contain numbers, a plus `+` only at the beginning for country code, and spaces or dashes `-`
-    * There should be at least **two** numbers between every spaces/dashes.
-    * The phone number should be at least 5 digits long (not counting the special characters/spaces)
+    * Name should be unique. The same name must not be repeated, case-sensitive (i.e. 'BEN' is different from 'ben').
+* `PHONE` should only contain numbers, spaces, dashes `-`, and an *optional* plus `+` **at the start** for country code.
 * `EMAIL` should be of format `local-part@domain` and adhere to the following constraints:
     * `local-part` should only contain alphanumeric characters and these special characters: `+`, `-`, `.`, `_`. The
-      local-part may not start or end with any special characters.
+      local-part may not start or end with any special characters and special characters should not be consecutive.
     * This is followed by a '@' and then a `domain`. The `domain` is made up of domain labels separated by periods.
       There should be at least
-      two domain labels, with the final domain label (i.e. `.com`, `.sg`, `.net`, etc.) should have at least 2
+      two domain labels, with the final domain label (i.e. `.com`, `.sg`, `.net`, etc.) having at least 2
       characters.
 * `TAG_ID` refers to the **unique ID** of each tag (**not** their names), can be seen by using the [
   `listtag`](#listing-all-tags--listtag) command.
@@ -160,13 +169,24 @@ A connection can have any number of tags (including 0)
 
 Examples:
 
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/2 e/betsycrowe@example.com a/Newgate Prison p/1234567 t/1 r/She owed me lunch`,
-  supposed tag with ID 1 has tag name `criminal`
+* `add n/John Doe p/+12 98765432 e/johnd@example.com.sg a/John street, block 123, #01-01`
+* `add n/Betsy Crowe e/betsycrowe@example.com a/Newgate Prison p/123-456-789 t/1 r/She owed me lunch`,
+  supposed tag with ID 1 has tag name `criminal`.
+
+Examples of **invalid commands**:
+
+* `add` — Reason: Reason: compulsory fields missing (`NAME`, `EMAIL` and `PHONE`).
+* `add n/Peter e/pete@something.sg` - Reason: compulsory field missing (`PHONE`).
+* `add n/David p/1234 5678 e/ a/Wall Street r/rich` — Reason: compulsory field empty (`EMAIL`).
+* `add n/Natalie p/98765 e/nat@example.net t/friend` — Reason: invalid field input (`TAG_ID` should only be positive 
+  integers).
+* `add n/Mel p/+(12) 3456789 e/mel@example.sg` — Reason: invalid field input (`PHONE` should not contain brackets).
+* `add n/Emma p/+13245678 e/emmaaa@example` — Reason: invalid field input (`EMAIL` must contain at least two domain 
+  labels separated by periods `.`).
 
 ### Listing all connections : `list`
 
-Shows a list of all connections in NetWise with easy view of relationships for each connection.
+Shows a list of all connections in NetWise with an easy view of relationships for each connection.
 
 **Note:** List shows the **unique ID** given when the connection is created not the relative index in the list.
 
@@ -182,10 +202,10 @@ Format: `edit ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG_ID]…​ [r/NO
 * The `ID` refers to the **unique ID** each connection is given when created,
   can be seen with [`list`](#listing-all-connections--list).
     * The `ID` **must be a positive integer** 1, 2, 3, …​
-* If the connection with the input `ID` does not exist in the list, expect a message informing that no person
-  is found.
-* Further conditions for `NAME`, `PHONE`, `EMAIL`, `ADDRESS`, `TAG_ID`, and `NOTE` follows the same as in [
-  `add`](#adding-a-connection--add).
+* If the connection with the input `ID` does not exist in the list, expect a message informing that no person is found.
+* **At least ONE** field to edit (`n/`, `p/`, `e/`, `a/`, `t/`) must be provided and not empty.
+* Further conditions for `NAME`, `PHONE`, `EMAIL`, `ADDRESS`, `TAG_ID`, and `NOTE` follows the same as in
+  [`add`](#adding-a-connection--add).
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the connection will be removed, i.e adding of tags is not cumulative.
 
@@ -200,6 +220,14 @@ Examples:
 * `edit 2 n/Betsy Crower t/` Edits the name of the connection with ID 2 to be `Betsy Crower` and
   clears all existing tags.
 
+Examples of **invalid commands**:
+
+* `edit 1` — Reason: no field to be edit is provided. 
+* `edit 2 n/` - Reason: invalid field input (`NAME` must not be empty).
+* `edit 3 t/friend` — Reason: invalid field input (`TAG_ID` should only be positive integers).
+* `edit n/John p/91325678` — Reason: no ID is provided.
+* `edit 0 n/John p/91325678` — Reason: invalid ID provided (`ID` must be a positive integer).
+
 ### Deleting a connection : `delete`
 
 Deletes the specified connection from NetWise.
@@ -207,34 +235,36 @@ Deletes the specified connection from NetWise.
 Format: `delete ID`
 
 * Deletes the connection with the specified `ID`.
-* The `ID` refers to the **unique ID** each connection is given when created, can be seen with [
-  `list`](#listing-all-connections--list).
-* If the connection with the input `ID` does not exist in the list, expect a message informing that no person 
-  is found.
+* The `ID` refers to the **unique ID** each connection is given when created, can be seen with
+  [`list`](#listing-all-connections--list).
 * The `ID` **must be a positive integer** 1, 2, 3, …​
 * If the connection with the input `ID` does not exist in the list, expect a message informing that no person found.
 
-Examples:
+Example:
 
-* `list` followed by `delete 2` deletes the connection with ID 2 in NetWise.
-* `find Betsy` followed by `delete 1` deletes the connection with ID 1 in the results of the `find` command.
+* `delete 2` deletes the connection with ID 2 in NetWise.
+
+Example of **invalid command**:
+
+* `delete 0` — Reason: invalid ID provided (`ID` must be a positive integer).
 
 ### Locating connections by fields : `find`
 
 Finds all connections (persons) whose specified fields contain any of the given keywords.
 Matching is **case-insensitive** and supports **substring** (for most fields) and **word-based** (for tags) matching.
 
-Format: `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS]…​ [a/ADDRESS_KEYWORDS]…​ [t/TAG_ID]…​`
+Format: `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS]…​ [a/ADDRESS_KEYWORDS]…​ 
+[t/TAG_ID]…​`
 
-* **At least ONE** field (`n/`, `p/`, `e/`, `a/`, `t/`) must be provided.
+* **At least ONE** field to find (`n/`, `p/`, `e/`, `a/`, `t/`) must be provided.
 * Each field can take one or more keywords separated by spaces.
 * Matching is partial for name, phone, email, and address (e.g., `n/Ali` matches “Alice”).
-* Matching is exact (ID-based) for tags (e.g., `t/5` only matches tag with ID 5, **not** that contains the character "
-  5").
+* Matching is exact (ID-based) for tags (e.g., `t/5` only matches tag with ID 5, **not** that contains the character 
+"5").
 * Unlike [`add`](#adding-a-connection--add) and [`edit`](#editing-a-connection--edit) commands, the keyword parameters
   does not have any input restrictions for flexibility.
 * Empty input fields (i.e. `n/` or `p/    ` (whitespaces)) will **not** be taken into account when filtering for
-  connections.
+  connections. However, at least one field provided must not be empty.
 * The search across different fields uses **AND logic** — a person must match all fields provided.
   (e.g. `n/Ali e/gmail` finds persons whose **name contains “Ali”** *and* **email contains “gmail”**.)
 * The search within the same field uses **OR logic** — any one of the field’s keywords will match.
@@ -251,31 +281,43 @@ Examples:
     * address contains “Clementi” or “Bishan”, and
     * has tag IDs 2, 5, or 7.
 
+Example of **invalid command**:
+
+* `find n/ p/` — Reason: no non-empty field is provided.
+
 ### Adding a tag : `addtag`
 
 Adds a tag to NetWise. A tag is a keyword or label used to categorise and organise your connections.
 
 Format: `addtag n/NAME [d/DESCRIPTION] [c/RGB_COLOR]`
 
-* Add a tag into NetWise, along with an optional description and tag colour.
+* Adds a tag into NetWise, along with an optional description and tag colour.
 * `NAME` should only contain alphanumeric characters, and it must not be empty.
-    * Name should be unique. The same name must not be repeated, case-sensitive (i.e. 'FRIEND' is different from '
-      friend')
+    * Name should be unique. The same name must not be repeated, case-sensitive (i.e. 'FRIEND' is different from
+      'friend').
 * `DESCRIPTION` can accept any character input of any length.
 * The `RGB_COLOR` describe the colour you want to set for the tag.
-* `RGB_COLOR` field *must* be a HEX colour string of length 6, case-insensitive, and must not be left empty if the
-  prefix is included.
+* `RGB_COLOR` field *must* be a HEX colour string of length 6, case-insensitive.
     * The string should be written ***without*** the hash ('#'), such as `123456`, `0F2AAB`, `abf1cd`, …​
-* The default `DESCRIPTION` field is "No description" (if prefix is not included)
-* Empty `DESCRIPTION` field (i.e. `d/`) will set the description to be empty.
+* The default `DESCRIPTION` field is "No description" (if prefix is not included). Empty `DESCRIPTION` field
+  (i.e. `d/`) will set the description to be empty.
 * The default `RGB_COLOR` is gray (#808080) (if prefix is not included)
-* The created tag will be assigned a **FIXED unique tag ID**, can be seen with the [
-  `listtag`](#listing-all-tags--listtag) command.
+* The created tag will be assigned a **fixed and unique** *tag ID*, can be seen with the
+  [`listtag`](#listing-all-tags--listtag) command.
 
 Examples:
 
 * `addtag n/JC d/JC friends c/23f1cd`
-* `addtag n/coworkers`
+* `addtag n/CS2013T tP`
+
+Examples of **invalid commands**:
+
+* `addtag` — Reason: Reason: compulsory field missing (`NAME`).
+* `addtag n/` — Reason: compulsory field empty (`NAME`).
+* `addtag n/friends c/lightblue` — Reason: invalid field input
+  (`RGB_COLOR` should be a 6-digit HEX code, **not** a color description).
+* `addtag n/company c/` — Reason: invalid field input (`RGB_COLOR` should not be empty).
+* `addtag n/cs2101 c/a1b2c3d4` — Reason: invalid field input (`RGB_COLOR` should be a 6-digit HEX code).
 
 ### Listing all tags : `listtag`
 
@@ -283,7 +325,7 @@ Shows a list of all tags in NetWise.
 
 Format: `listtag`
 
-* List all tags along with their description and assigned color.
+* Lists all tags along with their description and assigned color.
 * The tag list does not show tags in any particular order.
   It shows the tag name along with the associated **unique tag ID** given when the tag is created.
 
@@ -299,9 +341,9 @@ Format: `edittag TAG_ID [n/NAME] [d/DESCRIPTION] [c/RGB_COLOR]`
 * `TAG_ID` refers to the **unique tag ID** each tag is given when created, can be seen with
   [`listtag`](#listing-all-tags--listtag).
     * `TAG_ID` **must be a positive integer** 1, 2, 3, …​
-* If the tag with the input `TAG_ID` does not exist in the list, expect a message informing that no tag is found.
-* Further conditions for `NAME`, `DESCRIPTION`, and `RGB_COLOR` follows the same as in [
-  `addtag`](#adding-a-tag--addtag).
+* If the tag with the input `TAG_ID` does not exist in the list, expect a message informing that no tag found.
+* Further conditions for `NAME`, `DESCRIPTION`, and `RGB_COLOR` follows the same as in
+  [`addtag`](#adding-a-tag--addtag).
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 
@@ -310,6 +352,14 @@ Examples:
 * `edittag 1 d/my extended family c/099fca` changes the description of tag with ID 1 to "my extended family",
   and set its color to the color with hex code #099fca.
 * `edittag 2 n/Prof d/` changes the name of tag with ID 2 to "Prof", set description to be empty.
+
+Examples of **invalid commands**:
+
+* `edittag 1` — Reason: no field to be edit is provided.
+* `edittag 2 n/` - Reason: invalid field input (`NAME` must not be empty).
+* `edittag 3 c/red` — Reason: invalid field input
+  (`RGB_COLOR` should be a 6-digit HEX code, **not** a color description).
+* `edittag 0 n/coworkers p/91325678` — Reason: invalid ID provided (`ID` must be a positive integer).
 
 ### Deleting a tag : `deletetag`
 
@@ -325,7 +375,11 @@ Format: `deletetag TAG_ID`
 
 Example:
 
-* `delete 2` to delete the tag with ID 2
+* `delete 2` deletes the tag with ID 2
+
+Example of **invalid command**:
+
+* `delete 0` — Reason: invalid ID provided (`ID` must be a positive integer).
 
 ### Adding a relationship : `addrel`
 
@@ -335,6 +389,8 @@ Format: `addrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION`
 
 * `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
     * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
+    * `CONNECTION_1` and `CONNECTION_2` must be different (i.e. a person cannot have a relationship with themselves).
+    * A connection is two-way. Therefore, the order of `CONNECTION_1` and `CONNECTION_2` are not important.
 * If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list, expect a message
   informing that no person is found.
 * `DESCRIPTION` is a field to describe the relationship, e.g.: colleagues from ABC company
@@ -347,12 +403,23 @@ Examples:
 * `addrel p1/1 p2/2 d/childhood friends`. Adds a relationship between the connections with ID 1 and 2, noting
   that they are childhood friends.
 
+Examples of **invalid commands**:
+
+* `addrel p1/alice p2/3 d/couple` — Reason: invalid field input
+  (`CONNECTION_1` should be the connection ID, not their name).
+* `addrel p1/0 p2/3 d/couple` — Reason: invalid field input
+  (`CONNECTION_1` must be a positive integer).
+* `addrel p1/4 p2/5` — Reason: compulsory field missing (`DESCRIPTION`).
+* `addrel p2/3 d/mentor` — Reason: compulsory field missing (`CONNECTION_1`).
+* * `addrel p1/4 p2/5 d/` — Reason: invalid field input (`DESCRIPTION` should not be empty).
+
 ### Listing all relationships : `listrel`
 
 Shows a list of relationships for each person in the list in NetWise.
 
 Format (one person): `listrel p1/CONNECTION_1`: show a list of all person related to `CONNECTION_1`
-along with the relationship info \
+along with the relationship description \
+
 Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show the chain of relationships
 between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship infos.
 
@@ -363,17 +430,21 @@ between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationshi
 * **Note**:
     1. Finding the chain of relationships between the same person will only show that person,
        even though a relationship cannot exist between the same person.
-    2. If added a new person or relationship, you should use `listrel` again to reevaluate the relationship list shown.
+    2. If you **added/deleted** a person or a relationship, you should use `listrel` again to reevaluate the relationship list shown.
        **However,** changes in fields (e.g. name, relationship description) do not require reevaluation of the
        relationship list.
     3. Shows the **unique ID** given when the connection is created not the relative index in the list.
 
 Examples:
 
-* `listrel p1/1`. Shows a list of connections who has a relationship to ID 1 and the description of their relationships.
+* `listrel p1/1`. Shows a list of connections who has a relationship to a connection with ID 1 and the description of their relationships.
 * `listrel p1/1 p2/2`. Shows a list of relationships in order to see how connection with ID 1
-  may be connected to connection with ID 2 via a chain of relationships. If there are multiple of such chains,
-  only the shortest one will be shown.
+  may be connected to connection with ID 2 via a chain of relationships. 
+
+Examples of **invalid commands**:
+
+* `listrel p1/alice` — Reason: invalid field input (`CONNECTION_1` should be the connection ID, not their name).
+* `listrel p1/0 p2/3` — Reason: invalid field input (`CONNECTION_1` must be a positive integer).
 
 ### Editing a relationship : `editrel`
 
@@ -381,13 +452,28 @@ Edits the description of a relationship in NetWise.
 
 Format: `editrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION`
 
-* Edits the relationship between p1 and p2. `editrel` will edit the description of the relationship between p1 and p2.
+* Edits the relationship description between `CONNECTION_1` and `CONNECTION_2`. 
 * All fields must be provided.
+* `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
+    * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
+    * `CONNECTION_1` and `CONNECTION_2` must be different (i.e. a person cannot have a relationship with themselves).
+* If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list,
+  expect a message informing that no relationship is found.
 
 Examples:
 
 * `editrel p1/1 p2/2 d/highschool friends`. Edits the description of the relationship between connection ID 1 and
   connection ID 2.
+
+Examples of **invalid commands**:
+
+* `editrel p1/alice p2/3 d/couple` — Reason: invalid field input
+  (`CONNECTION_1` should be the connection ID, not their name).
+* `editrel p1/0 p2/3 d/couple` — Reason: invalid field input
+  (`CONNECTION_1` must be a positive integer).
+* `editrel p1/4 p2/5` — Reason: compulsory field missing (`DESCRIPTION`).
+* `editrel p2/3 d/mentor` — Reason: compulsory field missing (`CONNECTION_1`).
+* `editrel p1/4 p2/5 d/` — Reason: invalid field input (`DESCRIPTION` should not be empty).
 
 ### Deleting a relationship : `deleterel`
 
@@ -395,11 +481,21 @@ Deletes a relationship from NetWise.
 
 Format: `deleterel p1/CONNECTION_1 p2/CONNECTION_2`
 
-* Deletes the relationship between p1 and p2.
+* Deletes the relationship between `CONNECTION_1` and `CONNECTION_2`.
+* `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
+    * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
+* If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list,
+  expect a message informing that no relationship is found.
 
 Examples:
 
 * `deleterel p1/1 p2/2`. Deletes the relationship between connection ID 1 and connection ID 2.
+
+Examples of **invalid commands**:
+
+* `deleterel p1/alice p2/3` — Reason: invalid field input (`CONNECTION_1` should be the connection ID, not their name).
+* `deleterel p1/0 p2/3` — Reason: invalid field input (`CONNECTION_1` must be a positive integer).
+* `deleterel p1/4` — Reason: compulsory field missing (`CONNECTION_2`).
 
 ### Clearing everything : `clear`
 
@@ -470,21 +566,21 @@ contains the data of your previous NetWise home folder.
 
 ## Command Summary
 
-| Action                    | Format and Examples                                                                                                                                                                         |
-|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Help**                  | `help`                                                                                                                                                                                      |
-| **List connections**      | `list`                                                                                                                                                                                      |
-| **Add connection**        | `add n/NAME p/PHONE_NUMBER e/EMAIL [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/1 t/2 r/owes me lunch` |
-| **Edit connection**       | `edit ID [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                   |
-| **Delete connection**     | `delete ID`<br> e.g., `delete 3`                                                                                                                                                            |
-| **Find connection**       | `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS]…​ [a/ADDRESS_KEYWORDS]…​ [t/TAG_ID]…`<br> e.g., `find n/James n/Jake`                                 |
-| **List tags**             | `listtag`                                                                                                                                                                                   |
-| **Add tag**               | `addtag n/NAME [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `addtag n/JC d/JC friends c/23f1cd`                                                                                                 |
-| **Edit tag**              | `edittag ID [n/NAME] [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `edittag 1 d/my extended family c/099fca`                                                                                     |
-| **Delete tag**            | `deletetag ID` <br> e.g. `deletetag 2`                                                                                                                                                      |
-| **List relationships**    | `listrel p1/CONNECTION_1 [p2/CONNECTION_2]`  <br> e.g. `listrel p1/1 p2/4`                                                                                                                  |
-| **Add relationship**      | `addrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION` <br> e.g. `addrel p1/1 p2/2 d/friends`                                                                                               |
-| **Edit relationship**     | `editrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION` <br> e.g. `editrel p1/1 p2/2 d/enemies`                                                                                             |
-| **Delete relationship**   | `deleterel p1/CONNECTION_1 p2/CONNECTION_2` <br> e.g. `deleterel p1/1 p2/2`                                                                                                                 |
-| **Clear everything**      | `clear`                                                                                                                                                                                     |
-| **Exit program**          | `exit`                                                                                                                                                                                      |
+| Action                  | Format and Examples                                                                                                                                                                    |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Help**                | `help`                                                                                                                                                                                 |
+| **Add connection**      | `add n/NAME p/PHONE_NUMBER e/EMAIL [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/1 t/2 r/owes me lunch` |
+| **List connections**    | `list`                                                                                                                                                                                 |
+| **Edit connection**     | `edit ID [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                   |
+| **Delete connection**   | `delete ID`<br> e.g., `delete 3`                                                                                                                                                       |
+| **Find connection**     | `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS]…​ [a/ADDRESS_KEYWORDS]…​ [t/TAG_ID]…`<br> e.g., `find n/James n/Jake`                                                |
+| **Add tag**             | `addtag n/NAME [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `addtag n/JC d/JC friends c/23f1cd`                                                                                            |
+| **List tags**           | `listtag`                                                                                                                                                                              |
+| **Edit tag**            | `edittag ID [n/NAME] [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `edittag 1 d/my extended family c/099fca`                                                                                |
+| **Delete tag**          | `deletetag ID` <br> e.g. `deletetag 2`                                                                                                                                                 |
+| **Add relationship**    | `addrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION` <br> e.g. `addrel p1/1 p2/2 d/friends`                                                                                          |
+| **List relationships**  | `listrel p1/CONNECTION_1 [p2/CONNECTION_2]`  <br> e.g. `listrel p1/1 p2/4`                                                                                                             |
+| **Edit relationship**   | `editrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION` <br> e.g. `editrel p1/1 p2/2 d/enemies`                                                                                        |
+| **Delete relationship** | `deleterel p1/CONNECTION_1 p2/CONNECTION_2` <br> e.g. `deleterel p1/1 p2/2`                                                                                                            |
+| **Clear everything**    | `clear`                                                                                                                                                                                |
+| **Exit program**        | `exit`                                                                                                                                                                                 |
