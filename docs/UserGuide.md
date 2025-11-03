@@ -91,7 +91,7 @@ multitask while using NetWise
 
 **:information_source: Notes about the command format:**<br>
 
-* Command prefixeA are case-insensitive.<br>
+* Command prefixes are case-insensitive.<br>
   e.g. `AdD N/NAME` is the same as `add n/NAME`.
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
