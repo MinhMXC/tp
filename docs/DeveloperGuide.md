@@ -1491,3 +1491,14 @@ description.
 remaining entries remain unchanged, which can lead to gaps in the ID sequence. We plan to enhance the system to
 automatically reorder IDs after deletions, ensuring that IDs remain sequential without gaps. This change aims to improve
 the organization and usability of the system by maintaining a continuous sequence of IDs.
+
+**6. Improve specificity of error messages:** Currently, NetWise gives error messages for incorrect commands, empty
+fields with incorrect formats etc. However, commands may not state exactly what was wrong regarding the command, such as
+which field(s) were missing etc. We plan to enhance the system through more stringent error handling and responses
+in order to give users more information on their error or mistake.
+
+**7. Handling of wrong/nonexistent prefixes:** Currently, NetWise parses for existing and expected prefixes for
+commands. However, NetWise does not scan for prefixes that are not supposed to be part of the command, or for prefixes
+that are not implemented such as `p3/`. We plan to enhance the system to check for such incorrect prefixes or for
+prefixes not supposed to be present in the current command. This aims to improve the commands to be more stringent and
+accurate, reducing mistakes made by users.
