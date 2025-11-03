@@ -143,9 +143,9 @@ A connection can have any number of tags (including 0)
 * `NAME` should only contain alphanumeric characters, commas, full-stops, apostrophes and spaces, and it must not be
   empty.
     * Name should be unique. This check is case-sensitive (i.e. 'Ben' is different from 'ben').
-* `PHONE` should only contain numbers, a plus `+` only at the beginning for country code, and spaces or dashes `-`
-    * There should be at least **two** numbers between every spaces/dashes.
-    * The phone number should be at least 5 digits long (not counting the special characters/spaces)
+* `PHONE` should only contain numbers, an optional plus `+` only at the beginning for country code, with numbers
+  separated by single spaces or dashes `-`.
+  * e.g. `p/+1 1234 5678` and `p/7813247` are valid. `p/123--123` is not valid.
 * `EMAIL` should be of format `local-part@domain` and adhere to the following constraints:
     * `local-part` should only contain alphanumeric characters and these special characters: `+`, `-`, `.`, `_`. The
       local-part may not start or end with any special characters.
