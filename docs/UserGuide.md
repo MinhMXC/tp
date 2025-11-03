@@ -152,7 +152,7 @@ A connection can have any number of tags (including 0)
   empty.
     * Name should be unique. The same name must not be repeated, case-sensitive (i.e. 'BEN' is different from 'ben').
 * `PHONE` should only contain numbers, an optional plus `+` only at the beginning for country code, with numbers
-  separated by single spaces or dashes `-`.
+  separated by single spaces or hyphens `-`.
     * e.g. `p/+1 1234 5678` and `p/7813247` are valid. `p/123--123` is not valid.
 * `EMAIL` should be of format `local-part@domain` and adhere to the following constraints:
     * `local-part` should only contain alphanumeric characters and these special characters: `+`, `-`, `.`, `_`. The
