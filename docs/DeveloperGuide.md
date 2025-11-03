@@ -989,9 +989,9 @@ Use case ends.
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
-
+<div markdown="span" class="alert alert-info">
+    :information_source: **Note:** These instructions only provide a starting point for testers to work on;
+    testers are expected to do more *exploratory* testing.
 </div>
 
 ### Launch and shutdown
@@ -1000,20 +1000,20 @@ testers are expected to do more *exploratory* testing.
 
     1. Download the Java Archive file and copy it into an empty folder.
     2. Double-click the Java Archive file. \
-       **Expected:** The application shows the Graphical User Interface with a set of sample contacts. The window size
-       may not be optimal.
+       **Expected:** The application shows the Graphical User Interface with a set of sample contacts,
+       tags and relationships. The window size may not be optimal.
 
 2. **Saving window preferences**
 
     1. Resize the window to an optimal size. Move the window to a different location. Close the window.
-    2. Re-launch the application by double-clicking the Java Archive file.
+    2. Re-launch the application by double-clicking the Java Archive file. \
        **Expected:** The most recent window size and location are retained.
 
 3. **Launch from command line (alternative to double-click)**
 
     1. Open a terminal (Command Prompt on Windows, Terminal on macOS or Linux).
     2. Navigate to the folder containing the Java Archive file.
-    3. Run `java -jar <YourAppName>.jar`.
+    3. Run `java -jar NetWise.jar`. \
        **Expected:** The application launches and shows the same Graphical User Interface as a normal double-click
        launch.
 
@@ -1021,47 +1021,38 @@ testers are expected to do more *exploratory* testing.
 
     1. Place a valid data file (for example, `addressbook.json`) with a few known contacts in the same folder as the
        Java Archive file (or at the documented default data location, if different).
-    2. Launch the application.
-       **Expected:** The application loads and displays the contacts from the existing data file. Window size and
-       position follow the current preferences.
+    2. Launch the application. \
+       **Expected:** The application loads and displays the contacts, tags and relationships from the existing
+       data file. Window size and position follow the current preferences.
 
 5. **Launch with a missing data file**
 
     1. Ensure there is **no** data file in the expected location (delete or rename it temporarily).
     2. Launch the application. \
        **Expected:** The application starts with sample data.
-       A new data file is created at the expected location upon exit.
+       A new data file is created at the expected location upon executing command `exit`.
 
 6. **Launch with a corrupted data file**
 
     1. Open the data file in a text editor and deliberately corrupt it (for example, delete a closing brace or insert
        random text).
-    2. Launch the application.
-       **Expected:** The application does **not** crash. It shows an error message indicating the data file is invalid
-       and starts with an empty contact list (or a safe fallback such as sample data). The user can continue using the
-       application normally. A valid file will be written on the next successful save or exit.
-
-7. **Launch with a read-only data file**
-
-    1. Make the data file read-only using your operating system’s file permissions.
-    2. Launch the application, then attempt any action that would save data (for example, adding a contact), and exit.
-    3. Re-launch the application.
-       **Expected:** On the first run, the application either warns that it cannot write the file or continues without
-       persisting the change. After re-launch, the change made earlier is **not** present (because the data file was
-       read-only).
+    2. Launch the application. \
+       **Expected:** The application does **not** crash. It shows an error message in the terminal indicating the
+       data file is invalid and starts with an empty state. The user can continue using the
+       application normally.
 
 8. **Graceful shutdown via menu**
 
     1. Launch the application.
-    2. Use the application’s menu (for example, `File → Exit`) to close it.
+    2. Use the application’s menu: `File → Exit` to close it. \
        **Expected:** The window closes cleanly. Window size and position are saved. Any valid in-memory changes since
-       the last save are persisted according to the product’s save policy.
+       the last save are persisted according to NetWise’s save policy.
 
 9. **Graceful shutdown via keyboard shortcut**
 
     1. Launch the application.
     2. Use the operating system shortcut to close the window (for example, `Alt + F4` on Windows, `Command + Q` on
-       macOS, `Control + Q` on some Linux desktops).
+       macOS, `Control + Q` on some Linux desktops). \
        **Expected:** Same as a menu-based exit: the application shuts down cleanly and window preferences are saved.
 
 ---
@@ -1125,10 +1116,7 @@ testers are expected to do more *exploratory* testing.
    Run `find n/John` then `list`. \
    **Expected:** List switches from the filtered results back to all persons.
 
-3. **Test case (there is no relationship for a particular person):** \
-   **Expected:** Shows an empty relationship list for that particular person in the list.
-
-4. **Other test cases to try:** \
+3. **Other test cases to try:** \
    `list 123` (extraneous parameters). \
    **Expected:** Same as `list`. Extraneous parameters are ignored.
 
@@ -1147,6 +1135,7 @@ testers are expected to do more *exploratory* testing.
    **Expected:** The person with ID 2 will have tags removed. Status message confirms tags are cleared.
 
 4. **Test case (changes name but new name already exist):** \
+   Ensure that a person named Minh already exists before doing this test. \
    `edit 2 n/Minh` \
    **Expected:** No change. Error message indicates that the edit will result in duplicate contact.
 
@@ -1170,7 +1159,7 @@ testers are expected to do more *exploratory* testing.
 
 3. **Test case (invalid identifier):** \
    `delete 999` \
-   **Expected:** No person is deleted. Error message indicates the identifier is invalid.
+   **Expected:** No person is deleted. Error message indicates no person with that identifier can be found.
 
 4. **Test case (person with relationships)** \
    Ensure that the person that is being deleted has some relationships with other people. \
@@ -1188,9 +1177,8 @@ testers are expected to do more *exploratory* testing.
 ### Locating persons by name : `find`
 
 1. **Prerequisite:** Ensure the list has:
-
-* multiple persons with varied names, phone numbers, emails, addresses, and tags.
-* multiple tags with varied names
+  * multiple persons with varied names, phone numbers, emails, addresses, and tags.
+  * multiple tags with varied names
 
 1. **Test case (single keyword):** \
    `find n/John` \
@@ -1213,7 +1201,7 @@ testers are expected to do more *exploratory* testing.
 5. **Test case (repeating fields):** \
    `find p/1234 a/clem a/bishan t/5 t/2` \
    **Expected:** List of people whose phone number contains "1234" in it, address contains EITHER "clem" OR "bishan" or
-   both, AND with EITHER tags 5 OR 2.
+   both, AND with EITHER tags 5 OR 2 or both.
 
 ---
 
@@ -1232,6 +1220,7 @@ testers are expected to do more *exploratory* testing.
    message confirms.
 
 4. **Test case (name already exist):** \
+   Ensure that a tag named 'friends' already exists before doing this test. \
    `addtag n/friends` \
    **Expected:** No change. Error message indicates that the addition will result in duplicate tag.
 
@@ -1241,7 +1230,7 @@ testers are expected to do more *exploratory* testing.
    symbol.
 
 6. **Other test cases to try:** \
-   Duplicate tag name (expect a duplicate-name error), very long names or descriptions. \
+   Very long names or descriptions, ... \
    **Expected:** Appropriate validation or error handling.
 
 ---
@@ -1254,7 +1243,7 @@ testers are expected to do more *exploratory* testing.
 
 2. **Test case (when there are no tags):** \
    `listtag`. \
-   **Expected:** Shows an empty-state message.
+   **Expected:** Shows an empty list of tags.
 
 3. **Other test cases to try:** \
    `listtag extra` (extraneous parameters), ... \
@@ -1277,7 +1266,8 @@ testers are expected to do more *exploratory* testing.
 
 4. **Test case (missing identifier):** \
    `edittag n/NewName` \
-   **Expected:** No change. Error message indicates that an identifier is required and shows the correct command format.
+   **Expected:** No change. Error message indicates that the command format is invalid
+   and shows the correct one.
 
 5. **Other test cases to try:** \
    `edittag 999 ...` (invalid identifier), `edittag 1` (no updatable fields provided),
@@ -1297,7 +1287,7 @@ testers are expected to do more *exploratory* testing.
 
 3. **Test case (invalid identifier):** \
    `deletetag 999` \
-   **Expected:** No tag is deleted. Error message indicates the identifier is invalid.
+   **Expected:** No tag is deleted. Error message indicates that no tags with that identifier can be found.
 
 4. **Other test cases to try:** \
    `deletetag` (missing identifier), deleting a tag that is currently shown in the user
@@ -1315,12 +1305,14 @@ testers are expected to do more *exploratory* testing.
    **Expected:** New relationship is created with the given details. Status message confirms.
 
 3. **Test case (set of participants already exist):** \
+   Ensure that a relationship between contacts with ID 1 and 2 already exists before doing this test. \
    `addrel p1/1 p2/2 d/not best friends` \
    **Expected:** No change. Error message indicates that the addition will result in duplicate relationship.
 
 4. **Test case (invalid participants IDs: non-existant or not a postive integer):** \
    `addrel p1/3955 p2/485349 d/bruh` or `addrel p1/-23 p2/49.3 d/bruh` \
-   **Expected:** No relationship is created. Error message states that the identifier is invalid.
+   **Expected:** No relationship is created. Error message states that the identifier is invalid or that
+   the contact with the specified ID cannot be found.
 
 5. **Other test cases to try:** \
    Duplicate relationship (expect a duplicate-relationship error), very long descriptions, ... \
@@ -1332,17 +1324,17 @@ testers are expected to do more *exploratory* testing.
 
 1. **Test case:** \
    `listrel p1/1` \
-   **Expected:** Displays relationships of the people in the list who are directly related to p1 with
-   descriptions of relationships. Relationships ordered by the person ID for each person in the current displayed list.
+   **Expected:** Displays relationships of the people in the list who are directly related to contact with ID 1
+   along descriptions of relationships.
 
 2. **Test case:** \
    `listrel p1/1 p2/3` \
-   **Expected:** Displays a list of relationships in an order from p1 linking to p2. If no link can be made, an empty
-   list will be shown.
+   **Expected:** Displays a chain of relationships from contact with ID 1 to contact with ID 2.
+   If no link can be made, an empty relationship list will be shown.
 
 3. **Test case when there are no relationship for the listed person:** \
    `listrel p1/1`. \
-   **Expected:** Shows an empty-state message for the person.
+   **Expected:** Shows an empty relationship list.
 
 4. **Other test cases to try:** \
    `listrel p1/9999`(invalid Id), `listrel -2` (invalid command format), ... \
@@ -1384,9 +1376,9 @@ testers are expected to do more *exploratory* testing.
    **Expected:** Relationship between person with ID 1 and person with ID 2 is removed from the relationship list.
    Status message confirms deletion.
 
-3. **Test case (invalid index):** \
+3. **Test case (contact ID does not exist):** \
    `deleterel p1/999 p2/1` \
-   **Expected:** No relationship is deleted. Error message indicates the index is invalid.
+   **Expected:** No relationship is deleted. Error message indicates no contact with that ID can be found.
 
 4. **Other test cases to try:** \
    `deleterel` (without identifier), deleting a relationship that is currently shown on the user interface, ... \
