@@ -154,12 +154,13 @@ A connection can have any number of tags (including 0)
 * `PHONE` should only contain numbers, spaces, dashes `-`, and an *optional* plus `+` **at the start** for country code.
 * `EMAIL` should be of format `local-part@domain` and adhere to the following constraints:
     * `local-part` should only contain alphanumeric characters and these special characters: `+`, `-`, `.`, `_`. The
-      local-part may not start or end with any special characters.
-    * This is followed by a `@` and then a `domain`. The `domain` is made up of domain labels separated by periods `.`.
-      There should be at least two domain labels, with the final domain label being top-level domains
-      (i.e. `.com`, `.sg`, `.net`, etc.) should have at least 2 characters.
-* `TAG_ID` refers to the **unique ID** of each tag (**not** their names), can be seen by using the
-  [`listtag`](#listing-all-tags--listtag) command.
+      local-part may not start or end with any special characters and special characters should not be consecutive.
+    * This is followed by a '@' and then a `domain`. The `domain` is made up of domain labels separated by periods.
+      There should be at least
+      two domain labels, with the final domain label (i.e. `.com`, `.sg`, `.net`, etc.) having at least 2
+      characters.
+* `TAG_ID` refers to the **unique ID** of each tag (**not** their names), can be seen by using the [
+  `listtag`](#listing-all-tags--listtag) command.
     * The tag ID **must be a positive integer** 1, 2, 3, …​
     * One user can be assigned multiple tag IDs, and these do not have to be in any order (i.e. `t/1 t/3` and `t/3 t/1`
       will both assign tags with IDs 1 and 3 to the connection)
