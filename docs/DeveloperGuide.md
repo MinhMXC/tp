@@ -3,6 +3,12 @@ layout: page
 title: Developer Guide
 ---
 
+![Ui](images/NetWiseBanner.png)
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Table of Contents
+
 * Table of Contents
 {:toc}
 
