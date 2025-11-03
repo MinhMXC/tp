@@ -8,7 +8,7 @@ NetWise is a **desktop app for managing connections for Computer Science student
 Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
 If you can type fast, NetWise can get your connection management tasks done faster than traditional GUI apps. NetWise is best used with minimal screen space, so you can use it easily while doing other work, and it features a comfortable interface and color palette designed to reduce eye strain.
 
-* Table of Contents 
+* Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
@@ -60,6 +60,10 @@ If you can type fast, NetWise can get your connection management tasks done fast
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG_ID]…​` can be used as ` ` (i.e. 0 times), `t/1`, `t/1 t/3` etc.
 
+* For all parameters, the slash character `/` is not allowed. \
+  e.g. `edit 1 n/Batman S/O Superman` is not allowed, as there is a slash character in the name. For Indian names,
+  an alternative solution is to type `S/O` as `S.O.`.
+
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
@@ -87,7 +91,7 @@ Format: `add n/NAME p/PHONE e/EMAIL [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]`
 A connection can have any number of tags (including 0)
 </div>
 
-* `NAME` should only contain alphanumeric characters, commas, full-stops, apostrophes and spaces, and it must not be empty. 
+* `NAME` should only contain alphanumeric characters, commas, full-stops, apostrophes and spaces, and it must not be empty.
   * Name should be unique. The same name must not be repeated, case-sensitive (i.e. 'Ben' is different from 'ben')
 * `PHONE` should only contain numbers, a plus `+` only at the beginning for country code, and spaces or dashes `-`
   * There should be at least **two** numbers between every spaces/dashes.
@@ -96,7 +100,7 @@ A connection can have any number of tags (including 0)
   * `local-part` should only contain alphanumeric characters and these special characters: `+`, `-`, `.`, `_`. The local-part may not start or end with any special characters.
   * This is followed by a '@' and then a `domain`. The `domain` is made up of domain labels separated by periods. There should be at least
   two domain labels, with the final domain label (i.e. `.com`, `.sg`, `.net`, etc.) should have at least 2 characters.
-* `TAG_ID` refers to the **unique ID** of each tag (**not** their names), can be seen by using the [`listtag`](#listing-all-tags--listtag) command. 
+* `TAG_ID` refers to the **unique ID** of each tag (**not** their names), can be seen by using the [`listtag`](#listing-all-tags--listtag) command.
   * The tag ID **must be a positive integer** 1, 2, 3, …​
   * One user can be assigned multiple tag IDs, and these do not have to be in any order (i.e. `t/1 t/3` and `t/3 t/1` will both assign tags with IDs 1 and 3 to the connection)
 * `NOTE` can accept any character input of any length.
@@ -157,13 +161,6 @@ Examples:
 * `find Betsy` followed by `delete 1` deletes the connection with ID 1 in the results of the `find` command.
 
 
-### Clearing all connection entries : `clear`
-
-Clears all connection entries from NetWise.
-
-Format: `clear`
-
-
 ### Locating connections by fields : `find`
 
 Finds all connections (persons) whose specified fields contain any of the given keywords.
@@ -177,7 +174,7 @@ Format: `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS
 * Matching is exact (ID-based) for tags (e.g., `t/5` only matches tag with ID 5, **not** that contains the character "5").
 * Unlike [`add`](#adding-a-connection--add) and [`edit`](#editing-a-connection--edit) commands, the keyword parameters
 does not have any input restrictions for flexibility.
-* Empty input fields (i.e. `n/` or `p/    ` (whitespaces)) will **not** be taken into account when filtering for connections. 
+* Empty input fields (i.e. `n/` or `p/    ` (whitespaces)) will **not** be taken into account when filtering for connections.
 * The search across different fields uses **AND logic** — a person must match all fields provided.
   (e.g. `n/Ali e/gmail` finds persons whose **name contains “Ali”** *and* **email contains “gmail”**.)
 * The search within the same field uses **OR logic** — any one of the field’s keywords will match.
@@ -287,17 +284,23 @@ that they are childhood friends.
 
 Shows a list of relationships for each person in the list in NetWise.
 
-Format (one person): `listrel p1/CONNECTION_1`: show a list of all person related to `CONNECTION_1` along with the relationship info<br>
-Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show the chain of relationships between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship infos.
+Format (one person): `listrel p1/CONNECTION_1`: show a list of all person related to `CONNECTION_1`
+along with the relationship info \
+Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show the chain of relationships
+between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship infos.
 
 * `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
     * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
-* If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list, expect a message informing that no tag found.
+* If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list,
+expect a message informing that no relationship is found.
+* **Note**: Finding the chain of relationships between the same person will only show that person,
+even though a relationship cannot exist between the same person.
 
 Examples:
-*  `listrel p1/1`. Shows a list of connections who has a relationship to ID 1 and the description of their relationship.
-*  `listrel p1/1 p2/2`. Shows a list of relationships in order to see how connection with ID 1 may be connected to connection with ID 2
-via a chain of relationships.
+*  `listrel p1/1`. Shows a list of connections who has a relationship to ID 1 and the description of their relationships.
+*  `listrel p1/1 p2/2`. Shows a list of relationships in order to see how connection with ID 1
+may be connected to connection with ID 2 via a chain of relationships. If there are multiple of such chains,
+only the shortest one will be shown.
 
 ### Editing a relationship : `editrel`
 
@@ -310,7 +313,7 @@ Format: `editrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION`
 
 Examples:
 
-* `editrel p1/1 p2/2 d/highschool friends`. Edits the description of the relationship between connection ID 1 and 
+* `editrel p1/1 p2/2 d/highschool friends`. Edits the description of the relationship between connection ID 1 and
 connection ID 2.
 
 ### Deleting a relationship : `deleterel`
@@ -324,6 +327,13 @@ Format: `deleterel p1/CONNECTION_1 p2/CONNECTION_2`
 Examples:
 
 * `deleterel p1/1 p2/2`. Deletes the relationship between connection ID 1 and connection ID 2.
+
+
+### Clearing everything : `clear`
+
+Clears all connections, tags and relationships from NetWise.
+
+Format: `clear`
 
 
 ### Exiting the program : `exit`
