@@ -22,6 +22,7 @@ public class ListRelationshipCommandParser implements Parser<ListRelationshipCom
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_PART_1, PREFIX_PART_2);
 
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PART_1, PREFIX_PART_2);
         Optional<String> part1 = argMultimap.getValue(PREFIX_PART_1);
         Optional<String> part2 = argMultimap.getValue(PREFIX_PART_2);
 

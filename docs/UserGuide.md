@@ -103,9 +103,9 @@ multitask while using NetWise
 * Otherwose, items without any brackets or elipses are **compulsory** and **single-valued** field.<br>
   e.g. `n/NAME p/PHONE` means the use must put in a single value for each field, like `n/John Doe p/98765432`
 
-* For all parameters, the slash character `/` is not allowed. \
-  e.g. `edit 1 n/Batman S/O Superman` is not allowed, as there is a slash character in the name. For Indian names,
-  an alternative solution is to type `S/O` as `S.O.`.
+* For all parameters, the slash character `/` should not be used. \
+  e.g. `edit 1 n/Batman S/O Superman` should not be inputted, as there is a slash character in the name.
+  For Indian names, an alternative solution is to type `S/O` as `S.O.`.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -126,6 +126,8 @@ multitask while using NetWise
 ### Viewing help : `help`
 
 A pop-up help window will appear with the list of commands and their usage.
+
+![Ui](images/HelpMessage.png)
 
 Format: `help`
 
@@ -157,8 +159,9 @@ A connection can have any number of tags (including 0)
   [`listtag`](#listing-all-tags--listtag) command.
     * The tag ID **must be a positive integer** 1, 2, 3, …​
     * One user can be assigned multiple tag IDs, and these do not have to be in any order (i.e. `t/1 t/3` and `t/3 t/1`
-      will both assign tags with IDs 1 and 3 to the connection).
-* `NOTE` can accept any character input of any length.
+      will both assign tags with IDs 1 and 3 to the connection)
+* `NOTE` can accept any character input of any length, except for '/' characters which would lead to unpredictable
+  behaviour.
 
 Examples:
 
@@ -195,7 +198,7 @@ Format: `edit ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG_ID]…​ [r/NO
 * The `ID` refers to the **unique ID** each connection is given when created,
   can be seen with [`list`](#listing-all-connections--list).
     * The `ID` **must be a positive integer** 1, 2, 3, …​
-* If the connection with the input `ID` does not exist in the list, expect a message informing that no person found.
+* If the connection with the input `ID` does not exist in the list, expect a message informing that no person is found.
 * **At least ONE** field to edit (`n/`, `p/`, `e/`, `a/`, `t/`) must be provided and not empty.
 * Further conditions for `NAME`, `PHONE`, `EMAIL`, `ADDRESS`, `TAG_ID`, and `NOTE` follows the same as in
   [`add`](#adding-a-connection--add).
@@ -366,7 +369,7 @@ Format: `deletetag TAG_ID`
 * `TAG_ID` refers to the **unique ID** each tag is given when created, can be seen with
   [`listtag`](#listing-all-tags--listtag).
     * `TAG_ID` **must be a positive integer** 1, 2, 3, …​
-* If the tag with the input `TAG_ID` does not exist in the list, expect a message informing that no tag found.
+* If the tag with the input `TAG_ID` does not exist in the list, expect a message informing that no tag is found.
 
 Example:
 
@@ -390,6 +393,8 @@ Format: `addrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION`
   informing that no person is found.
 * `DESCRIPTION` is a field to describe the relationship, e.g.: colleagues from ABC company
 * `DESCRIPTION` can accept any character input of any length that contains at least 1 non-whitespace character.
+* `DESCRIPTION` of relationships can only be seen with `listrel`.
+* Relationships are two-way, meaning that `p1/1 p2/3` is the same as `p1/3 p2/1`.
 
 Examples:
 

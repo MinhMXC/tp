@@ -73,17 +73,24 @@ public class DeleteCommandTest {
     }
 
     @Test
-    public void execute_invalidIdFilteredList_throwsCommandException() {
+    public void execute_idOutOfBoundsOfFilteredList_success() {
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
 
         Index outOfBoundsIndex = INDEX_SECOND_PERSON;
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundsIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
-        Id idOutOfBoundsPerson = model.getAddressBook().getPersonList().get(outOfBoundsIndex.getZeroBased()).getId();
+        Person outOfBoundsPerson = model.getAddressBook().getPersonList().get(outOfBoundsIndex.getZeroBased());
+        Id idOutOfBoundsPerson = outOfBoundsPerson.getId();
+
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        showPersonAtIndex(expectedModel, INDEX_FIRST_PERSON);
+        expectedModel.deletePerson(outOfBoundsPerson);
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
+                Messages.format(outOfBoundsPerson));
 
         DeleteCommand deleteCommand = new DeleteCommand(idOutOfBoundsPerson);
 
-        assertCommandFailure(deleteCommand, model, MESSAGE_PERSON_NOT_FOUND);
+        assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
