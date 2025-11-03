@@ -3,6 +3,12 @@ layout: page
 title: Developer Guide
 ---
 
+![Ui](images/NetWiseBanner.png)
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Table of Contents
+
 * Table of Contents
 {:toc}
 
@@ -100,7 +106,8 @@ The `UI` component,
 * executes user commands using the `Logic` component.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
-* depends on some classes in the `Model` component, as it displays `Person`, `Tag`, `Relationship`  object residing in the `Model`.
+* depends on some classes in the `Model` component, as it displays `Person`, `Tag`, `Relationship`  object residing in
+  the `Model`.
 
 ### Logic component
 
@@ -180,6 +187,7 @@ The `Person` component,
 </div>
 
 The `Tag` component,
+
 * Stores the related data for each Tag, such as TagColor
 * Each `Person` points to it via its ID.
 
@@ -190,6 +198,7 @@ The `Tag` component,
 </div>
 
 The `Relationship` component,
+
 * Stores two Ids for each person in the Relationship
 * Stores the Description for the Relationship
 
@@ -342,7 +351,8 @@ _{more aspects and alternatives to be added}_
 
 **Target user profile**:
 
-* CS student who has a very big network of friends, co-workers and acquaintances for professional and work-related reasons.
+* CS student who has a very big network of friends, co-workers and acquaintances for professional and work-related
+  reasons.
 * want to keep track of the intricate relationships between him and his networks and amongst his networks.
 * prefer desktop apps over other types.
 * can type fast.
@@ -351,40 +361,38 @@ _{more aspects and alternatives to be added}_
 
 **Value proposition**: manages these connections' information faster than Linkedin.
 
-
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a…                                                     | I want to…                                                                                 | So that I can…                                                                        |
-|:--------:|:----------------------------------------------------------|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------|
-| `* * *`  | user                                                      | to add a person with their name, phone number, address etc                                 | track my networks                                                                     |
-| `* * *`  | user                                                      | edit and update an existing person                                                         | update incorrect information I have about my connection                               |
-| `* * *`  | user                                                      | to list out all my persons                                                                 | view all of my network                                                                |
-| `* * *`  | user                                                      | to search for a specific contact using a specific field such as their name or phone number | filter my connections                                                                 |
-| `* * *`  | user                                                      | to delete a person off my contact list                                                     | remove connections I do not wish to maintain                                          |
-| `* * *`  | user                                                      | to add multiple addresses and phone numbers for a single person                            | have multiple ways to contact a connection                                            |
-| `* * *`  | user                                                      | to add notes for a person                                                                  | keep a personal note that I have for a connection (their favourite gift, movies, ...) |
-| `* * *`  | regular user                                              | list all available tag groups                                                              | be reminded of what categories exist                                                  |
-| `* * *`  | user                                                      | create a tag                                                                               | group people according to tags                                                        |
-| `* * *`  | beginner user                                             | edit a tag name                                                                            | make old tag names clearer or less verbose                                            |
-| `* * *`  | experienced user                                          | delete tags (not the users)                                                                | keep the tag system tidy                                                              |
-| `* * *`  | experienced user                                          | view all tags associated with a person                                                     | understand their profile at a glance                                                  |
-| `* * *`  | regular user who has not used tags                        | edit tags of existing contacts                                                             | trial-and-error this feature to get started                                           |
-| `* * *`  | regular user                                              | assign multiple tags to a contact at once                                                  | capture all relevant categories                                                       |
-|   `*`    | experienced user                                          | bulk-filter by multiple tags                                                               | narrow down groups (e.g., Company A + Exco)                                           |
-| `* * *`  | beginner user                                             | filter contacts by a single tag                                                            | see everyone in that category                                                         |
-|   `*`    | beginner user                                             | insert multiple data in one network                                                        | avoid inserting every relationship individually from a single person                  |
-|   `*`    | user who has many friends and acquaintances               | click through the GUI graphs                                                               | explore the relationships of myself and others                                        |
-|   `*`    | forgetful user                                            | read a simple tag on the relationship entry                                                | readily search through the network and understand the relationships clearly           |
-| `* * *`  | user who is looking to meet people                        | search through the relationships of my friends                                             | find new people                                                                       |
-| `* * *`  | inquisitive user                                          | trace through the relationships between my friends                                         | find relationships among them                                                         |
-| `* * *`  | user                                                      | create relationship between people                                                         | add new relationships once I know about them                                          |
-| `* * *`  | user                                                      | delete relationship between people                                                         | remove incorrect relationship                                                         |
-|   `*`    | user                                                      | export my contacts to an external drive                                                    | transfer them to another device                                                       |
-|   `*`    | person with connections                                   | import my contacts                                                                         | avoid re-entering the contact information again                                       |
-|   `*`    | user                                                      | choose the contacts I want to export                                                       | avoid exporting irrelevant/outdated contacts                                          |
-
+| Priority | As a…                                       | I want to…                                                                                 | So that I can…                                                                        |
+|:--------:|:--------------------------------------------|:-------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------|
+| `* * *`  | user                                        | to add a person with their name, phone number, address etc                                 | track my networks                                                                     |
+| `* * *`  | user                                        | edit and update an existing person                                                         | update incorrect information I have about my connection                               |
+| `* * *`  | user                                        | to list out all my persons                                                                 | view all of my network                                                                |
+| `* * *`  | user                                        | to search for a specific contact using a specific field such as their name or phone number | filter my connections                                                                 |
+| `* * *`  | user                                        | to delete a person off my contact list                                                     | remove connections I do not wish to maintain                                          |
+|   `*`    | user                                        | to add multiple addresses and phone numbers for a single person                            | have multiple ways to contact a connection                                            |
+| `* * *`  | user                                        | to add notes for a person                                                                  | keep a personal note that I have for a connection (their favourite gift, movies, ...) |
+| `* * *`  | regular user                                | list all available tag groups                                                              | be reminded of what categories exist                                                  |
+| `* * *`  | user                                        | create a tag                                                                               | group people according to tags                                                        |
+| `* * *`  | beginner user                               | edit a tag name                                                                            | make old tag names clearer or less verbose                                            |
+| `* * *`  | experienced user                            | delete tags (not the users)                                                                | keep the tag system tidy                                                              |
+| `* * *`  | experienced user                            | view all tags associated with a person                                                     | understand their profile at a glance                                                  |
+| `* * *`  | regular user who has not used tags          | edit tags of existing contacts                                                             | trial-and-error this feature to get started                                           |
+| `* * *`  | regular user                                | assign multiple tags to a contact at once                                                  | capture all relevant categories                                                       |
+|   `*`    | experienced user                            | bulk-filter by multiple tags                                                               | narrow down groups (e.g., Company A + Exco)                                           |
+| `* * *`  | beginner user                               | filter contacts by a single tag                                                            | see everyone in that category                                                         |
+|   `*`    | beginner user                               | insert multiple data in one network                                                        | avoid inserting every relationship individually from a single person                  |
+|   `*`    | user who has many friends and acquaintances | click through the GUI graphs                                                               | explore the relationships of myself and others                                        |
+|   `*`    | forgetful user                              | read a simple tag on the relationship entry                                                | readily search through the network and understand the relationships clearly           |
+| `* * *`  | user who is looking to meet people          | search through the relationships of my friends                                             | find new people                                                                       |
+| `* * *`  | inquisitive user                            | trace through the relationships between my friends                                         | find relationships among them                                                         |
+| `* * *`  | user                                        | create relationship between people                                                         | add new relationships once I know about them                                          |
+| `* * *`  | user                                        | delete relationship between people                                                         | remove incorrect relationship                                                         |
+|   `*`    | user                                        | export my contacts to an external drive                                                    | transfer them to another device                                                       |
+|   `*`    | person with connections                     | import my contacts                                                                         | avoid re-entering the contact information again                                       |
+|   `*`    | user                                        | choose the contacts I want to export                                                       | avoid exporting irrelevant/outdated contacts                                          |
 
 ### Use cases
 
@@ -418,7 +426,6 @@ Use case ends.
 * **\[TO BE IMPLEMENTED\] 3a. A connection with the same name already exists.**
     * **3a1.** **System** informs the user about the already existed connection.
 
-
 #### UC11 - List Connections
 
 **Goal:** View all connections in the list.
@@ -444,7 +451,6 @@ Use case ends.
       Steps **4a1–4a3** repeat until retrieval succeeds or user cancels.
       If retrieval succeeds, use case resumes at step 4.
       If user cancels, use case ends.
-
 
 #### UC12 - Edit Connection
 
@@ -477,7 +483,6 @@ Use case ends.
     - **2c1.** **System** informs the user about the error.
       Use case ends.
 
-
 #### UC13 - Delete connection
 
 **Goal:** Delete a connection from the list.
@@ -506,7 +511,6 @@ Use case ends.
     - **3a1.** **System** informs the user about the error.
       Use case ends.
 
-
 #### UC14 - Clear Connection List
 
 **Goal:** Clear the person list.
@@ -522,14 +526,15 @@ Use case ends.
     - **2a1.** **System** informs the user the command is invalid and shows the correct command format.
       Use case ends.
 
-
 #### UC15 - Find Person
 
-**Goal:** To allow users to search for persons in the address book by any combination of fields (name, phone, email, address, and tags).
+**Goal:** To allow users to search for persons in the address book by any combination of fields (name, phone, email,
+address, and tags).
 
 **Preconditions:** The address book contains one or more persons.
 
-**Postconditions:** If success, the filtered person list in the model contains only persons matching all specified field predicates.
+**Postconditions:** If success, the filtered person list in the model contains only persons matching all specified field
+predicates.
 
 MSS
 
@@ -543,20 +548,19 @@ Use case ends.
 **Extensions**
 
 * **2a. Invalid command format (e.g., unrecognized prefix or extra arguments).**
-  * **2a1.** **System** informs the user the command is invalid and shows the correct command format.
-    Use case ends.
+    * **2a1.** **System** informs the user the command is invalid and shows the correct command format.
+      Use case ends.
 
 * **2b. No field prefixes provided (e.g., find without arguments).**
-  * **2b1.** **System** informs the **User** that at least one field must be provided
-  Use case ends.
+    * **2b1.** **System** informs the **User** that at least one field must be provided
+      Use case ends.
 
 * **3a. Field provided but with empty values (e.g., `n/` or `n/     ` (whitespaces) ).**
-  * **3a1.** Empty or whitespace-only keywords are ignored by **System** and not taken into consideration when finding.
-  Use case ends.
-
+    * **3a1.** Empty or whitespace-only keywords are ignored by **System** and not taken into consideration when
+      finding.
+      Use case ends.
 
 [comment]: TAGS
-
 
 #### UC22 - Create Tag
 
@@ -581,11 +585,11 @@ Use case ends.
 * **1a. User omits optional attributes.**
     * **1a1.** **System** applies defaults.
       Use case resumes at step 2.
-  
+
 * **2a. Command format invalid or required Name is missing.**
     * **2a1.** **System** informs the user of the correct command format.
       Use case ends.
-  
+
 * **\[TO BE IMPLEMENTED\] 3a. A tag with the same name already exists.**
     * **3a1.** **System** informs the user about the already existed tag.
       Use case ends.
@@ -612,7 +616,7 @@ Use case ends.
     * **2a1.** **System** shows an empty-state message.
       Use case ends.
 
-#### UC23 - Update Tag (Global)
+#### UC23 - Update Tag
 
 **Goal:** update an existing tag’s attributes
 
@@ -646,7 +650,7 @@ Use case ends.
 
       Use case ends.
 
-#### UC24 - Delete Tag (Global)
+#### UC24 - Delete Tag
 
 **Goal:** delete an existing tag group
 
@@ -961,7 +965,8 @@ Use case ends.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Connection**: Refers to someone who you want to keep in contact, such as friends, colleagues or people you met from a networking event.
+* **Connection**: Refers to someone who you want to keep in contact, such as friends, colleagues or people you met from
+  a networking event.
 * **Relationship**: Refers to a connection between two persons in the contacts list. From one person you can see all the
   other people in the contact that they are connected to.
 
@@ -981,7 +986,7 @@ testers are expected to do more *exploratory* testing.
 1. **Initial launch**
 
     1. Download the Java Archive file and copy it into an empty folder.
-    2. Double-click the Java Archive file.
+    2. Double-click the Java Archive file. \
        **Expected:** The application shows the Graphical User Interface with a set of sample contacts. The window size
        may not be optimal.
 
@@ -1010,9 +1015,9 @@ testers are expected to do more *exploratory* testing.
 5. **Launch with a missing data file**
 
     1. Ensure there is **no** data file in the expected location (delete or rename it temporarily).
-    2. Launch the application.
-       **Expected:** The application starts with an empty contact list (or sample data, depending on your product
-       decision). A new data file is created at the expected location upon exit.
+    2. Launch the application. \
+       **Expected:** The application starts with sample data.
+       A new data file is created at the expected location upon exit.
 
 6. **Launch with a corrupted data file**
 
@@ -1050,14 +1055,17 @@ testers are expected to do more *exploratory* testing.
 
 ### Viewing help : `help`
 
-1. **Test case:** `help`
+1. **Test case (normal usage):** \
+   `help` \
    **Expected:** A help window or panel appears describing how to access the full help page. Status message indicates
    help is shown.
 
-2. **Test case:** `help 123`
+2. **Test case (extra parameters):** \
+   `help 123` \
    **Expected:** Same as above. Extraneous parameters are ignored.
 
-3. **Other test cases to try:** `help     ` (extra spaces), `   help` (leading spaces)
+3. **Other test cases to try:** \
+   `help     ` (trailing spaces)  \
    **Expected:** Same as above.
 
 ---
@@ -1066,44 +1074,49 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure the application is launched. You may start from a clean state using `clear`.
 
-2. **Test case:**
-   `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
+2. **Test case (normal usage):** \
+   `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` \
    **Expected:** New person card appears at the end of the list. Status message shows that the person was added with the
    supplied details. Data is saved to disk automatically.
 
-3. **Test case (with multiple tags and note):**
-   `add n/Betsy Crowe p/12345678 e/betsycrowe@example.com a/Newgate Prison t/1 t/2 r/She owed me lunch`
+3. **Test case (with multiple tags and note):** \
+   Ensure that tags with identifiers 1 and 2 already exist before doing this test. \
+   `add n/Betsy Crowe p/12345678 e/betsycrowe@example.com a/Newgate Prison t/1 t/2 r/She owed me lunch` \
    **Expected:** Person is added with tag identifiers 1 and 2, and the given note. Status message confirms addition.
 
-4. **Test case (name already exist):**
-   `add n/Minh p/12345678 e/minh@gmail.com a/Minh street`
-   **Expected:** No change. Error message indicates that the addition will result in duplicate contact. Case-sensitive, so
-   John and john are different names.
+4. **Test case (name already exist):** \
+   Ensure that a person named Minh already exists before doing this test. \
+   `add n/Minh p/12345678 e/minh@gmail.com a/Minh street` \
+   **Expected:** No change. Error message indicates that the addition will result in duplicate person. Case-sensitive,
+   so John and john are different names.
 
-5. **Test case (missing required field):**
-   `add p/98765432 e/jane@example.com a/Somewhere`
-   **Expected:** No person is added. Error message indicates that `n/NAME` is required and shows correct usage.
+5. **Test case (missing required field):** \
+   `add p/98765432 e/jane@example.com a/Somewhere` \
+   **Expected:** No person is added. Error message indicates that command format is invalid and shows correct usage.
 
-6. **Other test cases to try:** invalid email (`e/notanemail`), invalid phone (non-digits), non-existent tags 
-   (Invalid Tag ID), extremely long address, duplicate person details (if duplicate detection is implemented later).
-   **Expected:** Appropriate validation errors or acceptance per your product decision.
+6. **Other test cases to try:** \
+   Invalid email (`e/notanemail`), invalid phone (non-digits), non-existent tags
+   (Invalid Tag ID), extremely long address, ... \
+   **Expected:** Error message indicates that validation for that specific field failed and shows correct usage.
 
 ---
 
 ### Listing all persons : `list`
 
-1. **Test case:** `list`
+1. **Test case (normal usage):** \
+   `list` \
    **Expected:** Full person list is shown. Indices refresh to match the currently displayed list.
-   Simple relationship list which shows personID and name of related persons of each person in the list is also shown. 
+   Simple relationship list which shows personID and name of related persons of each person in the list is also shown.
 
-2. **Test case after a `find` result:**
-   Run `find n/John` then `list`.
+2. **Test case (after a `find` result):** \
+   Run `find n/John` then `list`. \
    **Expected:** List switches from the filtered results back to all persons.
 
-3. **Test case when there is no relationship for a particular person:**
+3. **Test case (there is no relationship for a particular person):** \
    **Expected:** Shows an empty relationship message for that person in the list.
 
-4. **Other test cases to try:** `list 123` (extraneous parameters).
+4. **Other test cases to try:** \
+   `list 123` (extraneous parameters). \
    **Expected:** Same as `list`. Extraneous parameters are ignored.
 
 ---
@@ -1112,69 +1125,84 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure there are at least two persons in the current displayed list. Use `add` if necessary.
 
-2. **Test case (edit multiple fields):**
-   `edit 1 p/91234567 e/johndoe@example.com`
+2. **Test case (edit multiple fields):** \
+   `edit 1 p/91234567 e/johndoe@example.com` \
    **Expected:** The person with ID 1 will have phone and email fields updated. Status message shows the updated fields.
 
-3. **Test case (clear all tags):**
-   `edit 2 t/`
+3. **Test case (clear all tags):** \
+   `edit 2 t/` \
    **Expected:** The person with ID 2 will have tags removed. Status message confirms tags are cleared.
 
-4. **Test case (changes name but new name already exist):**
-   `edit 2 n/Minh`
+4. **Test case (changes name but new name already exist):** \
+   `edit 2 n/Minh` \
    **Expected:** No change. Error message indicates that the edit will result in duplicate contact.
 
-5. **Test case (no updatable fields provided):**
-   `edit 1`
+5. **Test case (no updatable fields provided):** \
+   `edit 1` \
    **Expected:** No change. Error message states that at least one editable field must be provided.
 
-6. **Other test cases to try:** ID out of range (`edit 999 ...`), invalid email or phone formats, empty names,
-   editing a person while viewing a filtered list (indices refer to the filtered list).
+6. **Other test cases to try:** \
+   ID out of range (`edit 999 ...`), invalid email or phone formats, empty names, ... \
    **Expected:** Proper error handling and correct index interpretation against the currently displayed list.
+
+---
+
+### Deleting a person : `delete`
+
+1. **Prerequisite:** Ensure the target person exists and note their identifier using `list`.
+
+2. **Test case (normal usage):** \
+   `delete 2` \
+   **Expected:** Person with identifier 2 is removed from the persons list. Status message confirms deletion.
+
+3. **Test case (invalid identifier):** \
+   `delete 999` \
+   **Expected:** No person is deleted. Error message indicates the identifier is invalid.
+
+4. **Test case (person with relationships)** \
+   Ensure that the person that is being deleted has some relationships with other people. \
+   `delete 1` \
+   **Expected:** Person with identifier 2 is removed. All relationships containing that person as
+   one of the participants are also deleted.
+
+5. **Other test cases to try:** \
+   `delete` (missing identifier), deleting a person that is currently shown in the user
+   interface, ... \
+   **Expected:** Appropriate error handling or success confirmation.
 
 ---
 
 ### Locating persons by name : `find`
 
 1. **Prerequisite:** Ensure the list has:
+
 * multiple persons with varied names, phone numbers, emails, addresses, and tags.
 * multiple tags with varied names
 
-2. **Test case (single keyword):**
-   e.g. `find n/John`
-   **Expected:** Shows persons whose names contain the substring “John” (case-insensitive). Indices refer to this filtered
+2. **Test case (single keyword):** \
+   `find n/John` \
+   **Expected:** Shows persons whose names contain the substring “John” (case-insensitive). Indices refer to this
+   filtered
    list.
 
-3. **Test case (multiple name keywords):**
-   e.g. `find n/alex n/dav`
-   **Expected:** Shows persons whose names contain “alex” OR “dav” (case-insensitive, substring match). Potential names matched: "Alex Ho", "Alexander", "David", "Daven Li", etc.
+3. **Test case (multiple name keywords):** \
+   `find n/alex n/dav` \
+   **Expected:** Shows persons whose names contain “alex” OR “dav” (case-insensitive, substring match). Potential names
+   matched: "Alex Ho", "Alexander", "David", "Daven Li", etc.
 
-4. **Test case (address no match):**
-   e.g. `find a/Zyrtxwv`
+4. **Test case (address no match):** \
+   `find a/Zyrtxwv` \
    **Expected:** Empty list with a message indicating zero persons found.
 
-5. **Test case (multiple fields):**
-    e.g. `find n/jo e/@gmail a/clementi`
-    **Expected:** List of people whose name contains the substring "jo" (e.g. John, Joelle,...), email containing "@gmail", and addressing containg "clementi"
+5. **Test case (multiple fields):** \
+   `find n/jo e/@gmail a/clementi` \
+   **Expected:** List of people whose name contains the substring "jo" (e.g. John, Joelle,...), email containing "
+   @gmail", and addressing containg "clementi"
 
-6. **Test case (repeating fields):**
-    e.g. `find p/1234 a/clem a/bishan t/5 t/2`
-    **Expected:** List of people whose phone number contains "1234" in it, address contains EITHER "clem" OR "bishan" or both, and with EITHER tags 5, 2, or both. 
-
----
-
-### Clearing all person entries : `clear`
-
-1. **Test case:** `clear`
-   **Expected:** All persons are removed. Status message confirms that the address book is cleared. The data file on
-   disk reflects an empty person list after the automatic save.
-
-2. **Test case with extraneous parameters:** `clear now`
-   **Expected:** Same as `clear`. Extraneous parameters are ignored.
-
-3. **Other test cases to try:** run `clear` when the list is already empty.
-   **Expected:** No error; confirmation message indicates there are no persons (or that clearing was successful with no
-   entries).
+6. **Test case (repeating fields):** \
+   `find p/1234 a/clem a/bishan t/5 t/2` \
+   **Expected:** List of people whose phone number contains "1234" in it, address contains EITHER "clem" OR "bishan" or
+   both, and with EITHER tags 5, 2, or both.
 
 ---
 
@@ -1182,41 +1210,43 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure the application is launched. You may use `listtag` first to see existing tags.
 
-2. **Test case (name only):**
-   `addtag n/JC`
+2. **Test case (name only):** \
+   `addtag n/JC` \
    **Expected:** New tag is created with default description “No Description” and default gray color. Status message
    shows the new tag’s unique identifier and details.
 
-3. **Test case (name with description and color):**
-   `addtag n/coworkers d/Office teammates c/23f1cd`
+3. **Test case (name with description and color):** \
+   `addtag n/coworkers d/Office teammates c/23f1cd` \
    **Expected:** New tag is created with the given description and the color with hexadecimal digits `23f1cd`. Status
    message confirms.
 
-4. **Test case (name already exist):**
-   `addtag n/friends`
+4. **Test case (name already exist):** \
+   `addtag n/friends` \
    **Expected:** No change. Error message indicates that the addition will result in duplicate tag.
 
-5. **Test case (invalid color format):**
-   `addtag n/friends c/#123456` or `addtag n/friends c/12345G`
+5. **Test case (invalid color format):** \
+   `addtag n/friends c/#123456` or `addtag n/friends c/12345G` \
    **Expected:** No tag is created. Error message states that the color must be six hexadecimal digits without the hash
    symbol.
 
-6. **Other test cases to try:** duplicate tag name (if disallowed, expect a duplicate-name error), very long names or
-   descriptions.
-   **Expected:** Appropriate validation or acceptance per product decision.
+6. **Other test cases to try:** \
+   Duplicate tag name (expect a duplicate-name error), very long names or descriptions. \
+   **Expected:** Appropriate validation or error handling.
 
 ---
 
 ### Listing all tags : `listtag`
 
-1. **Test case:** `listtag`
+1. **Test case (normal usage):** \
+   `listtag` \
    **Expected:** Displays all tags with each tag’s unique identifier and name. Order is not guaranteed.
 
-2. **Test case when there are no tags:**
-   If tags have been cleared or none exist, run `listtag`.
+2. **Test case (when there are no tags):** \
+   `listtag`. \
    **Expected:** Shows an empty-state message.
 
-3. **Other test cases to try:** `listtag extra` (extraneous parameters).
+3. **Other test cases to try:** \
+   `listtag extra` (extraneous parameters), ... \
    **Expected:** Same as `listtag`. Extraneous parameters are ignored.
 
 ---
@@ -1226,26 +1256,22 @@ testers are expected to do more *exploratory* testing.
 1. **Prerequisite:** Ensure at least one tag exists (create with `addtag` and confirm with `listtag` to obtain the tag
    identifier).
 
-2. **Test case (change description and color):**
-   `edittag 1 d/my extended family c/099fca`
+2. **Test case (change description and color):** \
+   `edittag 1 d/my extended family c/099fca` \
    **Expected:** Tag with identifier 1 is updated. Status message shows new description and color.
 
-3. **Test case (rename and reset description and color to defaults):**
-   `edittag 2 n/Prof d/ c/`
-   **Expected:** Tag with identifier 2 is renamed to “Prof”; description and color are reset to their default values.
-   Status message confirms.
-
-4. **Test case (changes name but new name already exist):**
-   `edittag 2 n/friends`
+3. **Test case (changes name but new name already exist):** \
+   `edittag 2 n/friends` \
    **Expected:** No change. Error message indicates that the edit will result in duplicate tag.
 
-5. **Test case (missing identifier):**
-   `edittag n/NewName`
+4. **Test case (missing identifier):** \
+   `edittag n/NewName` \
    **Expected:** No change. Error message indicates that an identifier is required and shows the correct command format.
 
-6. **Other test cases to try:** invalid identifier (`edittag 999 ...`), no updatable fields provided (`edittag 1`),
-   invalid color format.
-   **Expected:** Proper error messages; no changes applied.
+5. **Other test cases to try:** \
+   `edittag 999 ...` (invalid identifier), `edittag 1` (no updatable fields provided),
+   invalid color format, ...
+   **Expected:** Appropriate error handing.
 
 ---
 
@@ -1253,17 +1279,18 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure the target tag exists and note its identifier using `listtag`.
 
-2. **Test case:**
-   `deletetag 2`
+2. **Test case (normal usage):** \
+   `deletetag 2` \
    **Expected:** Tag with identifier 2 is removed from the tag list. Persons that previously referenced this tag now no
    longer show that tag. Status message confirms deletion.
 
-3. **Test case (invalid identifier):**
-   `deletetag 999`
+3. **Test case (invalid identifier):** \
+   `deletetag 999` \
    **Expected:** No tag is deleted. Error message indicates the identifier is invalid.
 
-4. **Other test cases to try:** `deletetag` (missing identifier), deleting a tag that is currently shown in the user
-   interface, deleting tags used by many persons to confirm performance and correctness.
+4. **Other test cases to try:** \
+   `deletetag` (missing identifier), deleting a tag that is currently shown in the user
+   interface, deleting tags used by many people, ... \
    **Expected:** Appropriate error handling or success confirmation.
 
 ---
@@ -1272,39 +1299,42 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure the application is launched. You may use `list` first to see existing contacts.
 
-2. **Test case (both participants and description):**
-   `addrel p1/1 p2/2 d/best friends`
+2. **Test case (both participants and description):** \
+   `addrel p1/1 p2/2 d/best friends` \
    **Expected:** New relationship is created with the given details. Status message confirms.
 
-3. **Test case (set of participants already exist):**
-   `addrel p1/1 p2/2 d/not best friends`
+3. **Test case (set of participants already exist):** \
+   `addrel p1/1 p2/2 d/not best friends` \
    **Expected:** No change. Error message indicates that the addition will result in duplicate relationship.
 
-4. **Test case (invalid participants IDs: non-existant or not a postive integer):**
-   `addrel p1/3955 p2/485349 d/bruh` or `addrel p1/-23 p2/49.3 d/bruh`
+4. **Test case (invalid participants IDs: non-existant or not a postive integer):** \
+   `addrel p1/3955 p2/485349 d/bruh` or `addrel p1/-23 p2/49.3 d/bruh` \
    **Expected:** No relationship is created. Error message states that the identifier is invalid.
 
-5. **Other test cases to try:** duplicate relationship (if disallowed, expect a duplicate-relationship error), very long
-   descriptions.
-   **Expected:** Appropriate validation or acceptance per product decision.
- 
+5. **Other test cases to try:** \
+   Duplicate relationship (expect a duplicate-relationship error), very long descriptions, ... \
+   **Expected:** Appropriate error handling or success confirmation.
+
 ---
 
 ### Listing relationships : `listrel`
 
-1. **Test case:** `listrel p1/1`
-   **Expected:** Displays relationships of the people in the list who are directly related to p1 with 
+1. **Test case:** \
+   `listrel p1/1` \
+   **Expected:** Displays relationships of the people in the list who are directly related to p1 with
    descriptions of relationships. Relationships ordered by the person ID for each person in the current displayed list.
 
-2. **Test case:** `listrel p1/1 p2/3`
+2. **Test case:** \
+   `listrel p1/1 p2/3` \
    **Expected:** Displays a list of relationships in an order from p1 linking to p2. If no link can be made, an empty
    list will be shown.
 
-3. **Test case when there are no relationship for the listed person:**
-   If relationships of the person have been cleared or none exist, run `listrel p1/1`.
+3. **Test case when there are no relationship for the listed person:** \
+   `listrel p1/1`. \
    **Expected:** Shows an empty-state message for the person.
 
-4. **Other test cases to try:** `listrel p1/9999`(Invalid Id), `listrel 1`(Invalid identifier)
+4. **Other test cases to try:** \
+   `listrel p1/9999`(invalid Id), `listrel -2` (invalid identifier), ... \
    **Expected:** Appropriate error handling.
 
 ---
@@ -1314,21 +1344,23 @@ testers are expected to do more *exploratory* testing.
 1. **Prerequisite:** Ensure at least one relationship exists (create with `addrel` and confirm with `listrel`). p1 and
    p2 are valid IDs for the relationship being edited.
 
-2. **Test case (change description):**
-   `editrel p1/1 p2/3 d/my extended family`
+2. **Test case (change description):** \
+   `editrel p1/1 p2/3 d/my extended family`  \
    **Expected:** Relationship with ID 1 and ID 3 is updated. Status message shows new description.
 
-3. **Test case (empty description):**
-   `editrel p1/1 p2/3 d/`
+3. **Test case (empty description):** \
+   `editrel p1/1 p2/3 d/` \
    **Expected:** No change. Error message indicates that the description should not be empty.
 
-4. **Test case (missing fields):**
-   `editrel p1/1 d/NewName`
-   **Expected:** No change. Error message indicates that the command format is invalid and shows the correct command format.
+4. **Test case (missing fields):** \
+   `editrel p1/1 d/NewName` \
+   **Expected:** No change. Error message indicates that the command format is invalid and shows the correct command
+   format.
 
-5. **Other test cases to try:** invalid relationship (`editred p1/999 ...`), no updatable fields provided (`edittag p1/1 p2/3`), invalid
-   participant ID format.
-   **Expected:** Proper error messages; no changes applied.
+5. **Other test cases to try:** \
+   `editred p1/999 ...` (invalid relationship), `edittag p1/1 p2/3` (no updatable fields provided), invalid
+   participant ID format, ... \
+   **Expected:** Appropriate error handling.
 
 ---
 
@@ -1336,32 +1368,53 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure the target relationship exists between p1 and p2.
 
-2. **Test case:**
-   `deleterel p1/1 p2/2`
-   **Expected:** Relationship between p1 and p2 is removed from the relationship list. Status message confirms deletion.
+2. **Test case (normal usage):** \
+   `deleterel p1/1 p2/2` \
+   **Expected:** Relationship between person with ID 1 and person with ID 2 is removed from the relationship list.
+   Status message confirms deletion.
 
-3. **Test case (invalid index):**
-   `deleterel p1/999 p2/1`
+3. **Test case (invalid index):** \
+   `deleterel p1/999 p2/1` \
    **Expected:** No relationship is deleted. Error message indicates the index is invalid.
 
-4. **Other test cases to try:** `deleterel` (missing identifier), deleting a relationship that is currently shown in the
-   user interface to confirm performance and correctness.
+4. **Other test cases to try:** \
+   `deleterel` (without identifier), deleting a relationship that is currently shown on the user interface, ... \
    **Expected:** Appropriate error handling or success confirmation.
 
 ---
 
 ### Exiting the program : `exit`
 
-1. **Test case:** `exit`
+1. **Test case (normal usage):** \
+   `exit` \
    **Expected:** Application closes gracefully. The most recent window size and position are saved. Any pending saves
    are flushed to disk.
 
-2. **Test case with extraneous parameters:** `exit now`
+2. **Test case with extraneous parameters:** \
+   `exit now` \
    **Expected:** Same as `exit`. Extraneous parameters are ignored.
 
-3. **Other test cases to try:** exit immediately after adding or editing to confirm that automatic saving occurs before
-   shutdown.
+3. **Other test cases to try:** \
+   Exit immediately after adding or editing to confirm that automatic saving occurs before shutdown. \
    **Expected:** On next launch, the latest changes are present.
+
+---
+
+### Clearing everything : `clear`
+
+1. **Test case (normal usage):** \
+   `clear` \
+   **Expected:** All people, tags and relationships are removed.
+   Status message confirms that the address book is cleared.
+   The data file on disk reflects an empty person list after the automatic save.
+
+2. **Test case (extraneous parameters):** \
+   `clear now` \
+   **Expected:** Same as `clear`. Extraneous parameters are ignored.
+
+3. **Other test cases to try:** \
+   `clear` when all data is already empty. \
+   **Expected:** No error. Confirmation message indicates that all data is cleared.
 
 ---
 
@@ -1369,19 +1422,19 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Ensure the application is launched with a writable data directory.
 
-2. **Test case (automatic save on mutation):**
-   Run an adding command, for example:
-   `add n/Save Test p/80000000 e/savetest@example.com a/Somewhere`
-   Then close and re-open the application.
+2. **Test case (automatic save on mutation):** \
+   Run an adding command, for example: \
+   `add n/Save Test p/80000000 e/savetest@example.com a/Somewhere` \
+   Then close and re-open the application. \
    **Expected:** The newly added person persists across launches; the data file on disk has been updated.
 
-3. **Test case (non-mutating commands do not trigger changes):**
-   Run `list`, `help`, and `find Zzz` and then exit.
+3. **Test case (non-mutating commands do not trigger changes):** \
+   Run `list` or `help` and then exit. \
    **Expected:** No unintended changes in the data file contents.
 
-4. **Other test cases to try:** perform multiple edits in succession, then force-quit versus graceful exit to compare
-   persistence behavior as per your product’s save policy.
-   **Expected:** Data persists according to the documented policy.
+4. **Other test cases to try:** \
+   Perform multiple edits or deletes commands in succession, then force-quit instead of executing `exit`. \
+   **Expected:** Changes persist.
 
 ---
 
@@ -1389,20 +1442,20 @@ testers are expected to do more *exploratory* testing.
 
 1. **Prerequisite:** Locate the data file at `[JAR file location]/data/addressbook.json`. Make a backup copy.
 
-2. **Test case (manual, valid edit):**
+2. **Test case (manual, valid edit):** \
    Open the file in a text editor and change a non-critical field (for example, update a person’s address to a new
-   string without breaking the JavaScript Object Notation structure). Save and relaunch the application.
+   string without breaking the JavaScript Object Notation structure). Save and relaunch the application. \
    **Expected:** The changed value appears in the application. No errors shown.
 
-3. **Test case (manual, invalid edit):**
+3. **Test case (manual, invalid edit):** \
    Corrupt the JavaScript Object Notation (for example, remove a comma or a closing brace). Save and relaunch the
-   application.
-   **Expected:** The application does not crash. It shows an error indicating the data file is invalid and falls back to
-   a safe state (empty data or sample data per your product decision). Subsequent valid operations will recreate a valid
-   file.
+   application. \
+   **Expected:** The application does not crash. It shows an error in the terminal, indicating the data file
+   is invalid and falls back to an empty data state. Subsequent valid operations will recreate a valid file.
 
-4. **Other test cases to try:** set the data file to read-only and attempt a mutating command; edit tag objects directly
-   and confirm that identifiers and references remain consistent.
+4. **Other test cases to try:** \
+   Set the data file to read-only and attempt a mutating command;
+   edit tag objects directly and confirm that identifiers and references remain consistent. \
    **Expected:** Appropriate warnings or non-persistence when writes are blocked; consistent behavior for tag
    references.
 
@@ -1410,10 +1463,31 @@ testers are expected to do more *exploratory* testing.
 
 **Team size: 5**
 
-**1. Prevent UI from breaking:** While the current UI supports wrapping for all fields and attributes — including person, relationship, and tag names — it can still break in an extreme case where a single tag name is so long that it exceeds the total width limit. We plan to enhance the UI to handle even such extreme tag names by allowing them to wrap properly, preventing any UI breakage.
+**1. Prevent UI from breaking:** While the current UI supports wrapping for all fields and attributes — including
+person, relationship, and tags — it can still break in an extreme case. We plan to enhance the UI to handle even such
+extreme case by allowing UI to handle and adjust, preventing any UI breakage.
 
-**2. Change arguments that requires ID into name** Since NetWise requires users to input the unique IDs of tags and relationships, which can be inconvenient, we plan to enhance the system by allowing users to use names instead of IDs for commands that require id identification. This change aims to improve user experience by making it easier to reference entries without needing to recall specific IDs.
+*Example extreme cases*: 1. extremely long person name causing relationship entry in person list view to break. 2. a
+single tag name is so long that it exceeds the total width limit and breaks the layout. 3. a person having an extremely
+long list of relationships may cause the UI layout to degrade.
 
-**3. Support name input for colors also:** Currently, NetWise requires users to input colors in hexadecimal format when creating or editing tags, which may not be user-friendly for everyone. We plan to enhance the system by allowing users to input common color names (like "red", "blue", "green") in addition to hexadecimal codes. This change aims to make it easier for users to select colors without needing to know or look up hexadecimal values.
+**2. Change arguments that requires ID into name** Since NetWise requires users to input the unique IDs of tags and
+relationships, which can be inconvenient, we plan to enhance the system by allowing users to use names instead of IDs
+for commands that require id identification. This change aims to improve user experience by making it easier to
+reference entries without needing to recall specific IDs.
 
-**4. Support when editing a tag, if empty description is input, the UI change to 'No description':** When users edit a tag and provide an empty description, the system currently leaves the description blank. We plan to enhance this behavior so that if an empty description is input during tag editing, the UI will automatically update the description to display 'No Description'. This change aims to provide clearer feedback to users about the state of the tag's description.
+**3. Support name input for colors also:** Currently, NetWise requires users to input colors in hexadecimal format when
+creating or editing tags, which may not be user-friendly for everyone. We plan to enhance the system by allowing users
+to input common color names (like "red", "blue", "green") in addition to hexadecimal codes. This change aims to make it
+easier for users to select colors without needing to know or look up hexadecimal values.
+
+**4. Support when editing a tag, if empty description is input, the UI change to 'No description':** When users edit a
+tag and provide an empty description, the system currently leaves the description blank. We plan to enhance this
+behavior so that if an empty description is input during tag editing, the UI will automatically update the description
+to display 'No Description'. This change aims to provide clearer feedback to users about the state of the tag's
+description.
+
+**5. Support IDs to be reordered after deletions:** Currently, when a person or tag is deleted, the unique IDs of
+remaining entries remain unchanged, which can lead to gaps in the ID sequence. We plan to enhance the system to
+automatically reorder IDs after deletions, ensuring that IDs remain sequential without gaps. This change aims to improve
+the organization and usability of the system by maintaining a continuous sequence of IDs.

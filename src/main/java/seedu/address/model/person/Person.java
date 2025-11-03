@@ -61,6 +61,17 @@ public class Person {
         this(toCopy.name, toCopy.phone, toCopy.email, toCopy.address, toCopy.getTagIds(), toCopy.note);
     }
 
+    public static boolean hasNextId() {
+        return idManager.hasNextId();
+    }
+
+    /**
+     * Resets the internal ID manager so that newly created persons start from ID 1 again.
+     */
+    public static void resetIdCounter() {
+        idManager.reset();
+    }
+
     public Id getId() {
         return id;
     }

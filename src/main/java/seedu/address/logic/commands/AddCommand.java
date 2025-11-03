@@ -44,6 +44,8 @@ public class AddCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New person added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book";
     public static final String MESSAGE_TAG_NOT_FOUND = "No tag(s) found with the specified ID(s).";
+    public static final String MESSAGE_NO_MORE_ID = "Congratulations! You have over 2 billion connections "
+            + "and no more unique ID can be created for adding a new connection.";
 
     // Person object to perform checks on
     private final Person toAddDummy;
@@ -68,6 +70,10 @@ public class AddCommand extends Command {
         Set<Id> personTagIds = toAddDummy.getTagIds();
         if (!model.hasTagIds(personTagIds)) {
             throw new CommandException(MESSAGE_TAG_NOT_FOUND);
+        }
+
+        if (!Person.hasNextId()) {
+            throw new CommandException(MESSAGE_NO_MORE_ID);
         }
 
         // All checks pass, create the actual Person object with a fresh ID

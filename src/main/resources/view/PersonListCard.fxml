@@ -34,12 +34,12 @@
             <Label fx:id="note" styleClass="cell_small_label" text="\$note" wrapText="true" maxWidth="260"/>
         </VBox>
     </GridPane>
-    <VBox fx:id="relationshipSection" alignment="TOP_LEFT" spacing="6" prefWidth="220">
+    <VBox fx:id="relationshipSection" alignment="TOP_LEFT" spacing="6" prefWidth="330">
         <padding>
             <Insets top="10" right="15" bottom="10" left="0"/>
         </padding>
         <Label fx:id="relationshipHeading" styleClass="cell_small_label, relationship_label" text="Relationships"/>
-        <FlowPane fx:id="relationshipItems" hgap="12" vgap="12" prefWrapLength="220"/>
+        <FlowPane fx:id="relationshipItems" hgap="12" vgap="12" prefWrapLength="330"/>
         <Label fx:id="relationshipEmptyText" styleClass="cell_small_label, muted_label"
                text="No relationships recorded"/>
     </VBox>

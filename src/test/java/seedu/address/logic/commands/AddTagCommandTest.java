@@ -11,6 +11,7 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddTagCommandParser;
 import seedu.address.model.AddressBook;
@@ -41,7 +42,7 @@ public class AddTagCommandTest {
         CommandResult commandResult = new AddTagCommand(validTag).execute(modelStub);
         Tag expectedTag = new TagBuilder(validTag).withId(expectedIdValue).build();
 
-        assertEquals(String.format(AddTagCommand.MESSAGE_SUCCESS, expectedTag),
+        assertEquals(String.format(AddTagCommand.MESSAGE_SUCCESS, Messages.format(expectedTag)),
                 commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(expectedTag), modelStub.tagsAdded);
     }

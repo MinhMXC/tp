@@ -19,8 +19,12 @@ public class IdManager {
 
     /**
      * Create a new {@code Id}.
+     * Returns null if no more unique Id can be created.
      */
     public Id getNewId() {
+        if (!hasNextId()) {
+            return null;
+        }
         return new Id(++largest);
     }
 
@@ -29,5 +33,19 @@ public class IdManager {
      */
     public void setLargest(Id id) {
         largest = Math.max(largest, id.value);
+    }
+
+    /**
+     * Returns true if the maximum integer limit has been reached and no more Id can be created. False otherwise.
+     */
+    public boolean hasNextId() {
+        return !(largest == Integer.MAX_VALUE);
+    }
+
+    /**
+     * Resets the largest tracked Id value so that the next generated Id starts from 1 again.
+     */
+    public void reset() {
+        largest = 0;
     }
 }
