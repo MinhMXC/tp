@@ -34,7 +34,7 @@
             </ImageView>
         </StackPane>
     </VBox>
-    <VBox alignment="BOTTOM_CENTER" spacing="4" prefWidth="600" minWidth="600" maxWidth="800">
+    <VBox alignment="BOTTOM_CENTER" spacing="4" maxWidth="470">
         <padding>
             <Insets top="6" right="15" bottom="6" left="0"/>
         </padding>
