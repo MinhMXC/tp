@@ -169,12 +169,6 @@ The `Model` component,
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they
   should make sense on their own without depending on other components)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
-
-<img src="images/BetterModelClassDiagram.png" width="450" />
-
-</div>
-
 The `Person` component,
 
 * stores all the fields related to a person.
@@ -188,7 +182,7 @@ The `Person` component,
 
 The `Tag` component,
 
-* Stores the related data for each Tag, such as TagColor
+* Stores the related data for each Tag, such as Color
 * Each `Person` points to it via its ID.
 
 <div>
@@ -419,12 +413,12 @@ Use case ends.
 
 **Extensions**
 
-- **2a. System detects an error in the entered command (i.e. missing/wrong prefix, empty fields, etc.).**
-    - 2a1. **System** informs the user of the correct way to add the necessary fields.
+- **3a. System detects an error in the entered command (i.e. missing/wrong prefix, empty fields, etc.).**
+    - 3a1. **System** informs the user of the correct way to add the necessary fields.
       Use case ends.
 
-* **\[TO BE IMPLEMENTED\] 3a. A connection with the same name already exists.**
-    * **3a1.** **System** informs the user about the already existed connection.
+* **3b. A connection with the same name already exists.**
+    * **3b1.** **System** informs the user about the already existed connection.
 
 #### UC11 - List Connections
 
@@ -438,12 +432,12 @@ Use case ends.
 
 1. **User** issues the command to list connections.
 2. **System** reads the connection storage/data.
-3. If connections exist, **System** displays each connection along with their index and corresponding information.
+3. If connections exist, **System** displays each connection along with their ID and corresponding information.
 4. If no connections exist, **System** informs the user that the connection list is empty.
 
 **Extensions**
 
-- **4a. System detects an error while retrieving connections.**
+- **\[proposed\] 4a. System detects an error while retrieving connections.**
     - **4a1.** **System** displays an error message and offers options: retry or cancel.
     - **4a2.** **User** chooses to retry.
     - **4a3.** **System** attempts to retrieve connections again.
@@ -471,16 +465,16 @@ Use case ends.
 
 **Extensions**
 
-- **2a. System detects an error in the entered command.**
-    - **2a1.** **System** informs the user of the correct way to edit a connection.
+- **3a. System detects an error in the entered command.**
+    - **3a1.** **System** informs the user of the correct way to edit a connection.
       Use case ends.
 
-- **2b. No updatable fields are provided (only index).**
-    - **2b1.** **System** informs the user that no updatable fields were provided.
+- **3b. No updatable fields are provided (only ID).**
+    - **3b1.** **System** informs the user that no updatable fields were provided.
       Use case ends.
 
-- **2c. The provided index does not correspond to any existing connection.**
-    - **2c1.** **System** informs the user about the error.
+- **3c. The provided ID does not correspond to any existing connection.**
+    - **3c1.** **System** informs the user about the error.
       Use case ends.
 
 #### UC13 - Delete connection
@@ -495,38 +489,23 @@ MSS
 
 1. **User** selects the text input.
 2. **User** inputs the command and index to delete a contact.
-3. **System** validates the command and provided index.
-4. **System** looks up the person by the provided index.
+3. **System** validates the command and provided ID.
+4. **System** looks up the person by the provided ID.
 5. **System** deletes the person from storage and returns a success message.
 
 Use case ends.
 
 **Extensions**
 
-- **2a. User enters an incorrect or unsupported command format.**
-    - **2a1.** **System** informs the user the command is invalid and shows the correct command format.
+- **3a. User enters an incorrect or unsupported command format.**
+    - **3a1.** **System** informs the user the command is invalid and shows the correct command format.
       Use case ends.
 
-- **3a. The provided ID does not correspond to any existing contact.**
-    - **3a1.** **System** informs the user about the error.
+- **3b. The provided ID does not correspond to any existing contact.**
+    - **3b1.** **System** informs the user about the error.
       Use case ends.
 
-#### UC14 - Clear Connection List
-
-**Goal:** Clear the person list.
-
-**Preconditions:** None. (You can clear an empty list)
-
-**Postconditions:** If success, there should be no person left in the list.
-
-1. **User** selects the text input.
-2. **System** deletes all the people in the list and returns a success message
-
-- **2a. User enters an incorrect or unsupported command format.**
-    - **2a1.** **System** informs the user the command is invalid and shows the correct command format.
-      Use case ends.
-
-#### UC15 - Find Person
+#### UC14 - Find Connection
 
 **Goal:** To allow users to search for persons in the address book by any combination of fields (name, phone, email,
 address, and tags).
@@ -562,7 +541,7 @@ Use case ends.
 
 [comment]: TAGS
 
-#### UC22 - Create Tag
+#### UC20 - Create Tag
 
 **Goal:** create a new tag group
 
@@ -590,8 +569,8 @@ Use case ends.
     * **2a1.** **System** informs the user of the correct command format.
       Use case ends.
 
-* **\[TO BE IMPLEMENTED\] 3a. A tag with the same name already exists.**
-    * **3a1.** **System** informs the user about the already existed tag.
+* **3a. A tag with the same name already exists.**
+    * **3a1.** **System** informs the user about the already existing tag.
       Use case ends.
 
 #### UC21 - List Tags
@@ -616,7 +595,7 @@ Use case ends.
     * **2a1.** **System** shows an empty-state message.
       Use case ends.
 
-#### UC23 - Update Tag
+#### UC22 - Update Tag
 
 **Goal:** update an existing tag’s attributes
 
@@ -650,13 +629,13 @@ Use case ends.
 
       Use case ends.
 
-#### UC24 - Delete Tag
+#### UC23 - Delete Tag
 
 **Goal:** delete an existing tag group
 
 **Preconditions:** target tag ID exists (unless error path)
 
-**Postconditions:** the tag is removed; associated contacts retain their data
+**Postconditions:** the tag is removed; associated persons retain their data
 
 **MSS**
 
@@ -686,21 +665,40 @@ Use case ends.
 
 [comment]: RELATIONSHIP
 
-#### \[PROPOSED\] UC30 - Search Through Relationships of the Contacts
+#### UC30 - Search Through Relationships of a Connection
 
 **MSS**
 
-1. **User** inputs the contact whose relationships are to be searched.
-2. **System** outputs contacts related to the search contact.
+1. **User** inputs the person whose relationships are to be searched.
+2. **System** outputs people directly-related to the connection.
 
 **Extensions**
 
-* **1a. System detects that the contact does not exist.**
-    * **1a1.** **System** informs the user that the contact does not exist.
+* **1a. System detects that the person does not exist.**
+    * **1a1.** **System** informs the user that the person does not exist.
 
       Use case ends.
 
-#### UC31 - List Relationships
+#### UC31 - Trace Through Relationships of Two Connections
+
+**MSS**
+
+1. **User** inputs the two persons whose relationships are to be traced.
+2. **System** outputs the chain of relationships linking the two connections.
+
+**Extensions**
+
+* **1a. System detects that the person does not exist.**
+    * **1a1.** **System** informs the user that the person does not exist.
+
+      Use case ends.
+
+* **2a. System detects that no such chain exists.**
+    * **2a1.** **System** shows an empty chain of relationships.
+
+      Use case ends.
+
+#### \[PROPOSED\] UC32 - List Relationships
 
 **Goal:** view all relationships.
 
@@ -723,19 +721,19 @@ Use case ends.
 
       Use case ends.
 
-#### UC32 - Add Relationships Between Contacts
+#### UC33 - Add Relationships between Connections
 
 **MSS**
 
-1. **User** inputs the contacts for which to add a relationship.
+1. **User** inputs the persons for which to add a relationship.
 2. **System** informs that the relationship has been added.
 
 Use case ends.
 
 **Extensions**
 
-* **1a. System detects that one or more contacts does not exist.**
-    * **1a1.** **System** informs the user that the contact does not exist.
+* **1a. System detects that one or more persons does not exist.**
+    * **1a1.** **System** informs the user that the person does not exist.
 
       Use case ends.
 
@@ -744,20 +742,20 @@ Use case ends.
 
       Use case ends.
 
-#### UC33 - Update Relationship
+#### UC34 - Update Relationship between Connections
 
 **Goal:** update an existing relationship’s attributes
 
-**Preconditions:** target relationship INDEX exists (unless error path)
+**Preconditions:** target relationship exists (unless error path)
 
 **Postconditions:** the relationship is updated as requested
 
 **MSS**
 
-1. **User** enters the command to edit a relationship, providing the relationship index and attributes to
-   change (First, Second Participation and Description).
-2. **System** validates command format and presence of the relationship index.
-3. **System** looks up the relationship by its index.
+1. **User** enters the command to edit a relationship, providing the relationship and attributes to
+   change (First, Second Participants and Description).
+2. **System** validates command format and presence of the relationship.
+3. **System** looks up the relationship by the IDs of the first and second participants.
 4. **System** applies the provided changes (only attributes present are updated).
 5. **System** returns the updated relationship's information.
 
@@ -765,36 +763,36 @@ Use case ends.
 
 **Extensions**
 
-* **2a. Command format invalid (e.g., wrong attributes, missing index).**
+* **2a. Command format invalid (e.g., wrong attributes, missing ID(s)).**
     * **2a1.** **System** returns the correct command format.
 
       Use case ends.
-* **3a. Index does not exist.**
-    * **3a1.** **System** informs the user about the invalid index.
+* **3a. ID(s) do not exist.**
+    * **3a1.** **System** informs the user about the invalid ID(s).
 
       Use case ends.
-* **4a. No updatable fields are provided (only index).**
+* **4a. No updatable fields are provided (only IDs).**
     * **4a1.** **System** informs the user that no updatable fields were provided.
 
       Use case ends.
 
-#### UC34 - Delete Relationships Between Contacts
+#### UC35 - Delete Relationships between Connections
 
 **MSS**
 
-1. **User** inputs the command to delete the relationship between two contacts.
+1. **User** inputs the command to delete the relationship between two persons.
 2. **System** informs that the relationship has been deleted.
 
 Use case ends.
 
 **Extensions**
 
-* **1a. System detects that one or more contacts does not exist.**
-    * **1a1.** **System** informs the user that the contact does not exist.
+* **1a. System detects that one or more persons does not exist.**
+    * **1a1.** **System** informs the user that the person does not exist.
 
       Use case ends.
 
-* **1b. System detects that there is no relationship between those two contacts.**
+* **1b. System detects that there is no relationship between those two persons.**
     * **1b1.** **System** informs the user that the relationship does not exist.
 
       Use case ends.
@@ -802,6 +800,21 @@ Use case ends.
 * **1c. System detects that the command format is wrong.**
     * **1c1.** **System** informs the user about the correct format for the use case.
 
+      Use case ends.
+
+#### UC99 - Clear Everything
+
+**Goal:** Clear the connections, tags and relationship list.
+
+**Preconditions:** None. (You can clear an empty list)
+
+**Postconditions:** If success, there should be no connections, tags or relationships left in the list.
+
+1. **User** selects the text input.
+2. **System** deletes all everything and returns a success message
+
+- **2a. User enters an incorrect or unsupported command format.**
+    - **2a1.** **System** informs the user the command is invalid and shows the correct command format.
       Use case ends.
 
 [comment]: REMINDER
@@ -976,9 +989,9 @@ Use case ends.
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
-
+<div markdown="span" class="alert alert-info">
+    :information_source: **Note:** These instructions only provide a starting point for testers to work on;
+    testers are expected to do more *exploratory* testing.
 </div>
 
 ### Launch and shutdown
@@ -987,20 +1000,20 @@ testers are expected to do more *exploratory* testing.
 
     1. Download the Java Archive file and copy it into an empty folder.
     2. Double-click the Java Archive file. \
-       **Expected:** The application shows the Graphical User Interface with a set of sample contacts. The window size
-       may not be optimal.
+       **Expected:** The application shows the Graphical User Interface with a set of sample contacts,
+       tags and relationships. The window size may not be optimal.
 
 2. **Saving window preferences**
 
     1. Resize the window to an optimal size. Move the window to a different location. Close the window.
-    2. Re-launch the application by double-clicking the Java Archive file.
+    2. Re-launch the application by double-clicking the Java Archive file. \
        **Expected:** The most recent window size and location are retained.
 
 3. **Launch from command line (alternative to double-click)**
 
     1. Open a terminal (Command Prompt on Windows, Terminal on macOS or Linux).
     2. Navigate to the folder containing the Java Archive file.
-    3. Run `java -jar <YourAppName>.jar`.
+    3. Run `java -jar NetWise.jar`. \
        **Expected:** The application launches and shows the same Graphical User Interface as a normal double-click
        launch.
 
@@ -1008,47 +1021,38 @@ testers are expected to do more *exploratory* testing.
 
     1. Place a valid data file (for example, `addressbook.json`) with a few known contacts in the same folder as the
        Java Archive file (or at the documented default data location, if different).
-    2. Launch the application.
-       **Expected:** The application loads and displays the contacts from the existing data file. Window size and
-       position follow the current preferences.
+    2. Launch the application. \
+       **Expected:** The application loads and displays the contacts, tags and relationships from the existing
+       data file. Window size and position follow the current preferences.
 
 5. **Launch with a missing data file**
 
     1. Ensure there is **no** data file in the expected location (delete or rename it temporarily).
     2. Launch the application. \
        **Expected:** The application starts with sample data.
-       A new data file is created at the expected location upon exit.
+       A new data file is created at the expected location upon executing command `exit`.
 
 6. **Launch with a corrupted data file**
 
     1. Open the data file in a text editor and deliberately corrupt it (for example, delete a closing brace or insert
        random text).
-    2. Launch the application.
-       **Expected:** The application does **not** crash. It shows an error message indicating the data file is invalid
-       and starts with an empty contact list (or a safe fallback such as sample data). The user can continue using the
-       application normally. A valid file will be written on the next successful save or exit.
-
-7. **Launch with a read-only data file**
-
-    1. Make the data file read-only using your operating system’s file permissions.
-    2. Launch the application, then attempt any action that would save data (for example, adding a contact), and exit.
-    3. Re-launch the application.
-       **Expected:** On the first run, the application either warns that it cannot write the file or continues without
-       persisting the change. After re-launch, the change made earlier is **not** present (because the data file was
-       read-only).
+    2. Launch the application. \
+       **Expected:** The application does **not** crash. It shows an error message in the terminal indicating the
+       data file is invalid and starts with an empty state. The user can continue using the
+       application normally.
 
 8. **Graceful shutdown via menu**
 
     1. Launch the application.
-    2. Use the application’s menu (for example, `File → Exit`) to close it.
+    2. Use the application’s menu: `File → Exit` to close it. \
        **Expected:** The window closes cleanly. Window size and position are saved. Any valid in-memory changes since
-       the last save are persisted according to the product’s save policy.
+       the last save are persisted according to NetWise’s save policy.
 
 9. **Graceful shutdown via keyboard shortcut**
 
     1. Launch the application.
     2. Use the operating system shortcut to close the window (for example, `Alt + F4` on Windows, `Command + Q` on
-       macOS, `Control + Q` on some Linux desktops).
+       macOS, `Control + Q` on some Linux desktops). \
        **Expected:** Same as a menu-based exit: the application shuts down cleanly and window preferences are saved.
 
 ---
@@ -1057,8 +1061,8 @@ testers are expected to do more *exploratory* testing.
 
 1. **Test case (normal usage):** \
    `help` \
-   **Expected:** A help window or panel appears describing how to access the full help page. Status message indicates
-   help is shown.
+   **Expected:** A help window or panel appears describing command formats and a URL to the user guide. Status message
+   indicates help is shown.
 
 2. **Test case (extra parameters):** \
    `help 123` \
@@ -1112,10 +1116,7 @@ testers are expected to do more *exploratory* testing.
    Run `find n/John` then `list`. \
    **Expected:** List switches from the filtered results back to all persons.
 
-3. **Test case (there is no relationship for a particular person):** \
-   **Expected:** Shows an empty relationship message for that person in the list.
-
-4. **Other test cases to try:** \
+3. **Other test cases to try:** \
    `list 123` (extraneous parameters). \
    **Expected:** Same as `list`. Extraneous parameters are ignored.
 
@@ -1134,6 +1135,7 @@ testers are expected to do more *exploratory* testing.
    **Expected:** The person with ID 2 will have tags removed. Status message confirms tags are cleared.
 
 4. **Test case (changes name but new name already exist):** \
+   Ensure that a person named Minh already exists before doing this test. \
    `edit 2 n/Minh` \
    **Expected:** No change. Error message indicates that the edit will result in duplicate contact.
 
@@ -1157,7 +1159,7 @@ testers are expected to do more *exploratory* testing.
 
 3. **Test case (invalid identifier):** \
    `delete 999` \
-   **Expected:** No person is deleted. Error message indicates the identifier is invalid.
+   **Expected:** No person is deleted. Error message indicates no person with that identifier can be found.
 
 4. **Test case (person with relationships)** \
    Ensure that the person that is being deleted has some relationships with other people. \
@@ -1175,34 +1177,31 @@ testers are expected to do more *exploratory* testing.
 ### Locating persons by name : `find`
 
 1. **Prerequisite:** Ensure the list has:
+  * multiple persons with varied names, phone numbers, emails, addresses, and tags.
+  * multiple tags with varied names
 
-* multiple persons with varied names, phone numbers, emails, addresses, and tags.
-* multiple tags with varied names
-
-2. **Test case (single keyword):** \
+1. **Test case (single keyword):** \
    `find n/John` \
-   **Expected:** Shows persons whose names contain the substring “John” (case-insensitive). Indices refer to this
-   filtered
-   list.
+   **Expected:** Shows persons whose names contain the substring “John” (case-insensitive).
 
-3. **Test case (multiple name keywords):** \
+2. **Test case (multiple name keywords):** \
    `find n/alex n/dav` \
    **Expected:** Shows persons whose names contain “alex” OR “dav” (case-insensitive, substring match). Potential names
    matched: "Alex Ho", "Alexander", "David", "Daven Li", etc.
 
-4. **Test case (address no match):** \
+3. **Test case (address no match):** \
    `find a/Zyrtxwv` \
    **Expected:** Empty list with a message indicating zero persons found.
 
-5. **Test case (multiple fields):** \
+4. **Test case (multiple fields):** \
    `find n/jo e/@gmail a/clementi` \
    **Expected:** List of people whose name contains the substring "jo" (e.g. John, Joelle,...), email containing "
-   @gmail", and addressing containg "clementi"
+   @gmail", and addressing containing "clementi".
 
-6. **Test case (repeating fields):** \
+5. **Test case (repeating fields):** \
    `find p/1234 a/clem a/bishan t/5 t/2` \
    **Expected:** List of people whose phone number contains "1234" in it, address contains EITHER "clem" OR "bishan" or
-   both, and with EITHER tags 5, 2, or both.
+   both, AND with EITHER tags 5 OR 2 or both.
 
 ---
 
@@ -1221,6 +1220,7 @@ testers are expected to do more *exploratory* testing.
    message confirms.
 
 4. **Test case (name already exist):** \
+   Ensure that a tag named 'friends' already exists before doing this test. \
    `addtag n/friends` \
    **Expected:** No change. Error message indicates that the addition will result in duplicate tag.
 
@@ -1230,7 +1230,7 @@ testers are expected to do more *exploratory* testing.
    symbol.
 
 6. **Other test cases to try:** \
-   Duplicate tag name (expect a duplicate-name error), very long names or descriptions. \
+   Very long names or descriptions, ... \
    **Expected:** Appropriate validation or error handling.
 
 ---
@@ -1243,7 +1243,7 @@ testers are expected to do more *exploratory* testing.
 
 2. **Test case (when there are no tags):** \
    `listtag`. \
-   **Expected:** Shows an empty-state message.
+   **Expected:** Shows an empty list of tags.
 
 3. **Other test cases to try:** \
    `listtag extra` (extraneous parameters), ... \
@@ -1266,7 +1266,8 @@ testers are expected to do more *exploratory* testing.
 
 4. **Test case (missing identifier):** \
    `edittag n/NewName` \
-   **Expected:** No change. Error message indicates that an identifier is required and shows the correct command format.
+   **Expected:** No change. Error message indicates that the command format is invalid
+   and shows the correct one.
 
 5. **Other test cases to try:** \
    `edittag 999 ...` (invalid identifier), `edittag 1` (no updatable fields provided),
@@ -1286,7 +1287,7 @@ testers are expected to do more *exploratory* testing.
 
 3. **Test case (invalid identifier):** \
    `deletetag 999` \
-   **Expected:** No tag is deleted. Error message indicates the identifier is invalid.
+   **Expected:** No tag is deleted. Error message indicates that no tags with that identifier can be found.
 
 4. **Other test cases to try:** \
    `deletetag` (missing identifier), deleting a tag that is currently shown in the user
@@ -1304,12 +1305,14 @@ testers are expected to do more *exploratory* testing.
    **Expected:** New relationship is created with the given details. Status message confirms.
 
 3. **Test case (set of participants already exist):** \
+   Ensure that a relationship between contacts with ID 1 and 2 already exists before doing this test. \
    `addrel p1/1 p2/2 d/not best friends` \
    **Expected:** No change. Error message indicates that the addition will result in duplicate relationship.
 
 4. **Test case (invalid participants IDs: non-existant or not a postive integer):** \
    `addrel p1/3955 p2/485349 d/bruh` or `addrel p1/-23 p2/49.3 d/bruh` \
-   **Expected:** No relationship is created. Error message states that the identifier is invalid.
+   **Expected:** No relationship is created. Error message states that the identifier is invalid or that
+   the contact with the specified ID cannot be found.
 
 5. **Other test cases to try:** \
    Duplicate relationship (expect a duplicate-relationship error), very long descriptions, ... \
@@ -1321,20 +1324,20 @@ testers are expected to do more *exploratory* testing.
 
 1. **Test case:** \
    `listrel p1/1` \
-   **Expected:** Displays relationships of the people in the list who are directly related to p1 with
-   descriptions of relationships. Relationships ordered by the person ID for each person in the current displayed list.
+   **Expected:** Displays relationships of the people in the list who are directly related to contact with ID 1
+   along descriptions of relationships.
 
 2. **Test case:** \
    `listrel p1/1 p2/3` \
-   **Expected:** Displays a list of relationships in an order from p1 linking to p2. If no link can be made, an empty
-   list will be shown.
+   **Expected:** Displays a chain of relationships from contact with ID 1 to contact with ID 2.
+   If no link can be made, an empty relationship list will be shown.
 
 3. **Test case when there are no relationship for the listed person:** \
    `listrel p1/1`. \
-   **Expected:** Shows an empty-state message for the person.
+   **Expected:** Shows an empty relationship list.
 
 4. **Other test cases to try:** \
-   `listrel p1/9999`(invalid Id), `listrel -2` (invalid identifier), ... \
+   `listrel p1/9999`(invalid Id), `listrel -2` (invalid command format), ... \
    **Expected:** Appropriate error handling.
 
 ---
@@ -1358,7 +1361,7 @@ testers are expected to do more *exploratory* testing.
    format.
 
 5. **Other test cases to try:** \
-   `editred p1/999 ...` (invalid relationship), `edittag p1/1 p2/3` (no updatable fields provided), invalid
+   `editrel p1/-999 ...` (invalid ID), `editrel p1/1 p2/3` (no updatable fields provided), invalid
    participant ID format, ... \
    **Expected:** Appropriate error handling.
 
@@ -1373,9 +1376,9 @@ testers are expected to do more *exploratory* testing.
    **Expected:** Relationship between person with ID 1 and person with ID 2 is removed from the relationship list.
    Status message confirms deletion.
 
-3. **Test case (invalid index):** \
+3. **Test case (contact ID does not exist):** \
    `deleterel p1/999 p2/1` \
-   **Expected:** No relationship is deleted. Error message indicates the index is invalid.
+   **Expected:** No relationship is deleted. Error message indicates no contact with that ID can be found.
 
 4. **Other test cases to try:** \
    `deleterel` (without identifier), deleting a relationship that is currently shown on the user interface, ... \
@@ -1452,12 +1455,6 @@ testers are expected to do more *exploratory* testing.
    application. \
    **Expected:** The application does not crash. It shows an error in the terminal, indicating the data file
    is invalid and falls back to an empty data state. Subsequent valid operations will recreate a valid file.
-
-4. **Other test cases to try:** \
-   Set the data file to read-only and attempt a mutating command;
-   edit tag objects directly and confirm that identifiers and references remain consistent. \
-   **Expected:** Appropriate warnings or non-persistence when writes are blocked; consistent behavior for tag
-   references.
 
 ## **Appendix: Planned Enhancement**
 

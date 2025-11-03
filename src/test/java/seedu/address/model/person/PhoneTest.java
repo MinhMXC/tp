@@ -30,6 +30,8 @@ public class PhoneTest {
         assertFalse(Phone.isValidPhone("phone")); // non-numeric
         assertFalse(Phone.isValidPhone("9011p041")); // alphabets within digits
         assertFalse(Phone.isValidPhone("++6512345678"));
+        assertFalse(Phone.isValidPhone("+651--2345678")); // too many dashes
+        assertFalse(Phone.isValidPhone("+65123456  78")); // too many spaces between blocks of numbers
 
         // valid phone numbers
         assertTrue(Phone.isValidPhone("91")); // less than 3 numbers
@@ -39,6 +41,7 @@ public class PhoneTest {
         assertTrue(Phone.isValidPhone("+1 123 1234 5678"));
         assertTrue(Phone.isValidPhone("+65-1234-5678"));
         assertTrue(Phone.isValidPhone("0912345678"));
+        assertTrue(Phone.isValidPhone("0 9 1 2 3 4 5 6 7 8")); // spaces
     }
 
     @Test
