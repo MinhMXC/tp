@@ -1491,3 +1491,5 @@ description.
 remaining entries remain unchanged, which can lead to gaps in the ID sequence. We plan to enhance the system to
 automatically reorder IDs after deletions, ensuring that IDs remain sequential without gaps. This change aims to improve
 the organization and usability of the system by maintaining a continuous sequence of IDs.
+
+**6. Prevent semantically duplicate inputs:** Currently, NetWise treats names as unique in a case-sensitive manner (e.g., connections with names Ben and ben, or tags with names Friend and friend are allowed), which can lead to contextually duplicate entries representing the same person or tag due to user mistakes. We plan to enhance the system to prevent users from adding potential duplicate entries by performing reasonable checks before accepting the input.
