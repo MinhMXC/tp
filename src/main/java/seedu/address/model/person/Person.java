@@ -65,6 +65,13 @@ public class Person {
         return idManager.hasNextId();
     }
 
+    /**
+     * Resets the internal ID manager so that newly created persons start from ID 1 again.
+     */
+    public static void resetIdCounter() {
+        idManager.reset();
+    }
+
     public Id getId() {
         return id;
     }
