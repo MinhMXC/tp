@@ -635,7 +635,7 @@ Use case ends.
 
 **Preconditions:** target tag ID exists (unless error path)
 
-**Postconditions:** the tag is removed; associated contacts retain their data
+**Postconditions:** the tag is removed; associated persons retain their data
 
 **MSS**
 
@@ -665,21 +665,40 @@ Use case ends.
 
 [comment]: RELATIONSHIP
 
-#### UC30 - Search Through Relationships of the Contacts
+#### UC30 - Search Through Relationships of a Connection
 
 **MSS**
 
-1. **User** inputs the contact whose relationships are to be searched.
-2. **System** outputs contacts related to the search contact.
+1. **User** inputs the person whose relationships are to be searched.
+2. **System** outputs people directly-related to the connection.
 
 **Extensions**
 
-* **1a. System detects that the contact does not exist.**
-    * **1a1.** **System** informs the user that the contact does not exist.
+* **1a. System detects that the person does not exist.**
+    * **1a1.** **System** informs the user that the person does not exist.
 
       Use case ends.
 
-#### \[PROPOSED\] UC31 - List Relationships
+#### UC31 - Trace Through Relationships of Two Connections
+
+**MSS**
+
+1. **User** inputs the two persons whose relationships are to be traced.
+2. **System** outputs the chain of relationships linking the two connections.
+
+**Extensions**
+
+* **1a. System detects that the person does not exist.**
+    * **1a1.** **System** informs the user that the person does not exist.
+
+      Use case ends.
+
+* **2a. System detects that no such chain exists.**
+    * **2a1.** **System** shows an empty chain of relationships.
+
+      Use case ends.
+
+#### \[PROPOSED\] UC32 - List Relationships
 
 **Goal:** view all relationships.
 
@@ -702,19 +721,19 @@ Use case ends.
 
       Use case ends.
 
-#### UC32 - Add Relationships Between Contacts
+#### UC33 - Add Relationships between Connections
 
 **MSS**
 
-1. **User** inputs the contacts for which to add a relationship.
+1. **User** inputs the persons for which to add a relationship.
 2. **System** informs that the relationship has been added.
 
 Use case ends.
 
 **Extensions**
 
-* **1a. System detects that one or more contacts does not exist.**
-    * **1a1.** **System** informs the user that the contact does not exist.
+* **1a. System detects that one or more persons does not exist.**
+    * **1a1.** **System** informs the user that the person does not exist.
 
       Use case ends.
 
@@ -723,7 +742,7 @@ Use case ends.
 
       Use case ends.
 
-#### UC33 - Update Relationship
+#### UC34 - Update Relationship between Connections
 
 **Goal:** update an existing relationship’s attributes
 
@@ -757,23 +776,23 @@ Use case ends.
 
       Use case ends.
 
-#### UC34 - Delete Relationships Between Contacts
+#### UC35 - Delete Relationships between Connections
 
 **MSS**
 
-1. **User** inputs the command to delete the relationship between two contacts.
+1. **User** inputs the command to delete the relationship between two persons.
 2. **System** informs that the relationship has been deleted.
 
 Use case ends.
 
 **Extensions**
 
-* **1a. System detects that one or more contacts does not exist.**
-    * **1a1.** **System** informs the user that the contact does not exist.
+* **1a. System detects that one or more persons does not exist.**
+    * **1a1.** **System** informs the user that the person does not exist.
 
       Use case ends.
 
-* **1b. System detects that there is no relationship between those two contacts.**
+* **1b. System detects that there is no relationship between those two persons.**
     * **1b1.** **System** informs the user that the relationship does not exist.
 
       Use case ends.
