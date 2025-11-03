@@ -161,13 +161,13 @@ public class EditCommandTest {
         showPersonAtIndex(expectedModel, INDEX_FIRST_PERSON);
         Person editedPerson = new PersonBuilder(outOfBoundsPerson).withName(VALID_NAME_BOB).build();
         expectedModel.setPerson(outOfBoundsPerson, editedPerson);
-        String expectedMessages = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
+        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS,
                 Messages.format(editedPerson));
 
         EditCommand editCommand = new EditCommand(idOutOfBoundsPerson,
                 new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build());
 
-        assertCommandSuccess(editCommand, model, expectedMessages, expectedModel);
+        assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
