@@ -14,6 +14,7 @@ import java.util.List;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.id.Id;
 import seedu.address.model.person.CompositePersonPredicate;
 import seedu.address.model.person.FieldContainsKeywordsPredicate;
 
@@ -69,6 +70,10 @@ public class FindCommandParser implements Parser<FindCommand> {
             predicates.add(new FieldContainsKeywordsPredicate(PersonFieldExtractor.GET_ADDRESS, addressKeywords));
         }
         if (!tagKeywords.isEmpty()) {
+            boolean hasInvalidId = tagKeywords.stream().anyMatch(id -> !Id.isValidId(id));
+            if (hasInvalidId) {
+                throw new ParseException(Id.MESSAGE_CONSTRAINTS);
+            }
             predicates.add(new FieldContainsKeywordsPredicate(PersonFieldExtractor.GET_TAGS, tagKeywords, true));
         }
         if (predicates.isEmpty()) {

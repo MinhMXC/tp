@@ -100,9 +100,9 @@ multitask while using NetWise
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG_ID]…​` can be used as ` ` (i.e. 0 times), `t/1`, `t/1 t/3` etc.
 
-* For all parameters, the slash character `/` is not allowed. \
-  e.g. `edit 1 n/Batman S/O Superman` is not allowed, as there is a slash character in the name. For Indian names,
-  an alternative solution is to type `S/O` as `S.O.`.
+* For all parameters, the slash character `/` should not be used. \
+  e.g. `edit 1 n/Batman S/O Superman` should not be inputted, as there is a slash character in the name.
+  For Indian names, an alternative solution is to type `S/O` as `S.O.`.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -153,7 +153,8 @@ A connection can have any number of tags (including 0)
     * The tag ID **must be a positive integer** 1, 2, 3, …​
     * One user can be assigned multiple tag IDs, and these do not have to be in any order (i.e. `t/1 t/3` and `t/3 t/1`
       will both assign tags with IDs 1 and 3 to the connection)
-* `NOTE` can accept any character input of any length.
+* `NOTE` can accept any character input of any length, except for '/' characters which would lead to unpredictable
+  behaviour.
 
 Examples:
 
@@ -179,7 +180,8 @@ Format: `edit ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG_ID]…​ [r/NO
 * The `ID` refers to the **unique ID** each connection is given when created,
   can be seen with [`list`](#listing-all-connections--list).
     * The `ID` **must be a positive integer** 1, 2, 3, …​
-* If the connection with the input `ID` does not exist in the list, expect a message informing that no person found.
+* If the connection with the input `ID` does not exist in the list, expect a message informing that no person
+  is found.
 * Further conditions for `NAME`, `PHONE`, `EMAIL`, `ADDRESS`, `TAG_ID`, and `NOTE` follows the same as in [
   `add`](#adding-a-connection--add).
 * Existing values will be updated to the input values.
@@ -205,7 +207,8 @@ Format: `delete ID`
 * Deletes the connection with the specified `ID`.
 * The `ID` refers to the **unique ID** each connection is given when created, can be seen with [
   `list`](#listing-all-connections--list).
-* If the connection with the input `ID` does not exist in the list, expect a message informing that no person found.
+* If the connection with the input `ID` does not exist in the list, expect a message informing that no person 
+  is found.
 * The `ID` **must be a positive integer** 1, 2, 3, …​
 * If the connection with the input `ID` does not exist in the list, expect a message informing that no person found.
 
@@ -294,7 +297,7 @@ Format: `edittag TAG_ID [n/NAME] [d/DESCRIPTION] [c/RGB_COLOR]`
 * `TAG_ID` refers to the **unique tag ID** each tag is given when created, can be seen with
   [`listtag`](#listing-all-tags--listtag).
     * `TAG_ID` **must be a positive integer** 1, 2, 3, …​
-* If the tag with the input `TAG_ID` does not exist in the list, expect a message informing that no tag found.
+* If the tag with the input `TAG_ID` does not exist in the list, expect a message informing that no tag is found.
 * Further conditions for `NAME`, `DESCRIPTION`, and `RGB_COLOR` follows the same as in [
   `addtag`](#adding-a-tag--addtag).
 * At least one of the optional fields must be provided.
@@ -316,7 +319,7 @@ Format: `deletetag TAG_ID`
 * `TAG_ID` refers to the **unique ID** each tag is given when created, can be seen with
   [`listtag`](#listing-all-tags--listtag).
     * `TAG_ID` **must be a positive integer** 1, 2, 3, …​
-* If the tag with the input `TAG_ID` does not exist in the list, expect a message informing that no tag found.
+* If the tag with the input `TAG_ID` does not exist in the list, expect a message informing that no tag is found.
 
 Example:
 
