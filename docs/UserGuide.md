@@ -103,7 +103,7 @@ A connection can have any number of tags (including 0)
 * `TAG_ID` refers to the **unique ID** of each tag (**not** their names), can be seen by using the [`listtag`](#listing-all-tags--listtag) command.
   * The tag ID **must be a positive integer** 1, 2, 3, …​
   * One user can be assigned multiple tag IDs, and these do not have to be in any order (i.e. `t/1 t/3` and `t/3 t/1` will both assign tags with IDs 1 and 3 to the connection)
-* `NOTE` can accept any character input of any length.
+* `NOTE` can accept any character input of any length except for '/' characters, which would lead to undefined behaviour.
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
