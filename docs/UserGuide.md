@@ -2,46 +2,82 @@
 layout: page
 title: User Guide
 ---
-## NetWise User Guide
+## User Guide
 
-NetWise is a **desktop app for managing connections for Computer Science students, optimized for use via a
-Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, NetWise can get your connection management tasks done faster than traditional GUI apps. NetWise is best used with minimal screen space, so you can use it easily while doing other work, and it features a comfortable interface and color palette designed to reduce eye strain.
+![Ui](images/NetWiseBanner.png)
 
-* Table of Contents 
+**NetWise** is your all-in-one networking companion, built **by and for Computer Science students**.
+If you have a growing network of **friends, family, classmates, professors, and colleagues**,
+NetWise helps you stay connected, organised, and intentional about your relationships.
+
+With NetWise, you can:
+ * **Organise your connections effortlessly** using **tags**, so you can group people by shared contexts
+   like “Project Teammates,” “Mentors,” or “Friends from CS2103.”
+ * **Map out relationships** between people to understand how your network connects —
+   whether it’s a classmate who knows your internship supervisor or a friend who introduced you to a recruiter.
+
+Designed with **tech-savvy students** in mind, NetWise combines the **power of the Command Line Interface (CLI)**
+with the **ease of a clean, compact Graphical User Interface (GUI)**. If you’re comfortable typing fast or
+love the efficiency of terminal commands, you’ll feel right at home. Every command is optimised for speed
+and simplicity — because your time is better spent connecting, not clicking.
+
+Whether you’re building professional contacts, maintaining friendships, or networking your way up to your next FAANG
+internship, **NetWise helps you keep your network strong — one command at a time**.
+
+## Table of Contents
+
+* Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## Purpose of this guide
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
+This user guide aims to familiarise you with the commands of NetWise and to use it effectively.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## How to use this guide
+
+ * There is a [Table of Contents](#Table-of-Contents) with clickable links above for easy nagivation.
+ * For new user, please refer to [Quick Start](#Quick-Start) for instructions to install and run the app.
+ * For details of all commands, please refer to [Features](#Features).
+ * For experienced users, please refer to [Command Summary](#Command-Summary) for an overview of all commands.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Quick Start
+
+1. Ensure you have Java `17` or above installed in your computer. \
    **Mac users:** Ensure you have the precise JDK version prescribed
-    [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+    [here](https://se-education.org/guides/tutorials/javaInstallationMac.html). \
 
-1. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103T-T16-1/tp/releases).
+2. Download the latest `NetWise.jar` file from [here](https://github.com/AY2526S1-CS2103T-T16-1/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your NetWise.
+3. Copy the file to the folder you want to use as the _home folder_ for NetWise.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar NetWise.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+4. Double-click the file to start the app. \
+   A GUI similar to below should appear in a few seconds, with some sample connections.
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+   ![Ui](images/NetWiseUIAnnotated.png)
 
-   * `list` : Lists all connections.
+#### UI Overview
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a connection named
-   `John Doe` to NetWise.
-
-   * `delete 3` : Deletes the connection with ID 3.
-
-   * `clear` : Deletes all connections.
-
-   * `exit` : Exits the app.
-
-1. Refer to the [Features](#features) below for details of each command.
+1. **Menu** \
+   A menu bar with clickable options.
+2. **Command box** \
+   This is where you type your commands.
+   * Type a command into the command box and press Enter to execute it.
+   * Some example commands you can try:
+     * `list`: Lists all connections.
+     * `add n/Minh p/12345678 e/minh@minh.com`: Adds a connection named Minh to NetWise.
+     * `delete 3`: Deletes the connection with ID 3.
+     * `exit`: Exits the app.
+   * Refer to the [Features](#Features) below for details of each command.
+3. **Command result** \
+   Shows the response message from the app whenever a command is executed.
+4. **List of connections / tags / relationshipss** \
+   Shows a list of connections or tags or relationships, depending on what commands were executed.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -87,7 +123,7 @@ Format: `add n/NAME p/PHONE e/EMAIL [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]`
 A connection can have any number of tags (including 0)
 </div>
 
-* `NAME` should only contain alphanumeric characters, commas, full-stops, apostrophes and spaces, and it must not be empty. 
+* `NAME` should only contain alphanumeric characters, commas, full-stops, apostrophes and spaces, and it must not be empty.
   * Name should be unique. The same name must not be repeated, case-sensitive (i.e. 'Ben' is different from 'ben')
 * `PHONE` should only contain numbers, a plus `+` only at the beginning for country code, and spaces or dashes `-`
   * There should be at least **two** numbers between every spaces/dashes.
@@ -96,7 +132,7 @@ A connection can have any number of tags (including 0)
   * `local-part` should only contain alphanumeric characters and these special characters: `+`, `-`, `.`, `_`. The local-part may not start or end with any special characters.
   * This is followed by a '@' and then a `domain`. The `domain` is made up of domain labels separated by periods. There should be at least
   two domain labels, with the final domain label (i.e. `.com`, `.sg`, `.net`, etc.) should have at least 2 characters.
-* `TAG_ID` refers to the **unique ID** of each tag (**not** their names), can be seen by using the [`listtag`](#listing-all-tags--listtag) command. 
+* `TAG_ID` refers to the **unique ID** of each tag (**not** their names), can be seen by using the [`listtag`](#listing-all-tags--listtag) command.
   * The tag ID **must be a positive integer** 1, 2, 3, …​
   * One user can be assigned multiple tag IDs, and these do not have to be in any order (i.e. `t/1 t/3` and `t/3 t/1` will both assign tags with IDs 1 and 3 to the connection)
 * `NOTE` can accept any character input of any length.
@@ -177,7 +213,7 @@ Format: `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS
 * Matching is exact (ID-based) for tags (e.g., `t/5` only matches tag with ID 5, **not** that contains the character "5").
 * Unlike [`add`](#adding-a-connection--add) and [`edit`](#editing-a-connection--edit) commands, the keyword parameters
 does not have any input restrictions for flexibility.
-* Empty input fields (i.e. `n/` or `p/    ` (whitespaces)) will **not** be taken into account when filtering for connections. 
+* Empty input fields (i.e. `n/` or `p/    ` (whitespaces)) will **not** be taken into account when filtering for connections.
 * The search across different fields uses **AND logic** — a person must match all fields provided.
   (e.g. `n/Ali e/gmail` finds persons whose **name contains “Ali”** *and* **email contains “gmail”**.)
 * The search within the same field uses **OR logic** — any one of the field’s keywords will match.
@@ -310,7 +346,7 @@ Format: `editrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION`
 
 Examples:
 
-* `editrel p1/1 p2/2 d/highschool friends`. Edits the description of the relationship between connection ID 1 and 
+* `editrel p1/1 p2/2 d/highschool friends`. Edits the description of the relationship between connection ID 1 and
 connection ID 2.
 
 ### Deleting a relationship : `deleterel`
@@ -381,7 +417,7 @@ keyboard shortcut `F1`) again, the original Help Window will remain minimized, a
 The remedy is to manually restore the minimized Help Window.
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## Command Summary
 
 | Action                    | Format, Examples                                                                                                                                                                       |
 |---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
