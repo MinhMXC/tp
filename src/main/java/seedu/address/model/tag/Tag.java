@@ -56,6 +56,10 @@ public class Tag {
         this(toCopy.name, toCopy.desc, toCopy.color);
     }
 
+    public static boolean hasNextId() {
+        return idManager.hasNextId();
+    }
+
     public Id getId() {
         return id;
     }

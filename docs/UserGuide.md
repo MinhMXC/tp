@@ -11,9 +11,9 @@ If you have a growing network of **friends, family, classmates, professors, and 
 NetWise helps you stay connected, organised, and intentional about your relationships.
 
 With NetWise, you can:
- * **Organise your connections effortlessly** using **tags**, so you can group people by shared contexts
+* **Organise your connections effortlessly** using **tags**, so you can group people by shared contexts
    like “Project Teammates,” “Mentors,” or “Friends from CS2103.”
- * **Map out relationships** between people to understand how your network connects —
+* **Map out relationships** between people to understand how your network connects —
    whether it’s a classmate who knows your internship supervisor or a friend who introduced you to a recruiter.
 
 Designed with **tech-savvy students** in mind, NetWise combines the **power of the Command Line Interface (CLI)**
@@ -23,6 +23,8 @@ and simplicity — because your time is better spent connecting, not clicking.
 
 Whether you’re building professional contacts, maintaining friendships, or networking your way up to your next FAANG
 internship, **NetWise helps you keep your network strong — one command at a time**.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## Table of Contents
 
@@ -95,6 +97,10 @@ This user guide aims to familiarise you with the commands of NetWise and to use 
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG_ID]…​` can be used as ` ` (i.e. 0 times), `t/1`, `t/1 t/3` etc.
+
+* For all parameters, the slash character `/` is not allowed. \
+  e.g. `edit 1 n/Batman S/O Superman` is not allowed, as there is a slash character in the name. For Indian names,
+  an alternative solution is to type `S/O` as `S.O.`.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -191,13 +197,6 @@ Format: `delete ID`
 Examples:
 * `list` followed by `delete 2` deletes the connection with ID 2 in NetWise.
 * `find Betsy` followed by `delete 1` deletes the connection with ID 1 in the results of the `find` command.
-
-
-### Clearing all connection entries : `clear`
-
-Clears all connection entries from NetWise.
-
-Format: `clear`
 
 
 ### Locating connections by fields : `find`
@@ -323,17 +322,23 @@ that they are childhood friends.
 
 Shows a list of relationships for each person in the list in NetWise.
 
-Format (one person): `listrel p1/CONNECTION_1`: show a list of all person related to `CONNECTION_1` along with the relationship info<br>
-Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show the chain of relationships between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship infos.
+Format (one person): `listrel p1/CONNECTION_1`: show a list of all person related to `CONNECTION_1`
+along with the relationship info \
+Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show the chain of relationships
+between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship infos.
 
 * `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
     * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
-* If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list, expect a message informing that no tag found.
+* If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list,
+expect a message informing that no relationship is found.
+* **Note**: Finding the chain of relationships between the same person will only show that person,
+even though a relationship cannot exist between the same person.
 
 Examples:
-*  `listrel p1/1`. Shows a list of connections who has a relationship to ID 1 and the description of their relationship.
-*  `listrel p1/1 p2/2`. Shows a list of relationships in order to see how connection with ID 1 may be connected to connection with ID 2
-via a chain of relationships.
+*  `listrel p1/1`. Shows a list of connections who has a relationship to ID 1 and the description of their relationships.
+*  `listrel p1/1 p2/2`. Shows a list of relationships in order to see how connection with ID 1
+may be connected to connection with ID 2 via a chain of relationships. If there are multiple of such chains,
+only the shortest one will be shown.
 
 ### Editing a relationship : `editrel`
 
@@ -360,6 +365,13 @@ Format: `deleterel p1/CONNECTION_1 p2/CONNECTION_2`
 Examples:
 
 * `deleterel p1/1 p2/2`. Deletes the relationship between connection ID 1 and connection ID 2.
+
+
+### Clearing everything : `clear`
+
+Clears all connections, tags and relationships from NetWise.
+
+Format: `clear`
 
 
 ### Exiting the program : `exit`

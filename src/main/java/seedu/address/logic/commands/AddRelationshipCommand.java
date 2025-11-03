@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_DESC;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PART_1;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PART_2;
 
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.relationship.Relationship;
@@ -57,7 +58,7 @@ public class AddRelationshipCommand extends Command {
         }
 
         model.addRelationship(toAdd);
-        return new CommandResult(String.format(MESSAGE_RELATIONSHIP_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_RELATIONSHIP_SUCCESS, Messages.format(toAdd)));
     }
 
     @Override

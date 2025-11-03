@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.description.Description;
@@ -83,7 +84,7 @@ public class EditRelationshipCommand extends Command {
         model.setRelationship(existingRel, updatedRel);
         model.updateFilteredRelationshipList(PREDICATE_SHOW_ALL_RELATIONSHIPS);
 
-        return new CommandResult(String.format(MESSAGE_EDIT_RELATIONSHIP_SUCCESS, updatedRel));
+        return new CommandResult(String.format(MESSAGE_EDIT_RELATIONSHIP_SUCCESS, Messages.format(updatedRel)));
     }
 
     @Override

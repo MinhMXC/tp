@@ -61,6 +61,10 @@ public class Person {
         this(toCopy.name, toCopy.phone, toCopy.email, toCopy.address, toCopy.getTagIds(), toCopy.note);
     }
 
+    public static boolean hasNextId() {
+        return idManager.hasNextId();
+    }
+
     public Id getId() {
         return id;
     }

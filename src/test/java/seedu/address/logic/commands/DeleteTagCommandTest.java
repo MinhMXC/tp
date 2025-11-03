@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.logic.Messages;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.id.Id;
 import seedu.address.model.tag.Color;
@@ -44,7 +45,7 @@ public class DeleteTagCommandTest {
     @Test
     public void execute_validId_success() throws Exception {
         DeleteTagCommand deleteTagCommand = new DeleteTagCommand(new Id(2));
-        String expectedMessage = String.format(DeleteTagCommand.MESSAGE_DELETE_SUCCESS, tag2);
+        String expectedMessage = String.format(DeleteTagCommand.MESSAGE_DELETE_SUCCESS, Messages.format(tag2));
 
         ModelStubWithTags expectedModel = new ModelStubWithTags(List.of(tag1, tag3));
 
