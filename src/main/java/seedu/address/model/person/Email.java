@@ -9,7 +9,6 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Email {
 
-    private static final String SPECIAL_CHARACTERS = "+_.-";
     public static final String MESSAGE_CONSTRAINTS = "Emails should be of the format local-part@domain: \n"
             + "The local-part uses only letters, numbers, and the special characters "
             + "+, _, ., or -. It cannot start or end with a special character. \n"
@@ -17,6 +16,7 @@ public class Email {
             + "The domain labels (the parts separated by a period) start and end with a letter or number, "
             + "and only use hyphens as separators.";
     // alphanumeric and special characters
+    private static final String SPECIAL_CHARACTERS = "+_.-";
     private static final String ALPHANUMERIC_NO_UNDERSCORE = "[^\\W_]+"; // alphanumeric characters except underscore
     private static final String LOCAL_PART_REGEX = "^" + ALPHANUMERIC_NO_UNDERSCORE + "([" + SPECIAL_CHARACTERS + "]"
             + ALPHANUMERIC_NO_UNDERSCORE + ")*";
