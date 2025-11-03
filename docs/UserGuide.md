@@ -91,6 +91,9 @@ multitask while using NetWise
 
 **:information_source: Notes about the command format:**<br>
 
+* Command and parameter prefixes are case-insensitive (user-input is case-sensitive).<br>
+  e.g. `AdD N/NAME` is the same as `add n/NAME`.
+
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
@@ -136,7 +139,7 @@ Format: `help`
 
 ### Adding a connection : `add`
 
-Adds a connection to NetWise. A *connection* is someone who you want to keep in contact, such as
+Adds a connection to NetWise. A *connection* is someone who you want to keep in contact with, such as
 friends, colleagues or people you met from a networking event.
 
 Format: `add n/NAME p/PHONE e/EMAIL [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]`
@@ -182,7 +185,7 @@ Examples of **invalid commands**:
 
 ### Listing all connections : `list`
 
-Shows a list of all connections in NetWise with easy view of relationships for each connection.
+Shows a list of all connections in NetWise with an easy view of relationships for each connection.
 
 **Note:** List shows the **unique ID** given when the connection is created not the relative index in the list.
 
@@ -236,10 +239,9 @@ Format: `delete ID`
 * The `ID` **must be a positive integer** 1, 2, 3, …​
 * If the connection with the input `ID` does not exist in the list, expect a message informing that no person found.
 
-Examples:
+Example:
 
-* `list` followed by `delete 2` deletes the connection with ID 2 in NetWise.
-* `find Betsy` followed by `delete 2` deletes the connection with ID 2 in the results of the `find` command.
+* `delete 2` deletes the connection with ID 2 in NetWise.
 
 Example of **invalid command**:
 
@@ -288,14 +290,13 @@ Adds a tag to NetWise. A tag is a keyword or label used to categorise and organi
 
 Format: `addtag n/NAME [d/DESCRIPTION] [c/RGB_COLOR]`
 
-* Add a tag into NetWise, along with an optional description and tag colour.
+* Adds a tag into NetWise, along with an optional description and tag colour.
 * `NAME` should only contain alphanumeric characters, and it must not be empty.
     * Name should be unique. The same name must not be repeated, case-sensitive (i.e. 'FRIEND' is different from
       'friend').
 * `DESCRIPTION` can accept any character input of any length.
 * The `RGB_COLOR` describe the colour you want to set for the tag.
-* `RGB_COLOR` field *must* be a HEX colour string of length 6, case-insensitive, and must not be left empty if the
-  prefix is included.
+* `RGB_COLOR` field *must* be a HEX colour string of length 6, case-insensitive.
     * The string should be written ***without*** the hash ('#'), such as `123456`, `0F2AAB`, `abf1cd`, …​
 * The default `DESCRIPTION` field is "No description" (if prefix is not included). Empty `DESCRIPTION` field
   (i.e. `d/`) will set the description to be empty.
@@ -323,7 +324,7 @@ Shows a list of all tags in NetWise.
 
 Format: `listtag`
 
-* List all tags along with their description and assigned color.
+* Lists all tags along with their description and assigned color.
 * The tag list does not show tags in any particular order.
   It shows the tag name along with the associated **unique tag ID** given when the tag is created.
 
@@ -373,7 +374,7 @@ Format: `deletetag TAG_ID`
 
 Example:
 
-* `delete 2` to delete the tag with ID 2
+* `delete 2` deletes the tag with ID 2
 
 Example of **invalid command**:
 
@@ -416,7 +417,7 @@ Examples of **invalid commands**:
 Shows a list of relationships for each person in the list in NetWise.
 
 Format (one person): `listrel p1/CONNECTION_1`: show a list of all person related to `CONNECTION_1`
-along with the relationship info \
+along with the relationship description \
 
 Format (two persons): `listrel p1/CONNECTION_1 p2/CONNECTION_2`: show the chain of relationships
 between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationship infos.
@@ -428,17 +429,16 @@ between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationshi
 * **Note**:
     1. Finding the chain of relationships between the same person will only show that person,
        even though a relationship cannot exist between the same person.
-    2. If added a new person or relationship, you should use `listrel` again to reevaluate the relationship list shown.
+    2. If you **added/deleted** a person or a relationship, you should use `listrel` again to reevaluate the relationship list shown.
        **However,** changes in fields (e.g. name, relationship description) do not require reevaluation of the
        relationship list.
     3. Shows the **unique ID** given when the connection is created not the relative index in the list.
 
 Examples:
 
-* `listrel p1/1`. Shows a list of connections who has a relationship to ID 1 and the description of their relationships.
+* `listrel p1/1`. Shows a list of connections who has a relationship to a connection with ID 1 and the description of their relationships.
 * `listrel p1/1 p2/2`. Shows a list of relationships in order to see how connection with ID 1
-  may be connected to connection with ID 2 via a chain of relationships. If there are multiple of such chains,
-  only the shortest one will be shown.
+  may be connected to connection with ID 2 via a chain of relationships. 
 
 Examples of **invalid commands**:
 
@@ -451,7 +451,7 @@ Edits the description of a relationship in NetWise.
 
 Format: `editrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION`
 
-* Edits the relationship between p1 and p2. `editrel` will edit the description of the relationship between p1 and p2.
+* Edits the relationship description between `CONNECTION_1` and `CONNECTION_2`. 
 * All fields must be provided.
 * `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
     * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
@@ -480,8 +480,8 @@ Deletes a relationship from NetWise.
 
 Format: `deleterel p1/CONNECTION_1 p2/CONNECTION_2`
 
-* Deletes the relationship between p1 and p2.
-* * `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
+* Deletes the relationship between `CONNECTION_1` and `CONNECTION_2`.
+* `CONNECTION_1` and `CONNECTION_2` refers to the unique IDs of the two connections that this relationship links.
     * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
 * If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list,
   expect a message informing that no relationship is found.
