@@ -145,7 +145,7 @@ A connection can have any number of tags (including 0)
     * The phone number should be at least 5 digits long (not counting the special characters/spaces)
 * `EMAIL` should be of format `local-part@domain` and adhere to the following constraints:
     * `local-part` should only contain alphanumeric characters and these special characters: `+`, `-`, `.`, `_`. The
-      local-part may not start or end with any special characters.
+      local-part may not start or end with any special characters and special characters should not be consecutive.
     * This is followed by a '@' and then a `domain`. The `domain` is made up of domain labels separated by periods.
       There should be at least
       two domain labels, with the final domain label (i.e. `.com`, `.sg`, `.net`, etc.) should have at least 2
