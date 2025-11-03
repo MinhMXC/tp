@@ -77,7 +77,9 @@ If you can type fast, NetWise can get your connection management tasks done fast
 
 A pop-up help window will appear with the list of commands and their usage.
 
-Format: `help`
+Format: `help` 
+
+* You can also access the help window by: pressing F1 key, or via the `Help` menu at the top of the application window.
 
 
 ### Adding a connection : `add`
@@ -293,8 +295,11 @@ between `CONNECTION_1` and `CONNECTION_2` (if exist), along with the relationshi
     * `CONNECTION_1` and `CONNECTION_2` **must be a positive integer** 1, 2, 3, …​
 * If either, or both, of the connections `CONNECTION_1` and `CONNECTION_2` do not exist in the list,
 expect a message informing that no relationship is found.
-* **Note**: Finding the chain of relationships between the same person will only show that person,
+* **Note**:
+  1. Finding the chain of relationships between the same person will only show that person,
 even though a relationship cannot exist between the same person.
+  2. If added a new person or relationship, you should use `listrel` again to reevaluate the relationship list shown. **However,** changes in fields (e.g. name, relationship description) do not require reevaluation of the relationship list.
+
 
 Examples:
 *  `listrel p1/1`. Shows a list of connections who has a relationship to ID 1 and the description of their relationships.
@@ -332,8 +337,9 @@ Examples:
 ### Clearing everything : `clear`
 
 Clears all connections, tags and relationships from NetWise.
-
 Format: `clear`
+* You can also access the clear command by via pressing `File` menu and `Exit` at the top of the application window.
+
 
 
 ### Exiting the program : `exit`
