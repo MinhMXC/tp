@@ -338,7 +338,6 @@ Examples:
 
 Clears all connections, tags and relationships from NetWise.
 Format: `clear`
-* You can also access the clear command by via pressing `File` menu and `Exit` at the top of the application window.
 
 
 
@@ -347,6 +346,7 @@ Format: `clear`
 Exits the program.
 
 Format: `exit`
+* You can also access the exit command by via pressing `File` menu and `Exit` at the top of the application window.
 
 
 ### Navigate through command history using up/down arrow
