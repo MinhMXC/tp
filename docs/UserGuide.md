@@ -3,50 +3,85 @@ layout: page
 title: User Guide
 ---
 
-## NetWise User Guide
+![Ui](images/NetWiseBanner.png)
 
-NetWise is a **desktop app for managing connections for Computer Science students, optimized for use via a
-Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
-If you can type fast, NetWise can get your connection management tasks done faster than traditional GUI apps. NetWise is
-best used with minimal screen space, so you can use it easily while doing other work, and it features a comfortable
-interface and color palette designed to reduce eye strain.
+**NetWise** is your all-in-one networking companion, built **by and for Computer Science students**.
+If you have a growing network of **friends, family, classmates, professors, and colleagues**,
+NetWise helps you stay connected, organised, and intentional about your relationships.
+
+With NetWise, you can:
+* **Organise your connections effortlessly** using **tags**, so you can group people by shared contexts
+   like “Project Teammates,” “Mentors,” or “Friends from CS2103.”
+* **Map out relationships** between people to understand how your network connects —
+   whether it’s a classmate who knows your internship supervisor or a friend who introduced you to a recruiter.
+
+Designed with **tech-savvy students** in mind, NetWise combines the **power of the Command Line Interface (CLI)**
+with the **ease of a clean, compact Graphical User Interface (GUI)**. If you’re comfortable typing fast or
+love the efficiency of terminal commands, you’ll feel right at home. Every command is optimised for speed
+and simplicity — because your time is better spent connecting, not clicking.
+
+Whether you’re building professional contacts, maintaining friendships, or networking your way up to your next FAANG
+internship, **NetWise helps you keep your network strong — one command at a time**.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Table of Contents
 
 * Table of Contents
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## Purpose of this guide
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
+This user guide aims to familiarise you with the commands of NetWise and to use it effectively.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## How to use this guide
+
+ * There is a [Table of Contents](#Table-of-Contents) with clickable links above for easy nagivation.
+ * For new user, please refer to [Quick Start](#Quick-Start) for instructions to install and run the app.
+ * For details of all commands, please refer to [Features](#Features).
+ * For experienced users, please refer to [Command Summary](#Command-Summary) for an overview of all commands.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Quick Start
+
+1. Ensure you have Java `17` or above installed in your computer. \
    **Mac users:** Ensure you have the precise JDK version prescribed
    [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103T-T16-1/tp/releases).
+2. Download the latest `NetWise.jar` file from [here](https://github.com/AY2526S1-CS2103T-T16-1/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your NetWise.
+3. Copy the file to the folder you want to use as the _home folder_ for NetWise.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar NetWise.jar` command to
-   run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+4. Double-click the file to start the app. \
+   A GUI similar to below should appear in a few seconds, with some sample connections.
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will
-   open the help window.<br>
-   Some example commands you can try:
+   ![Ui](images/NetWiseUIAnnotated.png)
 
-    * `list` : Lists all connections.
+#### UI Overview
 
-    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a connection named
-      `John Doe` to NetWise.
+1. **Menu** \
+   A menu bar with clickable options.
+2. **Command box** \
+   This is where you type your commands.
+   * Type a command into the command box and press Enter to execute it.
+   * Some example commands you can try:
+     * `list`: Lists all connections.
+     * `add n/Minh p/12345678 e/minh@minh.com`: Adds a connection named Minh to NetWise.
+     * `delete 3`: Deletes the connection with ID 3.
+     * `exit`: Exits the app.
+   * Refer to the [Features](#Features) below for details of each command.
+3. **Command result** \
+   Shows the response message from the app whenever a command is executed.
+4. **List of connections / tags / relationshipss** \
+   Shows a list of connections or tags or relationships, depending on what commands were executed.
 
-    * `delete 3` : Deletes the connection with ID 3.
-
-    * `clear` : Deletes all connections.
-
-    * `exit` : Exits the app.
-
-1. Refer to the [Features](#features) below for details of each command.
+**Tips**: UI is designed to work best at a minimum window size, allowing computer science students to
+multitask while using NetWise
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -429,23 +464,23 @@ contains the data of your previous NetWise home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## Command Summary
 
-| Action                    | Format, Examples                                                                                                                                                                       |
-|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Action                    | Format and Examples                                                                                                                                                                         |
+|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Help**                  | `help`                                                                                                                                                                                      |
+| **List connections**      | `list`                                                                                                                                                                                      |
 | **Add connection**        | `add n/NAME p/PHONE_NUMBER e/EMAIL [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/1 t/2 r/owes me lunch` |
-| **Clear connection list** | `clear`                                                                                                                                                                                |
-| **Delete connection**     | `delete ID`<br> e.g., `delete 3`                                                                                                                                                       |
 | **Edit connection**       | `edit ID [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG_ID]…​ [r/NOTE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                   |
-| **Find connection**       | `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS]…​ [a/ADDRESS_KEYWORDS]…​ [t/TAG_ID]…`<br> e.g., `find n/James n/Jake`                                                |
-| **List connection**       | `list`                                                                                                                                                                                 |
-| **Add tag**               | `addtag n/NAME [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `addtag n/JC d/JC friends c/23f1cd`                                                                                            |
-| **Delete tag**            | `deletetag ID` <br> e.g. `deletetag 2`                                                                                                                                                 |
-| **Edit tag**              | `edittag ID [n/NAME] [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `edittag 1 d/my extended family c/099fca`                                                                                |
-| **List tag**              | `listtag`                                                                                                                                                                              |
-| **Add relationship**      | `addrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION` <br> e.g. `addrel p1/1 p2/2 d/friends`                                                                                          |
-| **List relationships**    | `listrel p1/CONNECTION_1 [p2/CONNECTION_2]`  <br> e.g. `listrel p1/1 p2/4`                                                                                                             |
-| **Edit relationship**     | `editrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION` <br> e.g. `editrel p1/1 p2/2 d/enemies`                                                                                        |
-| **Delete relationship**   | `deleterel p1/CONNECTION_1 p2/CONNECTION_2` <br> e.g. `deleterel p1/1 p2/2`                                                                                                            |
-| **Exit program**          | `exit`                                                                                                                                                                                 |
-| **Help**                  | `help`                                                                                                                                                                                 |
+| **Delete connection**     | `delete ID`<br> e.g., `delete 3`                                                                                                                                                            |
+| **Find connection**       | `find [n/NAME_KEYWORDS]…​ [p/PHONE_KEYWORDS]…​ [e/EMAIL_KEYWORDS]…​ [a/ADDRESS_KEYWORDS]…​ [t/TAG_ID]…`<br> e.g., `find n/James n/Jake`                                 |
+| **List tags**             | `listtag`                                                                                                                                                                                   |
+| **Add tag**               | `addtag n/NAME [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `addtag n/JC d/JC friends c/23f1cd`                                                                                                 |
+| **Edit tag**              | `edittag ID [n/NAME] [d/DESCRIPTION] [c/RGB_COLOR]` <br> e.g. `edittag 1 d/my extended family c/099fca`                                                                                     |
+| **Delete tag**            | `deletetag ID` <br> e.g. `deletetag 2`                                                                                                                                                      |
+| **List relationships**    | `listrel p1/CONNECTION_1 [p2/CONNECTION_2]`  <br> e.g. `listrel p1/1 p2/4`                                                                                                                  |
+| **Add relationship**      | `addrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION` <br> e.g. `addrel p1/1 p2/2 d/friends`                                                                                               |
+| **Edit relationship**     | `editrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION` <br> e.g. `editrel p1/1 p2/2 d/enemies`                                                                                             |
+| **Delete relationship**   | `deleterel p1/CONNECTION_1 p2/CONNECTION_2` <br> e.g. `deleterel p1/1 p2/2`                                                                                                                 |
+| **Clear everything**      | `clear`                                                                                                                                                                                     |
+| **Exit program**          | `exit`                                                                                                                                                                                      |
