@@ -39,6 +39,7 @@ public class NameTest {
         assertTrue(Name.isValidName("Mai Xiong Kai, Xaviar")); // with comma
         assertTrue(Name.isValidName("N. Q. Minh")); // with full-stop
         assertTrue(Name.isValidName("Brian O'Connor")); // with apostrophes
+        assertTrue(Name.isValidName("Spider-man")); // with dash
     }
 
     @Test

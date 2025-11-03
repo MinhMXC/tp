@@ -103,9 +103,9 @@ multitask while using NetWise
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG_ID]…​` can be used as ` ` (i.e. 0 times), `t/1`, `t/1 t/3` etc.
 
-* For all parameters, the slash character `/` is not allowed. \
-  e.g. `edit 1 n/Batman S/O Superman` is not allowed, as there is a slash character in the name. For Indian names,
-  an alternative solution is to type `S/O` as `S.O.`.
+* For all parameters, the slash character `/` should not be used. \
+  e.g. `edit 1 n/Batman S/O Superman` should not be inputted, as there is a slash character in the name.
+  For Indian names, an alternative solution is to type `S/O` as `S.O.`.
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -122,6 +122,8 @@ multitask while using NetWise
 ### Viewing help : `help`
 
 A pop-up help window will appear with the list of commands and their usage.
+
+![Ui](images/HelpMessage.png)
 
 Format: `help`
 
@@ -156,7 +158,8 @@ A connection can have any number of tags (including 0)
     * The tag ID **must be a positive integer** 1, 2, 3, …​
     * One user can be assigned multiple tag IDs, and these do not have to be in any order (i.e. `t/1 t/3` and `t/3 t/1`
       will both assign tags with IDs 1 and 3 to the connection)
-* `NOTE` can accept any character input of any length.
+* `NOTE` can accept any character input of any length, except for '/' characters which would lead to unpredictable
+  behaviour.
 
 Examples:
 
@@ -296,7 +299,7 @@ Format: `edittag TAG_ID [n/NAME] [d/DESCRIPTION] [c/RGB_COLOR]`
 * `TAG_ID` refers to the **unique tag ID** each tag is given when created, can be seen with
   [`listtag`](#listing-all-tags--listtag).
     * `TAG_ID` **must be a positive integer** 1, 2, 3, …​
-* If the tag with the input `TAG_ID` does not exist in the list, expect a message informing that no tag found.
+* If the tag with the input `TAG_ID` does not exist in the list, expect a message informing that no tag is found.
 * Further conditions for `NAME`, `DESCRIPTION`, and `RGB_COLOR` follows the same as in [
   `addtag`](#adding-a-tag--addtag).
 * At least one of the optional fields must be provided.
@@ -318,7 +321,7 @@ Format: `deletetag TAG_ID`
 * `TAG_ID` refers to the **unique ID** each tag is given when created, can be seen with
   [`listtag`](#listing-all-tags--listtag).
     * `TAG_ID` **must be a positive integer** 1, 2, 3, …​
-* If the tag with the input `TAG_ID` does not exist in the list, expect a message informing that no tag found.
+* If the tag with the input `TAG_ID` does not exist in the list, expect a message informing that no tag is found.
 
 Example:
 
@@ -335,6 +338,8 @@ Format: `addrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION`
   informing that no person is found.
 * `DESCRIPTION` is a field to describe the relationship, e.g.: colleagues from ABC company
 * `DESCRIPTION` can accept any character input of any length that contains at least 1 non-whitespace character.
+* `DESCRIPTION` of relationships can only be seen with `listrel`.
+* Relationships are two-way, meaning that `p1/1 p2/3` is the same as `p1/3 p2/1`.
 
 Examples:
 

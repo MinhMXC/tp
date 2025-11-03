@@ -11,6 +11,9 @@ import seedu.address.commons.util.ToStringBuilder;
  */
 public class CommandResult {
 
+    /** Regex for successful find command message. */
+    private static final String MESSAGE_FIND_COMMAND_SUCCESS = "^[0-9]+ persons listed!$";
+
     private final String feedbackToUser;
 
     /** Help information should be shown to the user. */
@@ -54,6 +57,14 @@ public class CommandResult {
     public boolean isShowPersonList() {
         return feedbackToUser.equals("Listed all persons");
     }
+
+    /**
+     * Returns true if the command result is to show filtered person list after find command.
+     */
+    public boolean isShowFilteredPersonList() {
+        return feedbackToUser.matches(MESSAGE_FIND_COMMAND_SUCCESS);
+    }
+
     /**
      * Returns true if the command result is to show the tag list.
      */
