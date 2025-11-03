@@ -1502,3 +1502,8 @@ commands. However, NetWise does not scan for prefixes that are not supposed to b
 that are not implemented such as `p3/`. We plan to enhance the system to check for such incorrect prefixes or for
 prefixes not supposed to be present in the current command. This aims to improve the commands to be more stringent and
 accurate, reducing mistakes made by users.
+
+**8. Prevent semantically duplicate inputs:** Currently, NetWise treats names as unique in a case-sensitive manner 
+(e.g., connections with names Ben and ben, or tags with names Friend and friend are allowed), which can lead to 
+contextually duplicate entries representing the same person or tag due to user mistakes. We plan to enhance the system 
+to prevent users from adding potential duplicate entries by performing reasonable checks before accepting the input.
