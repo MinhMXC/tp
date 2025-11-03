@@ -334,6 +334,8 @@ Format: `addrel p1/CONNECTION_1 p2/CONNECTION_2 d/DESCRIPTION`
   informing that no person is found.
 * `DESCRIPTION` is a field to describe the relationship, e.g.: colleagues from ABC company
 * `DESCRIPTION` can accept any character input of any length that contains at least 1 non-whitespace character.
+* `DESCRIPTION` of relationships can only be seen with `listrel`.
+* Relationships are two-way, meaning that `p1/1 p2/3` is the same as `p1/3 p2/1`.
 
 Examples:
 
